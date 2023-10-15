@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3ihofu15tb7d"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_5m4uk"]
+[ext_resource type="Texture2D" uid="uid://0rr7t0jqji5o" path="res://icon.svg" id="2_4lpm1"]
+[ext_resource type="PackedScene" uid="uid://bwb2brmvqr300" path="res://Utility/gun.tscn" id="3_6gaby"]
+[ext_resource type="PackedScene" uid="uid://cujkcxlntolg2" path="res://Utility/bullet.tscn" id="4_ebumc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ljpmh"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_5m4uk")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("2_4lpm1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(8.84164, 8.84164)
+shape = SubResource("CircleShape2D_ljpmh")
+
+[node name="Gun" parent="." instance=ExtResource("3_6gaby")]
+BulletScene = ExtResource("4_ebumc")

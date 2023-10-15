@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfr44igkgfima"]
+
+[ext_resource type="Script" path="res://World/spawner.gd" id="1_inap3"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_inap3")
+
+[node name="spawn_timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Mobs" type="Node2D" parent="."]
+
+[connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]

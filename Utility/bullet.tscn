@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cujkcxlntolg2"]
+
+[ext_resource type="Script" path="res://Utility/bullet.gd" id="1_a1emp"]
+[ext_resource type="Texture2D" uid="uid://0rr7t0jqji5o" path="res://icon.svg" id="2_re7ec"]
+
+[node name="Bullet" type="CharacterBody2D"]
+script = ExtResource("1_a1emp")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.279707, 0.279707)
+texture = ExtResource("2_re7ec")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
