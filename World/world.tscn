@@ -1,19 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1b70jrguueoh"]
+[gd_scene load_steps=6 format=3 uid="uid://c1b70jrguueoh"]
 
 [ext_resource type="PackedScene" uid="uid://bfr44igkgfima" path="res://World/spawner.tscn" id="1_21gxd"]
+[ext_resource type="Script" path="res://World/world.gd" id="1_asl7k"]
 [ext_resource type="PackedScene" uid="uid://b3ihofu15tb7d" path="res://Player/player.tscn" id="2_3lgcc"]
 [ext_resource type="Texture2D" uid="uid://vfusddo0l0fh" path="res://assets/background.png" id="3_sblts"]
+[ext_resource type="PackedScene" uid="uid://ch6fjww4kthl7" path="res://Enemy/Boss.tscn" id="4_cerwt"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_asl7k")
 
 [node name="Spawner" parent="." instance=ExtResource("1_21gxd")]
+process_mode = 4
 position = Vector2(664, 242)
 
 [node name="Player" parent="." instance=ExtResource("2_3lgcc")]
 position = Vector2(190, 200)
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Boss" parent="." instance=ExtResource("4_cerwt")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1000, 500)
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 z_index = -99
-position = Vector2(566, 337)
-scale = Vector2(1.37056, 1.37056)
+texture_repeat = 3
 texture = ExtResource("3_sblts")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1000, 500)
