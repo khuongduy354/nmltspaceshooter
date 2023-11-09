@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch6fjww4kthl7"]
+
+[ext_resource type="Script" path="res://Enemy/Boss.gd" id="1_rndc0"]
+
+[node name="Boss" type="CharacterBody2D"]
+script = ExtResource("1_rndc0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0.0117647, 0.0117647, 1)
+
+[node name="Guns" type="Node2D" parent="."]

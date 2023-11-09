@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var move_speed = 5000
-@export var patrol_radius = 300
+@export var move_speed = 9000
+@export var patrol_radius =200
 
 @onready var pdetector = $PlayerDetector
 
