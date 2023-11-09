@@ -1,14 +1,15 @@
 extends CharacterBody2D
 
-@export var move_speed = 9000
-@export var patrol_radius =200
-
+@export var move_speed = 5000
+@export var patrol_radius = 300
+@export var max_hp = 100
 @onready var pdetector = $PlayerDetector
 
 enum {IDLE, PATROL, CHASE}
-var state = IDLE: set =set_state
+var state = IDLE: set = set_state
 var prev_state = IDLE
-var target =null
+var target = null
+var hp = max_hp
 
 func set_state(val):
 	prev_state = state
@@ -56,14 +57,16 @@ func _chase(delta):
 	if !is_player_in_zone(): 
 		state = IDLE
 		return
+		
 	var tpos = target.global_position
 	var dir = global_position.direction_to(tpos)
+	
+	look_at(tpos)
+	$Gun.shoot()
+	
 	velocity = dir * move_speed * delta
 	move_and_slide()
-
-
-
-
+	
 func _on_player_detector_body_exited(body):
 	if body is Player: 
 		target = null
@@ -79,3 +82,10 @@ func _on_player_detector_body_entered(body):
 		target = body
 		$patrol_interval.stop() 
 		state = CHASE
+
+func _on_hit_box_area_entered(area):
+	if area.is_in_group("player_bullet"):
+		hp -= area.owner.damage
+		if(hp <= 0):
+			queue_free()
+

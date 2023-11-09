@@ -10,6 +10,8 @@ func _ready():
 #	$Hitbox.connect("body_entered",Callable(self,"_on_hitbox_body_entered"))
 	$VisibleOnScreenNotifier2D.connect("screen_exited",queue_free)
 	set_as_top_level(true)
+
+	
 func _physics_process(delta):
 	move_and_collide(veloc*delta)
 	
@@ -33,3 +35,4 @@ func set_dir(dir:Vector2):
 #func _on_visible_on_screen_enabler_2d_screen_exited():
 #	print("free bullet")
 #	queue_free()
+
