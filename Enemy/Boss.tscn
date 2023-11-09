@@ -1,13 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://ch6fjww4kthl7"]
+[gd_scene load_steps=4 format=3 uid="uid://ch6fjww4kthl7"]
 
 [ext_resource type="Script" path="res://Enemy/Boss.gd" id="1_rndc0"]
+[ext_resource type="Script" path="res://Enemy/BossDecisionPicker.gd" id="2_7w34k"]
+[ext_resource type="PackedScene" uid="uid://bbavwc7ru83hs" path="res://Utility/laser.tscn" id="3_sylkh"]
 
 [node name="Boss" type="CharacterBody2D"]
+scale = Vector2(1.73495, 1.73495)
 script = ExtResource("1_rndc0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-color = Color(1, 0.0117647, 0.0117647, 1)
+color = Color(0.203922, 0.615686, 0.513726, 1)
 
 [node name="Guns" type="Node2D" parent="."]
+position = Vector2(20, 20)
+
+[node name="Debug" type="Label" parent="."]
+offset_left = -10.0
+offset_top = -29.0
+offset_right = 58.0
+offset_bottom = -3.0
+
+[node name="StatePicker" type="Node" parent="."]
+script = ExtResource("2_7w34k")
+
+[node name="shoot_duration" type="Timer" parent="."]
+one_shot = true
+
+[node name="Laser" parent="." instance=ExtResource("3_sylkh")]
+position = Vector2(20, 20)
+target_position = Vector2(0, 1000)
+collide_with_areas = true
+collide_with_bodies = false
