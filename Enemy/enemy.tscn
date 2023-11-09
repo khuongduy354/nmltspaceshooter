@@ -1,18 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckwx36ydstxxk"]
+[gd_scene load_steps=6 format=3 uid="uid://ckwx36ydstxxk"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_l0c2e"]
+[ext_resource type="PackedScene" uid="uid://bwb2brmvqr300" path="res://Utility/gun.tscn" id="2_r85m8"]
+[ext_resource type="PackedScene" uid="uid://oakjgyh1v2o8" path="res://Utility/enemy_bullet.tscn" id="3_5gnfk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hws4g"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2ysc"]
+size = Vector2(40, 40)
+
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_l0c2e")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(1, 0.0117647, 0.0117647, 1)
-
 [node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 scale = Vector2(37.9672, 37.9672)
@@ -21,6 +24,27 @@ shape = SubResource("CircleShape2D_hws4g")
 [node name="patrol_interval" type="Timer" parent="."]
 wait_time = 2.0
 
+[node name="Gun" parent="." instance=ExtResource("2_r85m8")]
+BulletScene = ExtResource("3_5gnfk")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_h2ysc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_h2ysc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0.0117647, 0.0117647, 1)
+
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
 [connection signal="timeout" from="patrol_interval" to="." method="_on_patrol_interval_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

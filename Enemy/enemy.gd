@@ -83,9 +83,12 @@ func _on_player_detector_body_entered(body):
 		$patrol_interval.stop() 
 		state = CHASE
 
-func _on_hit_box_area_entered(area):
+
+
+
+
+func _on_hurtbox_area_entered(area):
 	if area.is_in_group("player_bullet"):
 		hp -= area.owner.damage
 		if(hp <= 0):
 			queue_free()
-

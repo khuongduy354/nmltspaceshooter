@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dj83qs6v5yw74"]
+[gd_scene load_steps=4 format=3 uid="uid://dpq8l77snu0yu"]
 
 [ext_resource type="Script" path="res://Utility/bullet.gd" id="1_x3ddi"]
 [ext_resource type="Texture2D" uid="uid://0rr7t0jqji5o" path="res://icon.svg" id="2_dmgx3"]
@@ -16,6 +16,8 @@ texture = ExtResource("2_dmgx3")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="HitBox" type="Area2D" parent="." groups=["player_bullet"]]
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-0.5, -1)

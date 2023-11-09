@@ -3,11 +3,12 @@
 [ext_resource type="Script" path="res://Player/player.gd" id="1_5m4uk"]
 [ext_resource type="Texture2D" uid="uid://0rr7t0jqji5o" path="res://icon.svg" id="2_4lpm1"]
 [ext_resource type="PackedScene" uid="uid://bwb2brmvqr300" path="res://Utility/gun.tscn" id="3_6gaby"]
-[ext_resource type="PackedScene" path="res://Utility/player_bullet.tscn" id="4_5mx2c"]
+[ext_resource type="PackedScene" uid="uid://dpq8l77snu0yu" path="res://Utility/player_bullet.tscn" id="4_5mx2c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ljpmh"]
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 6
 script = ExtResource("1_5m4uk")
 
 [node name="Icon" type="Sprite2D" parent="."]
