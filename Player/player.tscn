@@ -19,7 +19,7 @@ scale = Vector2(8.84164, 8.84164)
 shape = SubResource("CircleShape2D_ljpmh")
 
 [node name="Gun" parent="." instance=ExtResource("3_6gaby")]
-position = Vector2(99, 0)
+position = Vector2(89, 0)
 BulletScene = ExtResource("4_5mx2c")
 
 [node name="Camera2D" type="Camera2D" parent="Gun"]
@@ -30,3 +30,5 @@ limit_right = 4500
 limit_bottom = 2300
 limit_smoothed = true
 position_smoothing_enabled = true
+
+[connection signal="shot" from="Gun" to="." method="_on_gun_shot"]

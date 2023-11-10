@@ -1,5 +1,8 @@
 extends Node2D
 class_name Gun 
+
+signal shot
+
 @export var BulletScene:PackedScene
 @export var fire_cooldown = 0.2
 @onready var spos = $shoot_pos
@@ -17,3 +20,4 @@ func shoot():
 	add_child(bullet)
 	bullet.global_position = spos.global_position
 	$fire_cooldown.start()
+	shot.emit()
