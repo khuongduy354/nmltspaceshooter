@@ -178,7 +178,7 @@ func setup_gun():
 	for i in range(gun_counts): 
 		var gun = preload("res://Utility/gun.tscn").instantiate()
 		guns.add_child(gun)
-		gun.BulletScene = preload("res://Utility/bullet.tscn")
+		gun.BulletScene = preload("res://Utility/enemy_bullet.tscn")
 		gun.rotation_degrees = base_angle
 		base_angle+= angle_gap
 	primary_gun = guns.get_child(0)

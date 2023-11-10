@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://oakjgyh1v2o8"]
+[gd_scene load_steps=5 format=3 uid="uid://oakjgyh1v2o8"]
 
 [ext_resource type="Script" path="res://Utility/bullet.gd" id="1_ug2q0"]
 [ext_resource type="Texture2D" uid="uid://0rr7t0jqji5o" path="res://icon.svg" id="2_68qv8"]
+
+[sub_resource type="GDScript" id="GDScript_dfyh7"]
+script/source = "extends Area2D
+
+@onready var damage = owner.damage
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bu2b"]
 size = Vector2(35, 36)
 
 [node name="Bullet" type="CharacterBody2D"]
 script = ExtResource("1_ug2q0")
+damage = 10
 
 [node name="Icon" type="Sprite2D" parent="."]
 scale = Vector2(0.279707, 0.279707)
@@ -17,6 +24,7 @@ texture = ExtResource("2_68qv8")
 
 [node name="HitBox" type="Area2D" parent="." groups=["enemy_bullet"]]
 collision_layer = 16
+script = SubResource("GDScript_dfyh7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-0.5, -1)

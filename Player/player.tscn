@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3ihofu15tb7d"]
+[gd_scene load_steps=7 format=3 uid="uid://b3ihofu15tb7d"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_5m4uk"]
 [ext_resource type="Texture2D" uid="uid://0rr7t0jqji5o" path="res://icon.svg" id="2_4lpm1"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dpq8l77snu0yu" path="res://Utility/player_bullet.tscn" id="4_5mx2c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ljpmh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpoos"]
+size = Vector2(126, 130)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6
@@ -31,4 +34,12 @@ limit_bottom = 2300
 limit_smoothed = true
 position_smoothing_enabled = true
 
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_dpoos")
+
 [connection signal="shot" from="Gun" to="." method="_on_gun_shot"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

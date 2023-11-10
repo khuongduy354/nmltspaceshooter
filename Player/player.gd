@@ -2,12 +2,19 @@ extends CharacterBody2D
 class_name Player
 
 signal bullet_changed
+signal health_changed 
 
 @export var speed = 400 
 @export var max_bullet = 100
+@export var max_health = 100
 
+var current_health = max_health: set = set_health 
 var bullet_count = max_bullet : set = set_bullet 
 
+func set_health(val): 
+	current_health = val 
+	health_changed.emit(val)
+	
 func set_bullet(val): 
 	if val >= 0: 
 		bullet_count = val
@@ -34,3 +41,8 @@ func _physics_process(delta):
 
 func _on_gun_shot():
 	bullet_count -= 1
+
+
+func _on_hurtbox_area_entered(area):
+	if area.is_in_group("enemy_bullet"): 
+		current_health -= area.owner.damage
