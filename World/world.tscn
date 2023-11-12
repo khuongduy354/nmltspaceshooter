@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1b70jrguueoh"]
+[gd_scene load_steps=8 format=3 uid="uid://c1b70jrguueoh"]
 
 [ext_resource type="PackedScene" uid="uid://bfr44igkgfima" path="res://World/spawner.tscn" id="1_21gxd"]
 [ext_resource type="Script" path="res://World/world.gd" id="1_asl7k"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://vfusddo0l0fh" path="res://assets/background.png" id="3_sblts"]
 [ext_resource type="PackedScene" uid="uid://ch6fjww4kthl7" path="res://Enemy/Boss.tscn" id="4_cerwt"]
 [ext_resource type="PackedScene" uid="uid://bks23t4amyvx2" path="res://UI/player_ui.tscn" id="6_245lb"]
+[ext_resource type="Script" path="res://World/Asteriod/AsteroidsManager.gd" id="7_350iw"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_asl7k")
@@ -18,6 +19,7 @@ position = Vector2(664, 242)
 position = Vector2(190, 200)
 
 [node name="Boss" parent="." instance=ExtResource("4_cerwt")]
+process_mode = 4
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_ignore_camera_zoom = true
@@ -34,3 +36,12 @@ region_enabled = true
 region_rect = Rect2(0, 0, 1000, 500)
 
 [node name="PlayerUI" parent="." instance=ExtResource("6_245lb")]
+
+[node name="Asteroids" type="Node" parent="."]
+script = ExtResource("7_350iw")
+
+[node name="AsteroidCheck" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="AsteroidCheck" to="." method="_on_asteroid_check_timeout"]

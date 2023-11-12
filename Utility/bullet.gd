@@ -26,13 +26,3 @@ func set_dir(dir:Vector2):
 	look_at(self.global_position+dir)  
 
 
-#func _on_hitbox_body_entered(body):
-#	if body.name=="Forest": 
-#		print("hi")
-#		_damage_dealt()
-
-
-#func _on_visible_on_screen_enabler_2d_screen_exited():
-#	print("free bullet")
-#	queue_free()
-

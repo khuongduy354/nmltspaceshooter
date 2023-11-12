@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcdftjx135ilw"]
+
+[ext_resource type="Script" path="res://World/Asteriod/asteroid.gd" id="1_x723m"]
+[ext_resource type="Shape2D" uid="uid://bvxsfchbtiqck" path="res://World/Asteriod/SmallAsteroidCollision.tres" id="2_sp86a"]
+
+[node name="Asteroid" type="Area2D"]
+collision_layer = 4
+collision_mask = 24
+script = ExtResource("1_x723m")
+size = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("2_sp86a")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
