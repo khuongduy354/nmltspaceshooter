@@ -3,6 +3,7 @@ extends Node2D
 @onready var player = $Player as Player
 @onready var playerUI = $PlayerUI
 @onready var asteroids = $Asteroids 
+@onready var pause_menu = $PauseMenu
 func _ready():
 	boss._initialize_(player)
 	
@@ -13,7 +14,10 @@ func _ready():
 	
 	spawn_asteroids()
 	
-
+func _physics_process(delta):
+	if Input.is_action_just_pressed("pause"): 
+		pause_menu.visible=true 
+		get_tree().paused = true
 
 # asteroids 
 func spawn_asteroids(): 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bks23t4amyvx2"]
+[gd_scene load_steps=6 format=3 uid="uid://bks23t4amyvx2"]
 
 [ext_resource type="Script" path="res://UI/player_ui.gd" id="1_ttbss"]
 [ext_resource type="Texture2D" uid="uid://ds5qy3q50gwu2" path="res://assets/spiderboss.png" id="2_xcvey"]
+[ext_resource type="PackedScene" uid="uid://0ve3b1lr402g" path="res://UI/P_UI.tscn" id="3_6qihj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_efa5p"]
 atlas = ExtResource("2_xcvey")
@@ -15,10 +16,10 @@ region = Rect2(570, 189, 32, 5)
 script = ExtResource("1_ttbss")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = 8.0
-offset_top = 32.0
-offset_right = 66.0
-offset_bottom = 37.0
+offset_left = 32.0
+offset_top = 48.0
+offset_right = 90.0
+offset_bottom = 53.0
 scale = Vector2(7.09569, 7.09569)
 texture_under = SubResource("AtlasTexture_efa5p")
 texture_progress = SubResource("AtlasTexture_7brob")
@@ -43,3 +44,13 @@ text = "Bullets:"
 [node name="BulletCount" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "0"
+
+[node name="PlayerInfor" parent="." instance=ExtResource("3_6qihj")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_top = 16.0
+offset_right = 125.0
+offset_bottom = 119.0
+grow_horizontal = 2

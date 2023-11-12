@@ -1,0 +1,152 @@
+[gd_scene load_steps=5 format=3 uid="uid://beb7514v2abnj"]
+
+[ext_resource type="FontFile" uid="uid://bdhpjd3wou0xy" path="res://assets/ThaleahFat.ttf" id="1_kx2nd"]
+[ext_resource type="Texture2D" uid="uid://0rr7t0jqji5o" path="res://icon.svg" id="2_pxvdw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6788x"]
+bg_color = Color(0.360784, 0.266667, 0.615686, 1)
+
+[sub_resource type="Theme" id="Theme_0ogx3"]
+Button/styles/normal = SubResource("StyleBoxFlat_6788x")
+
+[node name="GameOver" type="CanvasLayer"]
+
+[node name="GameOverPack" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.5
+offset_top = -282.0
+offset_right = 236.5
+offset_bottom = 282.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverText" type="Label" parent="GameOverPack"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.5
+offset_top = -242.0
+offset_right = 215.5
+offset_bottom = -147.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kx2nd")
+theme_override_font_sizes/font_size = 80
+text = "Game over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreText" type="Label" parent="GameOverPack"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.5
+offset_top = -32.0
+offset_right = 96.5
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kx2nd")
+theme_override_font_sizes/font_size = 40
+text = "Your Score"
+
+[node name="PlayerScore" type="Label" parent="GameOverPack/ScoreText"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = 10.0
+offset_right = 21.5
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kx2nd")
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1
+
+[node name="Avatar" type="TextureRect" parent="GameOverPack"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -152.0
+offset_right = 50.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pxvdw")
+expand_mode = 1
+
+[node name="MainMenu" type="Button" parent="GameOverPack"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 63.0
+offset_right = 100.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0ogx3")
+theme_override_colors/font_pressed_color = Color(0.847059, 0.85098, 0.870588, 0)
+theme_override_fonts/font = ExtResource("1_kx2nd")
+theme_override_font_sizes/font_size = 35
+text = "Main menu"
+
+[node name="Replay" type="Button" parent="GameOverPack"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 123.0
+offset_right = 100.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0ogx3")
+theme_override_colors/font_pressed_color = Color(0.847059, 0.85098, 0.870588, 0)
+theme_override_fonts/font = ExtResource("1_kx2nd")
+theme_override_font_sizes/font_size = 35
+text = "Replay"
+
+[node name="Exit" type="Button" parent="GameOverPack"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 183.0
+offset_right = 100.0
+offset_bottom = 228.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0ogx3")
+theme_override_colors/font_pressed_color = Color(0.847059, 0.85098, 0.870588, 0)
+theme_override_fonts/font = ExtResource("1_kx2nd")
+theme_override_font_sizes/font_size = 35
+text = "Exit"

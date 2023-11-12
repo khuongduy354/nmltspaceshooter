@@ -1,0 +1,241 @@
+[gd_scene load_steps=13 format=3 uid="uid://c5xx0vnf5ij2r"]
+
+[ext_resource type="Texture2D" uid="uid://vfusddo0l0fh" path="res://assets/background.png" id="1_anoqj"]
+[ext_resource type="Script" path="res://UI/main_menu.gd" id="1_kgwp4"]
+[ext_resource type="FontFile" uid="uid://bdhpjd3wou0xy" path="res://assets/ThaleahFat.ttf" id="2_3oldd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jydvw"]
+bg_color = Color(0.360784, 0.266667, 0.615686, 1)
+
+[sub_resource type="Theme" id="Theme_0ykdi"]
+Button/styles/normal = SubResource("StyleBoxFlat_jydvw")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arugu"]
+bg_color = Color(0.172549, 0.180392, 0.207843, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytkjk"]
+bg_color = Color(0.658824, 0.545098, 0.760784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuk3d"]
+bg_color = Color(0.768627, 0.443137, 0.894118, 1)
+
+[sub_resource type="Theme" id="Theme_8got4"]
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_ytkjk")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_iuk3d")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1p4i"]
+bg_color = Color(0.658824, 0.545098, 0.760784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pfx7"]
+bg_color = Color(0.768627, 0.443137, 0.894118, 1)
+
+[sub_resource type="Theme" id="Theme_08y7u"]
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_q1p4i")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_7pfx7")
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_kgwp4")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_anoqj")
+
+[node name="Nameofgame" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -516.0
+offset_top = 22.0
+offset_right = 516.0
+offset_bottom = 172.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_3oldd")
+theme_override_font_sizes/font_size = 140
+text = "Space Shooter"
+horizontal_alignment = 1
+
+[node name="StartgameButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -27.5
+offset_right = 150.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0ykdi")
+theme_override_colors/font_pressed_color = Color(0.631373, 0.631373, 0.631373, 1)
+theme_override_fonts/font = ExtResource("2_3oldd")
+theme_override_font_sizes/font_size = 40
+text = "start game"
+
+[node name="SoundsettingButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 52.5
+offset_right = 150.0
+offset_bottom = 117.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0ykdi")
+theme_override_colors/font_pressed_color = Color(0.631373, 0.631373, 0.631373, 1)
+theme_override_fonts/font = ExtResource("2_3oldd")
+theme_override_font_sizes/font_size = 40
+text = "sound"
+
+[node name="ExitButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 132.5
+offset_right = 150.0
+offset_bottom = 197.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0ykdi")
+theme_override_colors/font_pressed_color = Color(0.631373, 0.631373, 0.631373, 1)
+theme_override_fonts/font = ExtResource("2_3oldd")
+theme_override_font_sizes/font_size = 40
+text = "exit"
+
+[node name="PlayerName" type="LineEdit" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.5
+offset_top = -104.0
+offset_right = 211.5
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_3oldd")
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Enter your name"
+alignment = 1
+
+[node name="SoundEdit" type="Panel" parent="Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = 1.0
+offset_right = 205.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_arugu")
+
+[node name="MusicLabel" type="Label" parent="Background/SoundEdit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -73.5
+offset_right = 45.0
+offset_bottom = -37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_3oldd")
+theme_override_font_sizes/font_size = 35
+text = "Music "
+
+[node name="MusicSlider" type="HSlider" parent="Background/SoundEdit/MusicLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 4.5
+offset_right = 150.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_8got4")
+
+[node name="SFXLabel" type="Label" parent="Background/SoundEdit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -23.5
+offset_right = 27.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_3oldd")
+theme_override_font_sizes/font_size = 35
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="Background/SoundEdit/SFXLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 4.5
+offset_right = 150.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_08y7u")
+
+[node name="Done" type="Button" parent="Background/SoundEdit"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -89.5
+offset_top = -52.0
+offset_right = 89.5
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_0ykdi")
+theme_override_colors/font_pressed_color = Color(0.631373, 0.631373, 0.631373, 1)
+theme_override_fonts/font = ExtResource("2_3oldd")
+theme_override_font_sizes/font_size = 40
+text = "Enter"
+
+[connection signal="pressed" from="Background/StartgameButton" to="." method="_on_startgame_button_pressed"]
+[connection signal="pressed" from="Background/SoundsettingButton" to="." method="_on_soundsetting_button_pressed"]
+[connection signal="pressed" from="Background/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Background/SoundEdit/Done" to="." method="_on_done_pressed"]
