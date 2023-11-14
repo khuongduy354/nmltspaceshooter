@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3ihofu15tb7d"]
+[gd_scene load_steps=10 format=3 uid="uid://b3ihofu15tb7d"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_5m4uk"]
 [ext_resource type="Texture2D" uid="uid://0rr7t0jqji5o" path="res://icon.svg" id="2_4lpm1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dpq8l77snu0yu" path="res://Utility/player_bullet.tscn" id="4_5mx2c"]
 [ext_resource type="PackedScene" uid="uid://4ld00o7gyjxj" path="res://vfx/trail.tscn" id="5_qs2tt"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="6_5y0gn"]
+[ext_resource type="PackedScene" uid="uid://cl1yt4kd5awk8" path="res://vfx/ShakeCamera.tscn" id="6_6wddw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ljpmh"]
 
@@ -31,14 +32,7 @@ shape = SubResource("CircleShape2D_ljpmh")
 position = Vector2(89, 0)
 BulletScene = ExtResource("4_5mx2c")
 
-[node name="Camera2D" type="Camera2D" parent="Gun"]
-zoom = Vector2(0.5, 0.5)
-limit_left = 0
-limit_top = 0
-limit_right = 4500
-limit_bottom = 2300
-limit_smoothed = true
-position_smoothing_enabled = true
+[node name="Camera2D" parent="Gun" instance=ExtResource("6_6wddw")]
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_mask = 16

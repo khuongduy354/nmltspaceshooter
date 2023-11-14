@@ -1,19 +1,90 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckwx36ydstxxk"]
+[gd_scene load_steps=13 format=3 uid="uid://ckwx36ydstxxk"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_l0c2e"]
 [ext_resource type="PackedScene" uid="uid://bwb2brmvqr300" path="res://Utility/gun.tscn" id="2_r85m8"]
 [ext_resource type="PackedScene" uid="uid://oakjgyh1v2o8" path="res://Utility/enemy_bullet.tscn" id="3_5gnfk"]
 [ext_resource type="PackedScene" uid="uid://djassl30m6em3" path="res://Utility/drop_manager.tscn" id="4_pfdlo"]
+[ext_resource type="Shader" path="res://vfx/white.gdshader" id="5_4bas8"]
+[ext_resource type="PackedScene" uid="uid://dqwdievi228ip" path="res://vfx/hit_particles.tscn" id="5_leg8t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hws4g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2ysc"]
 size = Vector2(40, 40)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22fho"]
+resource_local_to_scene = true
+
+[sub_resource type="Animation" id="Animation_in2ym"]
+resource_name = "white_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_4bas8"), null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:resource_local_to_scene")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_syidf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:resource_local_to_scene")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ubglr"]
+_data = {
+"RESET": SubResource("Animation_syidf"),
+"white_flash": SubResource("Animation_in2ym")
+}
+
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_l0c2e")
+
+[node name="HitParticles" parent="." instance=ExtResource("5_leg8t")]
+position = Vector2(19, 20)
+rotation = -3.14159
+amount = 10
 
 [node name="PlayerDetector" type="Area2D" parent="."]
 collision_layer = 2
@@ -42,6 +113,7 @@ position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_h2ysc")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_22fho")
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(1, 0.0117647, 0.0117647, 1)
@@ -49,6 +121,11 @@ color = Color(1, 0.0117647, 0.0117647, 1)
 [node name="DropManager" parent="." instance=ExtResource("4_pfdlo")]
 drops = {
 "HEALTH": 50
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ubglr")
 }
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

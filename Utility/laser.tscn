@@ -124,7 +124,7 @@ texture = ExtResource("5_qt18n")
 
 [node name="StandardLight" parent="Begin" instance=ExtResource("6_kwre7")]
 position = Vector2(6.27438e-06, 1)
-energy = 30.0
+energy = 1.0
 
 [node name="Tail" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0, 0, 1)
@@ -132,7 +132,7 @@ position = Vector2(0.000859618, 137)
 texture = ExtResource("5_qt18n")
 
 [node name="StandardLight" parent="Tail" instance=ExtResource("6_kwre7")]
-energy = 30.0
+energy = 1.0
 
 [node name="CastingParticles" type="GPUParticles2D" parent="."]
 amount = 15
@@ -161,4 +161,4 @@ texture = ExtResource("2_r8jij")
 environment = SubResource("Environment_yc08q")
 
 [node name="StandardLight" parent="." instance=ExtResource("6_kwre7")]
-energy = 30.0
+energy = 1.0

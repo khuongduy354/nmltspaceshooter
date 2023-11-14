@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl1yt4kd5awk8"]
+
+[ext_resource type="Script" path="res://vfx/ShakeCamera.gd" id="1_hptle"]
+
+[node name="Camera2D" type="Camera2D"]
+zoom = Vector2(0.3, 0.3)
+limit_left = 0
+limit_top = 0
+limit_right = 4500
+limit_bottom = 2300
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("1_hptle")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

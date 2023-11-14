@@ -22,6 +22,7 @@ script = ExtResource("1_asl7k")
 material = SubResource("ShaderMaterial_hvpgb")
 offset_right = 5361.0
 offset_bottom = 3791.0
+scale = Vector2(1.76228, 1.64329)
 color = Color(0.0784314, 0.0196078, 0.101961, 1)
 
 [node name="Spawner" parent="." instance=ExtResource("1_21gxd")]
@@ -29,7 +30,7 @@ process_mode = 4
 position = Vector2(664, 242)
 
 [node name="Player" parent="." instance=ExtResource("2_3lgcc")]
-position = Vector2(664, 339)
+position = Vector2(2725, 1418)
 
 [node name="Boss" parent="." instance=ExtResource("4_cerwt")]
 position = Vector2(300, 408)

@@ -2,9 +2,11 @@ extends CharacterBody2D
 
 @export var move_speed = 5000
 @export var patrol_radius = 300
-@export var max_hp = 50
+@export var max_hp = 100
 @export var min_dist = 100
+
 @onready var pdetector = $PlayerDetector
+@onready var animp = $AnimationPlayer 
 
 enum {IDLE, PATROL, CHASE}
 var state = IDLE: set = set_state
@@ -91,6 +93,14 @@ func _on_player_detector_body_entered(body):
 func _on_hurtbox_area_entered(area):
 	if area.is_in_group("player_bullet"):
 		hp -= area.owner.damage
+		
+		# particles 
+#		var impact_vec = area.global_position.direction_to(global_position)
+#		$HitParticles.rotation = Vector2.RIGHT.rotated($HitParticles.rotation).angle_to(impact_vec)
+		$HitParticles.emitting = true
+		animp.play("white_flash")
+		
+		
 		if(hp <= 0):
 			queue_free()
 			$DropManager.drop_item()
