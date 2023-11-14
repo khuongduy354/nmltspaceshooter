@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1b70jrguueoh"]
+[gd_scene load_steps=12 format=3 uid="uid://c1b70jrguueoh"]
 
 [ext_resource type="PackedScene" uid="uid://bfr44igkgfima" path="res://World/spawner.tscn" id="1_21gxd"]
 [ext_resource type="Script" path="res://World/world.gd" id="1_asl7k"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bks23t4amyvx2" path="res://UI/player_ui.tscn" id="6_245lb"]
 [ext_resource type="Script" path="res://World/Asteriod/AsteroidsManager.gd" id="7_350iw"]
 [ext_resource type="PackedScene" uid="uid://b5kqvwo8md4m" path="res://UI/pause_menu.tscn" id="8_jmpai"]
+[ext_resource type="PackedScene" uid="uid://ckwx36ydstxxk" path="res://Enemy/enemy.tscn" id="10_5xm5v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hvpgb"]
 shader = ExtResource("2_y1ow7")
@@ -31,6 +32,7 @@ position = Vector2(664, 242)
 position = Vector2(664, 339)
 
 [node name="Boss" parent="." instance=ExtResource("4_cerwt")]
+position = Vector2(300, 408)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 visible = false
@@ -60,6 +62,18 @@ autostart = true
 visible = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.529412, 0.529412, 0.529412, 1)
+color = Color(0.690196, 0.690196, 0.690196, 1)
+
+[node name="Enemy" parent="." instance=ExtResource("10_5xm5v")]
+position = Vector2(1247, 567)
+
+[node name="Enemy2" parent="." instance=ExtResource("10_5xm5v")]
+position = Vector2(1728, 467)
+
+[node name="Enemy3" parent="." instance=ExtResource("10_5xm5v")]
+position = Vector2(1468, 945)
+
+[node name="Enemy4" parent="." instance=ExtResource("10_5xm5v")]
+position = Vector2(1040, 898)
 
 [connection signal="timeout" from="AsteroidCheck" to="." method="_on_asteroid_check_timeout"]

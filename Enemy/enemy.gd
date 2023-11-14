@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 @export var move_speed = 5000
 @export var patrol_radius = 300
-@export var max_hp = 100
+@export var max_hp = 50
+@export var min_dist = 100
 @onready var pdetector = $PlayerDetector
 
 enum {IDLE, PATROL, CHASE}
@@ -92,3 +93,4 @@ func _on_hurtbox_area_entered(area):
 		hp -= area.owner.damage
 		if(hp <= 0):
 			queue_free()
+			$DropManager.drop_item()

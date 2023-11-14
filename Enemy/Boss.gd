@@ -36,8 +36,9 @@ var should_look = true
 
 func _ready():
 	picker._initialize_(self)
-	change_attack_pattern()
-
+	state_enter(shoot_patterns.NONE)
+	laser.turn_off()
+	
 func _physics_process(delta):
 	if should_look: 
 		var dir = global_position.direction_to(player.global_position)
@@ -63,7 +64,6 @@ func _physics_process(delta):
 
 func change_attack_pattern(): 
 	shoot_pattern = picker.pick_shoot_pattern()
-	print(shoot_pattern)
 	state_enter(shoot_pattern)
 # move 
 func _move(delta): 
@@ -87,7 +87,6 @@ func _move(delta):
 # 1 time enter state
 func state_enter(s): 
 	sdur.stop()
-	laser.turn_off()
 	should_look = true
 	
 	match s: 
@@ -102,10 +101,11 @@ func state_enter(s):
 		shoot_patterns.SPAWN: 
 			get_tree().create_timer(spawn_duration).timeout.connect(change_attack_pattern)
 		shoot_patterns.LASER: 
-			get_tree().create_timer(laser_duration).timeout.connect(change_attack_pattern)
+			get_tree().create_timer(laser_duration).timeout.connect(laser.turn_off)
+			laser.turned_off.connect(change_attack_pattern)
+			should_look = false 
 			await get_tree().create_timer(1).timeout			
 			laser.turn_on()
-			should_look = false
 func _laser(): 
 	velocity =Vector2.ZERO
 	pass 

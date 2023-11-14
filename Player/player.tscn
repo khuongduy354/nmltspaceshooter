@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3ihofu15tb7d"]
+[gd_scene load_steps=9 format=3 uid="uid://b3ihofu15tb7d"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_5m4uk"]
 [ext_resource type="Texture2D" uid="uid://0rr7t0jqji5o" path="res://icon.svg" id="2_4lpm1"]
 [ext_resource type="PackedScene" uid="uid://bwb2brmvqr300" path="res://Utility/gun.tscn" id="3_6gaby"]
 [ext_resource type="PackedScene" uid="uid://dpq8l77snu0yu" path="res://Utility/player_bullet.tscn" id="4_5mx2c"]
+[ext_resource type="PackedScene" uid="uid://4ld00o7gyjxj" path="res://vfx/trail.tscn" id="5_qs2tt"]
+[ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="6_5y0gn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ljpmh"]
 
@@ -13,6 +15,10 @@ size = Vector2(126, 130)
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6
 script = ExtResource("1_5m4uk")
+
+[node name="Trail" parent="." instance=ExtResource("5_qs2tt")]
+points = PackedVector2Array(138, -111)
+default_color = Color(0, 0.427451, 0.364706, 1)
 
 [node name="Icon" type="Sprite2D" parent="."]
 texture = ExtResource("2_4lpm1")
@@ -40,6 +46,21 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_dpoos")
+
+[node name="PName" type="Node2D" parent="."]
+
+[node name="pname" type="Label" parent="PName"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.5
+offset_top = -120.0
+offset_right = 25.5
+offset_bottom = -94.0
+grow_horizontal = 2
+text = "GUEST"
+
+[node name="StandardLight" parent="." instance=ExtResource("6_5y0gn")]
 
 [connection signal="shot" from="Gun" to="." method="_on_gun_shot"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

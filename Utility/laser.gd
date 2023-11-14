@@ -1,5 +1,7 @@
 extends RayCast2D
 
+signal turned_off
+
 @export var laser_mwidth = 10
 @export var light_interval = 130
 
@@ -54,7 +56,8 @@ func turn_on():
 	tween.tween_property($Line2D,"width",laser_mwidth,0.5)
 	is_on = true 
 func turn_off(): 
+	is_on = false 
 	var tween =create_tween()
 	tween.tween_property($Line2D,"width",0,1)
-	is_on = false 
+	tween.tween_callback(func(): turned_off.emit())
 	pass 

@@ -8,9 +8,17 @@ signal health_changed
 @export var max_bullet = 100
 @export var max_health = 100
 
+@onready var pname = $PName/pname
+
 var current_health = max_health: set = set_health 
 var bullet_count = max_bullet : set = set_bullet 
 
+func pick_up_item(_item): 
+	match _item.item_type: 
+		"HEALTH":
+			current_health += 20
+			_item.queue_free()
+			
 func set_health(val): 
 	current_health = val 
 	health_changed.emit(val)
@@ -31,11 +39,16 @@ func get_input():
 		if bullet_count > 0:
 			$Gun.shoot()
 	return dir
-
+func _ready(): 
+	$Gun/Camera2D.limit_right = Global.GAME_WIDTH
+	$Gun/Camera2D.limit_bottom = Global.GAME_HEIGHT
+	pname.text = Global.player_name
+	
 func _physics_process(delta):
 	look_at(get_global_mouse_position())
 	var dir = get_input()
 	velocity = dir * speed
+	$PName.global_rotation = 0
 	move_and_slide()
 
 

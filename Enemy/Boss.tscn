@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch6fjww4kthl7"]
+[gd_scene load_steps=5 format=3 uid="uid://ch6fjww4kthl7"]
 
 [ext_resource type="Script" path="res://Enemy/Boss.gd" id="1_rndc0"]
 [ext_resource type="Script" path="res://Enemy/BossDecisionPicker.gd" id="2_7w34k"]
 [ext_resource type="PackedScene" uid="uid://bbavwc7ru83hs" path="res://Utility/laser.tscn" id="3_sylkh"]
+[ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="4_68xxy"]
 
 [node name="Boss" type="CharacterBody2D"]
 scale = Vector2(1.73495, 1.73495)
@@ -30,6 +31,8 @@ one_shot = true
 
 [node name="Laser" parent="." instance=ExtResource("3_sylkh")]
 position = Vector2(20, 20)
-target_position = Vector2(0, 1000)
+target_position = Vector2(0, 800)
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="StandardLight" parent="." instance=ExtResource("4_68xxy")]

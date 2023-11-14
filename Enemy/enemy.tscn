@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckwx36ydstxxk"]
+[gd_scene load_steps=7 format=3 uid="uid://ckwx36ydstxxk"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_l0c2e"]
 [ext_resource type="PackedScene" uid="uid://bwb2brmvqr300" path="res://Utility/gun.tscn" id="2_r85m8"]
 [ext_resource type="PackedScene" uid="uid://oakjgyh1v2o8" path="res://Utility/enemy_bullet.tscn" id="3_5gnfk"]
+[ext_resource type="PackedScene" uid="uid://djassl30m6em3" path="res://Utility/drop_manager.tscn" id="4_pfdlo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hws4g"]
 
@@ -26,6 +27,7 @@ wait_time = 2.0
 
 [node name="Gun" parent="." instance=ExtResource("2_r85m8")]
 BulletScene = ExtResource("3_5gnfk")
+fire_cooldown = 0.8
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -43,6 +45,11 @@ shape = SubResource("RectangleShape2D_h2ysc")
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(1, 0.0117647, 0.0117647, 1)
+
+[node name="DropManager" parent="." instance=ExtResource("4_pfdlo")]
+drops = {
+"HEALTH": 50
+}
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]

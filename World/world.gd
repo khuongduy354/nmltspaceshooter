@@ -27,5 +27,5 @@ func spawn_asteroids():
 
 
 func _on_asteroid_check_timeout():
-#	spawn_asteroids()
+	spawn_asteroids()
 	pass # Replace with function body.
