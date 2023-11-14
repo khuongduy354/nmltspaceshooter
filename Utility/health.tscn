@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5qwjrhbf4ex5"]
+
+[ext_resource type="PackedScene" uid="uid://bvqtjxf6nhpvc" path="res://Utility/drop_item.tscn" id="1_egchf"]
+
+[node name="Health" instance=ExtResource("1_egchf")]

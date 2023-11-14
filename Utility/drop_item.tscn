@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvqtjxf6nhpvc"]
+
+[ext_resource type="Texture2D" uid="uid://6nqv5gjwt8vm" path="res://assets/hearts.svg" id="1_b6wov"]
+[ext_resource type="Script" path="res://Utility/drop_item.gd" id="1_l6se6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_asl2j"]
+radius = 65.7343
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_um536"]
+
+[node name="DropItem" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_l6se6")
+
+[node name="PickupZone" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupZone"]
+shape = SubResource("CircleShape2D_asl2j")
+
+[node name="Hearts" type="Sprite2D" parent="."]
+position = Vector2(1, 5)
+scale = Vector2(0.0852039, 0.0852039)
+texture = ExtResource("1_b6wov")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 6)
+shape = SubResource("CapsuleShape2D_um536")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://oakjgyh1v2o8"]
+[gd_scene load_steps=6 format=3 uid="uid://oakjgyh1v2o8"]
 
 [ext_resource type="Script" path="res://Utility/bullet.gd" id="1_ug2q0"]
 [ext_resource type="Texture2D" uid="uid://0rr7t0jqji5o" path="res://icon.svg" id="2_68qv8"]
+[ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="3_2meke"]
 
 [sub_resource type="GDScript" id="GDScript_dfyh7"]
 script/source = "extends Area2D
@@ -29,3 +30,5 @@ script = SubResource("GDScript_dfyh7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_7bu2b")
+
+[node name="StandardLight" parent="." instance=ExtResource("3_2meke")]
