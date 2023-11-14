@@ -102,7 +102,7 @@ glow_hdr_threshold = 2.55
 
 [node name="Laser" type="RayCast2D"]
 rotation = -1.57079
-target_position = Vector2(0, 5000)
+target_position = Vector2(0, 3000)
 script = ExtResource("1_04vaq")
 laser_mwidth = 20
 
@@ -117,17 +117,22 @@ default_color = Color(1, 0, 0, 1)
 texture = ExtResource("2_7bvds")
 texture_mode = 2
 
-[node name="StandardLight" parent="Line2D" instance=ExtResource("6_kwre7")]
-
 [node name="Begin" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0, 0, 1)
 position = Vector2(-6.27438e-06, -1)
 texture = ExtResource("5_qt18n")
 
+[node name="StandardLight" parent="Begin" instance=ExtResource("6_kwre7")]
+position = Vector2(6.27438e-06, 1)
+energy = 75.0
+
 [node name="Tail" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0, 0, 1)
 position = Vector2(0.000859618, 137)
 texture = ExtResource("5_qt18n")
+
+[node name="StandardLight" parent="Tail" instance=ExtResource("6_kwre7")]
+energy = 75.0
 
 [node name="CastingParticles" type="GPUParticles2D" parent="."]
 amount = 15
@@ -154,3 +159,6 @@ texture = ExtResource("2_r8jij")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yc08q")
+
+[node name="StandardLight" parent="." instance=ExtResource("6_kwre7")]
+energy = 75.0

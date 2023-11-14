@@ -7,17 +7,25 @@ extends RayCast2D
 @onready var colli_ptc = $CollisionParticles
 @onready var beam_ptc = $BeamParticles
 @onready var tail = $Tail
-
+@onready var lights = $Lights
 var is_on = false : set = set_is_on
 
 func set_is_on(val): 
 	is_on = val 
 	cast_ptc.emitting = is_on
 	beam_ptc.emitting = is_on
-	tail.visible = is_on
-	$Begin.visible = is_on
+	tail.visible = is_on 
+	$Begin.visible = is_on 
 	
+func apply_light(): 
+	var pos = $Line2D.points[1]
+	if is_on: 
+		var mid = (pos + Vector2.ZERO)/2
+		$StandardLight.position = mid 
+		$StandardLight.enabled = true 
 		
+	elif $Line2D.width == 0: 
+		$StandardLight.enabled = false
 func _physics_process(delta):
 	# default to raycast length 
 	var cast_point = target_position
@@ -31,9 +39,12 @@ func _physics_process(delta):
 		# set colli particles
 		colli_ptc.position = cast_point
 		colli_ptc.global_rotation = get_collision_normal().angle() - PI/2
-
+		
+	
 	tail.position = cast_point
 	$Line2D.points[1]=cast_point 
+	apply_light()
+	
 	# set beam particles 
 	beam_ptc.position = cast_point * 0.5 
 	beam_ptc.process_material.emission_box_extents.x=cast_point.length()*0.5
