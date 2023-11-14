@@ -1,11 +1,156 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbavwc7ru83hs"]
+[gd_scene load_steps=21 format=3 uid="uid://bbavwc7ru83hs"]
 
 [ext_resource type="Script" path="res://Utility/laser.gd" id="1_04vaq"]
+[ext_resource type="Texture2D" uid="uid://do4kv2qrhxadc" path="res://assets/Sprites - Lasers Bullets #1 [66]v2.5/Beam.png" id="2_7bvds"]
+[ext_resource type="Shader" path="res://vfx/glow.gdshader" id="2_gcu0y"]
+[ext_resource type="Texture2D" uid="uid://croujqo86sny7" path="res://assets/glowing_circle.png" id="2_r8jij"]
+[ext_resource type="Texture2D" uid="uid://bx1ow188321ya" path="res://assets/white_glowing_circle.png" id="2_y0eqt"]
+[ext_resource type="Texture2D" uid="uid://qo4srnnugrb0" path="res://assets/Sprites - Lasers Bullets #1 [66]v2.5/Begin.png" id="5_qt18n"]
+[ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="6_kwre7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ig1ku"]
+shader = ExtResource("2_gcu0y")
+shader_parameter/color1 = Color(1, 0, 0, 1)
+shader_parameter/color2 = Color(1, 0, 0, 1)
+shader_parameter/threshold = 100.0
+shader_parameter/intensity = 100.0
+shader_parameter/opacity = null
+shader_parameter/glow_color = Color(0.866667, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_fh3u5"]
+offsets = PackedFloat32Array(0, 0.548387)
+colors = PackedColorArray(0.60933, 0.60933, 0.60933, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ytwgs"]
+gradient = SubResource("Gradient_fh3u5")
+
+[sub_resource type="Curve" id="Curve_cgyy1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.48374, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_nr13v"]
+curve = SubResource("Curve_cgyy1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mwq6t"]
+lifetime_randomness = 0.1
+emission_shape = 1
+emission_sphere_radius = 26.78
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 45.05
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 74.15
+initial_velocity_max = 94.98
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 1.2
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_nr13v")
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_ytwgs")
+
+[sub_resource type="Gradient" id="Gradient_hdrne"]
+offsets = PackedFloat32Array(0, 0.673267, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.673267, 0.673267, 0.673267, 0.326733, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jieg0"]
+gradient = SubResource("Gradient_hdrne")
+
+[sub_resource type="Curve" id="Curve_hygg4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49187, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_n7m6b"]
+curve = SubResource("Curve_hygg4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_467mr"]
+lifetime_randomness = 0.1
+emission_shape = 1
+emission_sphere_radius = 25.0
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 250.0
+initial_velocity_max = 250.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 1.2
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_n7m6b")
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_jieg0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_55xco"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
+
+[sub_resource type="Environment" id="Environment_yc08q"]
+background_mode = 3
+background_color = Color(0.709804, 0.709804, 0.709804, 1)
+ambient_light_source = 2
+glow_enabled = true
+glow_intensity = 3.13
+glow_blend_mode = 0
+glow_hdr_threshold = 2.55
 
 [node name="Laser" type="RayCast2D"]
 rotation = -1.57079
 target_position = Vector2(0, 5000)
 script = ExtResource("1_04vaq")
+laser_mwidth = 20
 
 [node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, 0, 0)
+texture_filter = 3
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ig1ku")
+use_parent_material = true
+points = PackedVector2Array(0, 0, 0.000821944, 131)
+width = 32.0
+default_color = Color(1, 0, 0, 1)
+texture = ExtResource("2_7bvds")
+texture_mode = 2
+
+[node name="StandardLight" parent="Line2D" instance=ExtResource("6_kwre7")]
+
+[node name="Begin" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(-6.27438e-06, -1)
+texture = ExtResource("5_qt18n")
+
+[node name="Tail" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(0.000859618, 137)
+texture = ExtResource("5_qt18n")
+
+[node name="CastingParticles" type="GPUParticles2D" parent="."]
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_mwq6t")
+texture = ExtResource("2_y0eqt")
+
+[node name="CastingParticles2" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_mwq6t")
+texture = ExtResource("2_y0eqt")
+
+[node name="CollisionParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_467mr")
+texture = ExtResource("2_y0eqt")
+
+[node name="BeamParticles" type="GPUParticles2D" parent="."]
+visible = false
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_55xco")
+texture = ExtResource("2_r8jij")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yc08q")
