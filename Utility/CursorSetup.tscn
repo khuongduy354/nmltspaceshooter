@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvd77b5sgsm8e"]
+
+[ext_resource type="Script" path="res://Utility/CursorSetup.gd" id="1_2xdn5"]
+[ext_resource type="Texture2D" uid="uid://bdojt7beoogmb" path="res://assets/kenney_crosshairPack/PNG/White Retina/crosshair038.png" id="2_j5lod"]
+[ext_resource type="Texture2D" uid="uid://c6okl17qdcvle" path="res://assets/kenney_crosshairPack/PNG/White Retina/crosshair039.png" id="3_xttn7"]
+[ext_resource type="Texture2D" uid="uid://bo0o4nt32caog" path="res://assets/kenney_crosshairPack/PNG/White Retina/crosshair037.png" id="4_pnvhi"]
+
+[node name="CursorSetup" type="Node"]
+script = ExtResource("1_2xdn5")
+
+[node name="CircleDot" type="Sprite2D" parent="."]
+position = Vector2(68, 304)
+texture = ExtResource("2_j5lod")
+
+[node name="SquareNoDot" type="Sprite2D" parent="."]
+position = Vector2(117, 133)
+texture = ExtResource("3_xttn7")
+
+[node name="Crosshair037" type="Sprite2D" parent="."]
+position = Vector2(-102, 231)
+texture = ExtResource("4_pnvhi")

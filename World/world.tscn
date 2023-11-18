@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1b70jrguueoh"]
+[gd_scene load_steps=13 format=3 uid="uid://c1b70jrguueoh"]
 
 [ext_resource type="PackedScene" uid="uid://bfr44igkgfima" path="res://World/spawner.tscn" id="1_21gxd"]
 [ext_resource type="Script" path="res://World/world.gd" id="1_asl7k"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://World/Asteriod/AsteroidsManager.gd" id="7_350iw"]
 [ext_resource type="PackedScene" uid="uid://b5kqvwo8md4m" path="res://UI/pause_menu.tscn" id="8_jmpai"]
 [ext_resource type="PackedScene" uid="uid://ckwx36ydstxxk" path="res://Enemy/enemy.tscn" id="10_5xm5v"]
+[ext_resource type="PackedScene" uid="uid://cx5p4woeocnqg" path="res://vfx/star_field.tscn" id="11_d6jpl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hvpgb"]
 shader = ExtResource("2_y1ow7")
@@ -18,15 +19,30 @@ shader_parameter/bg_color = Vector4(0, 0, 0, 1)
 [node name="World" type="Node2D"]
 script = ExtResource("1_asl7k")
 
+[node name="StarField" type="ColorRect" parent="."]
+visible = false
+offset_left = -1305.0
+offset_top = -623.0
+offset_right = 10026.0
+offset_bottom = 6213.0
+color = Color(0.0356024, 0.0233416, 0.000171791, 1)
+
+[node name="StarField" parent="StarField" instance=ExtResource("11_d6jpl")]
+position = Vector2(4748, 1979)
+amount = 256
+
 [node name="Bg" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_hvpgb")
-offset_right = 5361.0
-offset_bottom = 3791.0
+offset_left = -2265.0
+offset_top = -1510.0
+offset_right = 6335.0
+offset_bottom = 5057.0
 scale = Vector2(1.76228, 1.64329)
 color = Color(0.0784314, 0.0196078, 0.101961, 1)
 
 [node name="Spawner" parent="." instance=ExtResource("1_21gxd")]
 process_mode = 4
+visible = false
 position = Vector2(664, 242)
 
 [node name="Player" parent="." instance=ExtResource("2_3lgcc")]
@@ -63,7 +79,7 @@ autostart = true
 visible = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.690196, 0.690196, 0.690196, 1)
+color = Color(0.839216, 0.839216, 0.839216, 1)
 
 [node name="Enemy" parent="." instance=ExtResource("10_5xm5v")]
 position = Vector2(1247, 567)

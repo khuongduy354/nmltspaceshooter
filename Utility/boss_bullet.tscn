@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcdum1buju0c7"]
+
+[ext_resource type="PackedScene" uid="uid://oakjgyh1v2o8" path="res://Utility/enemy_bullet.tscn" id="1_tuko3"]
+
+[node name="BossBullet" instance=ExtResource("1_tuko3")]
+BULLET_SPEED = 1000
+
+[node name="Icon" parent="." index="0"]
+scale = Vector2(5, 5)
+region_rect = Rect2(153, 223, 25, 24)

@@ -18,7 +18,7 @@ func set_is_on(val):
 	beam_ptc.emitting = is_on
 	tail.visible = is_on 
 	$Begin.visible = is_on 
-	
+	beam_ptc.emitting = is_on
 func apply_light(): 
 	var pos = $Line2D.points[1]
 	if is_on: 

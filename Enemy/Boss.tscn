@@ -1,21 +1,85 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch6fjww4kthl7"]
+[gd_scene load_steps=13 format=3 uid="uid://ch6fjww4kthl7"]
 
 [ext_resource type="Script" path="res://Enemy/Boss.gd" id="1_rndc0"]
 [ext_resource type="Script" path="res://Enemy/BossDecisionPicker.gd" id="2_7w34k"]
 [ext_resource type="PackedScene" uid="uid://bbavwc7ru83hs" path="res://Utility/laser.tscn" id="3_sylkh"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="4_68xxy"]
+[ext_resource type="Texture2D" uid="uid://bs7dyyxrjw0hp" path="res://assets/THANHVFX/ENEMIES/bossassets (1) (1).png" id="5_6vcti"]
+[ext_resource type="Shader" path="res://vfx/white.gdshader" id="6_0d4pm"]
+[ext_resource type="PackedScene" uid="uid://dqwdievi228ip" path="res://vfx/hit_particles.tscn" id="7_54llg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4n30s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m3d3c"]
+radius = 103.564
+
+[sub_resource type="Animation" id="Animation_jhxmh"]
+resource_name = "white_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bossassets(1)(1):material:shader")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_0d4pm"), null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bossassets(1)(1):material:shader_parameter/whitening")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+
+[sub_resource type="Animation" id="Animation_hk4uj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bossassets(1)(1):material:shader")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bossassets(1)(1):material:shader_parameter/whitening")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kkj3s"]
+_data = {
+"RESET": SubResource("Animation_hk4uj"),
+"white_flash": SubResource("Animation_jhxmh")
+}
 
 [node name="Boss" type="CharacterBody2D"]
+light_mask = 2
 scale = Vector2(1.73495, 1.73495)
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_rndc0")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0.203922, 0.615686, 0.513726, 1)
-
-[node name="Guns" type="Node2D" parent="."]
-position = Vector2(20, 20)
 
 [node name="Debug" type="Label" parent="."]
 offset_left = -10.0
@@ -30,9 +94,41 @@ script = ExtResource("2_7w34k")
 one_shot = true
 
 [node name="Laser" parent="." instance=ExtResource("3_sylkh")]
-position = Vector2(20, 20)
-target_position = Vector2(0, 800)
+position = Vector2(68.0135, 1.90735e-06)
+target_position = Vector2(0, 1500)
 collide_with_areas = true
 collide_with_bodies = false
+laser_mwidth = 40
 
 [node name="StandardLight" parent="." instance=ExtResource("4_68xxy")]
+energy = 0.2
+
+[node name="Bossassets(1)(1)" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_4n30s")
+rotation = -1.65054
+scale = Vector2(2, 2)
+texture = ExtResource("5_6vcti")
+
+[node name="Guns" type="Node2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_m3d3c")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_m3d3c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kkj3s")
+}
+
+[node name="HitParticles" parent="." instance=ExtResource("7_54llg")]
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

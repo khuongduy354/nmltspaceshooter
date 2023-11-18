@@ -4,10 +4,14 @@ class_name Player
 signal bullet_changed
 signal health_changed 
 
-@export var speed = 400 
+@export var max_speed = 800
+@export var accel = 1400
+@export var friction = 800
 @export var max_bullet = 100
 @export var max_health = 100
 
+@onready var animp = $AnimationPlayer
+@onready var muzzle = $Gun/PointLight2D
 @onready var cam = $Gun/Camera2D
 @onready var pname = $PName/pname
 
@@ -45,20 +49,31 @@ func _ready():
 	$Gun/Camera2D.limit_bottom = Global.GAME_HEIGHT
 	pname.text = Global.player_name
 	
-func _physics_process(delta):
+func accelerate(dir,delta): 
+	velocity = velocity.move_toward(max_speed*dir,accel*delta)
+func apply_friction(delta): 
+	velocity = velocity.move_toward(Vector2.ZERO, friction*delta)
+func _process(delta):
 	look_at(get_global_mouse_position())
+	print(global_position)
+func _physics_process(delta):
 	var dir = global_position.direction_to(get_global_mouse_position())
 	
 	# move 
+	velocity = velocity.rotated(velocity.angle_to(dir))
+	apply_friction(delta)
 	if Input.is_action_pressed("move"): 
-		velocity = dir * speed
+		accelerate(dir,delta)
+		animp.play("fly")
 	else: 
-		velocity = Vector2.ZERO
+		apply_friction(delta)
+		animp.play("idle")
 		
 	# shoot
 	if Input.is_action_pressed("mouse_lclick"): 
 		if bullet_count > 0:
-			cam.shake(0.3,10)
+			cam.shake(0.2,5)
+			muzzle.flash()
 			$Gun.shoot()
 			
 

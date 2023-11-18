@@ -10,7 +10,11 @@ enum AsteroidSize{LARGE, MEDIUM, SMALL}
 
 @onready var sprite =$Sprite2D 
 @onready var colli_shape = $CollisionShape2D 
+@onready var realcolli_shape = $RigidBody2D/CollisionShape2D
 
+@onready var large =preload("res://World/Asteriod/LargeAsteroidCollision.tres")
+@onready var med = preload("res://World/Asteriod/MedAsteroidCollision.tres")
+@onready var small = preload("res://World/Asteriod/SmallAsteroidCollision.tres")
 
 var movement_vector := Vector2(0, -1)
 var speed = min_speed
@@ -39,15 +43,19 @@ func setup_size():
 	match size: 
 		AsteroidSize.LARGE:
 			sprite.texture = preload("res://assets/meteorGrey_big4.png")
-			colli_shape.shape = preload("res://World/Asteriod/LargeAsteroidCollision.tres")
+			colli_shape.shape = large
+			realcolli_shape.shape = large
 		AsteroidSize.MEDIUM:
 			sprite.texture = preload("res://assets/meteorGrey_med2.png") 
 			speed*=1.2
-			colli_shape.shape = preload("res://World/Asteriod/MedAsteroidCollision.tres")
+			colli_shape.shape = med
+#			realcolli_shape.shape = med
+			
 		AsteroidSize.SMALL: 
 			sprite.texture = preload("res://assets/asteroid_small.png") 
 			speed*=1.5
-			colli_shape.shape = preload("res://World/Asteriod/SmallAsteroidCollision.tres")
+			colli_shape.shape = small
+#			realcolli_shape.shape = small
 			
 
 

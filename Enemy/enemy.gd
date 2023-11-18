@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var move_speed = 5000
+@export var move_speed = 15000
 @export var patrol_radius = 300
 @export var max_hp = 100
 @export var min_dist = 100
@@ -57,7 +57,7 @@ func _patrol(delta):
 	
 
 func _chase(delta):
-	if !is_player_in_zone(): 
+	if !is_player_in_zone() and target == null: 
 		state = IDLE
 		return
 		
@@ -72,7 +72,8 @@ func _chase(delta):
 	
 func _on_player_detector_body_exited(body):
 	if body is Player: 
-		target = null
+		$chase_timeout.start()
+
 
 
 func _on_patrol_interval_timeout():
@@ -85,6 +86,7 @@ func _on_player_detector_body_entered(body):
 		target = body
 		$patrol_interval.stop() 
 		state = CHASE
+		$chase_timeout.stop()
 
 
 
@@ -104,3 +106,7 @@ func _on_hurtbox_area_entered(area):
 		if(hp <= 0):
 			queue_free()
 			$DropManager.drop_item()
+
+
+func _on_chase_timeout_timeout():
+	target = null

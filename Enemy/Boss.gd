@@ -1,10 +1,12 @@
 extends CharacterBody2D
 class_name BossI
 
-@export var move_speed = 20000
-@export var orbiting_speed = 10000
+@export var move_speed = 25000
+@export var orbiting_speed = 15000
 @export var gun_counts = 12
 @export var orbiting_distance = 700
+
+@export var max_hp = 10000
 
 @export var laser_duration = 3
 @export var straight_duration = 3 
@@ -19,6 +21,7 @@ class_name BossI
 @onready var sdur = $shoot_duration
 @onready var picker = $StatePicker as BossDecisionPicker
 @onready var laser = $Laser
+@onready var animp = $AnimationPlayer 
 # boss always chase player, but orbiting if reach close enough
 # boss spawn 3-5 ships after X interval
 # while moving, choose a shooting pattern toward player
@@ -33,6 +36,7 @@ var primary_gun: Gun = null
 var player:Player = null 
 var global_physics_pause= 0 
 var should_look = true
+var current_hp = max_hp
 
 func _ready():
 	picker._initialize_(self)
@@ -178,7 +182,22 @@ func setup_gun():
 	for i in range(gun_counts): 
 		var gun = preload("res://Utility/gun.tscn").instantiate()
 		guns.add_child(gun)
-		gun.BulletScene = preload("res://Utility/enemy_bullet.tscn")
+		gun.BulletScene = preload("res://Utility/boss_bullet.tscn")
 		gun.rotation_degrees = base_angle
 		base_angle+= angle_gap
 	primary_gun = guns.get_child(0)
+
+
+func _on_hurtbox_area_entered(area):
+	if area.is_in_group("player_bullet"):
+		current_hp -= area.owner.damage
+		
+		# particles 
+#		var impact_vec = area.global_position.direction_to(global_position)
+#		$HitParticles.rotation = Vector2.RIGHT.rotated($HitParticles.rotation).angle_to(impact_vec)
+		$HitParticles.emitting = true
+		animp.play("white_flash")
+		
+		
+		if(current_hp <= 0):
+			queue_free()

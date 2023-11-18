@@ -4,51 +4,19 @@
 [ext_resource type="PackedScene" uid="uid://bwb2brmvqr300" path="res://Utility/gun.tscn" id="2_r85m8"]
 [ext_resource type="PackedScene" uid="uid://oakjgyh1v2o8" path="res://Utility/enemy_bullet.tscn" id="3_5gnfk"]
 [ext_resource type="PackedScene" uid="uid://djassl30m6em3" path="res://Utility/drop_manager.tscn" id="4_pfdlo"]
-[ext_resource type="Shader" path="res://vfx/white.gdshader" id="5_4bas8"]
 [ext_resource type="PackedScene" uid="uid://dqwdievi228ip" path="res://vfx/hit_particles.tscn" id="5_leg8t"]
+[ext_resource type="Shader" path="res://vfx/white.gdshader" id="6_2od8f"]
+[ext_resource type="Texture2D" uid="uid://bi38duaq34p1k" path="res://assets/THANHVFX/ENEMIES/enemy-removebg-preview (1).png" id="7_au75r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hws4g"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2ysc"]
-size = Vector2(40, 40)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_22fho"]
-resource_local_to_scene = true
-
-[sub_resource type="Animation" id="Animation_in2ym"]
-resource_name = "white_flash"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("5_4bas8"), null]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:material:resource_local_to_scene")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
+radius = 30.9307
 
 [sub_resource type="Animation" id="Animation_syidf"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader")
+tracks/0/path = NodePath("Enemies:material:shader")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -60,14 +28,42 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:material:resource_local_to_scene")
+tracks/1/path = NodePath("Enemies:material:shader_parameter/whitening")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+
+[sub_resource type="Animation" id="Animation_in2ym"]
+resource_name = "white_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemies:material:shader")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [ExtResource("6_2od8f"), null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemies:material:shader_parameter/whitening")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ubglr"]
@@ -76,13 +72,17 @@ _data = {
 "white_flash": SubResource("Animation_in2ym")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_chq4n"]
+resource_local_to_scene = true
+
 [node name="Enemy" type="CharacterBody2D"]
+texture_filter = 3
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_l0c2e")
 
 [node name="HitParticles" parent="." instance=ExtResource("5_leg8t")]
-position = Vector2(19, 20)
+position = Vector2(-18, 0)
 rotation = -3.14159
 amount = 10
 
@@ -97,6 +97,7 @@ shape = SubResource("CircleShape2D_hws4g")
 wait_time = 2.0
 
 [node name="Gun" parent="." instance=ExtResource("2_r85m8")]
+position = Vector2(22, 0)
 BulletScene = ExtResource("3_5gnfk")
 fire_cooldown = 0.8
 
@@ -104,19 +105,10 @@ fire_cooldown = 0.8
 collision_layer = 2
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(20, 20)
-shape = SubResource("RectangleShape2D_h2ysc")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(20, 20)
-shape = SubResource("RectangleShape2D_h2ysc")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_22fho")
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(1, 0.0117647, 0.0117647, 1)
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Hurtbox"]
+position = Vector2(-73, -75)
+scale = Vector2(4, 4)
+polygon = PackedVector2Array(0, 3, 8, 8, 23, 11, 24, 6, 29, 5, 31, 13, 39, 18, 31, 23, 31, 30, 25, 34, 22, 31, 10, 31, -1, 36, -1, 30, 4, 27, 1, 21, 1, 14)
 
 [node name="DropManager" parent="." instance=ExtResource("4_pfdlo")]
 drops = {
@@ -128,7 +120,23 @@ libraries = {
 "": SubResource("AnimationLibrary_ubglr")
 }
 
+[node name="Enemies" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_chq4n")
+rotation = -1.57079
+scale = Vector2(2, 2)
+texture = ExtResource("7_au75r")
+region_rect = Rect2(104, 56, 40, 40)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-72, -77)
+scale = Vector2(4, 4)
+polygon = PackedVector2Array(0, 3, 8, 8, 23, 11, 24, 6, 29, 5, 31, 13, 39, 18, 31, 23, 31, 30, 25, 34, 22, 31, 10, 31, -1, 36, -1, 30, 4, 27, 1, 21, 1, 14)
+
+[node name="chase_timeout" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
 [connection signal="timeout" from="patrol_interval" to="." method="_on_patrol_interval_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="chase_timeout" to="." method="_on_chase_timeout_timeout"]

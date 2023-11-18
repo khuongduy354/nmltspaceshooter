@@ -1,7 +1,7 @@
 extends Node
 
-var GAME_WIDTH = 1000 * 8
-var GAME_HEIGHT =  500 * 8 
+var GAME_WIDTH = 1000 * 12
+var GAME_HEIGHT =  500 * 12 
 
 enum DROP_TYPE{ 
 	HEALTH

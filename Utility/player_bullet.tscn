@@ -1,27 +1,31 @@
 [gd_scene load_steps=5 format=3 uid="uid://dpq8l77snu0yu"]
 
 [ext_resource type="Script" path="res://Utility/bullet.gd" id="1_x3ddi"]
-[ext_resource type="Texture2D" uid="uid://0rr7t0jqji5o" path="res://icon.svg" id="2_dmgx3"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="3_yxuhg"]
+[ext_resource type="Texture2D" uid="uid://bul78v8wxmg48" path="res://assets/THANHVFX/nPoQD5-removebg-preview.png" id="4_ypiks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bu2b"]
-size = Vector2(35, 36)
+size = Vector2(161, 47)
 
 [node name="Bullet" type="CharacterBody2D"]
 script = ExtResource("1_x3ddi")
+BULLET_SPEED = 1500
 
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.279707, 0.279707)
-texture = ExtResource("2_dmgx3")
+[node name="StandardLight" parent="." instance=ExtResource("3_yxuhg")]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(0.3, 0.1)
 
 [node name="HitBox" type="Area2D" parent="." groups=["player_bullet"]]
 collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-0.5, -1)
+position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_7bu2b")
 
-[node name="StandardLight" parent="." instance=ExtResource("3_yxuhg")]
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("4_ypiks")
+region_enabled = true
+region_rect = Rect2(168, 207, 20, 6)
