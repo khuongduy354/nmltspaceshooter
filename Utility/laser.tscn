@@ -68,6 +68,7 @@ script = ExtResource("1_04vaq")
 laser_mwidth = 30
 
 [node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
 points = PackedVector2Array(0, 0, 0, 0)
 width = 0.0
 default_color = Color(1, 0.0627451, 0.0352941, 1)
