@@ -1,14 +1,164 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfr44igkgfima"]
+[gd_scene load_steps=10 format=3 uid="uid://bfr44igkgfima"]
 
 [ext_resource type="Script" path="res://World/spawner.gd" id="1_inap3"]
+[ext_resource type="Texture2D" uid="uid://ci00rng45b3xj" path="res://assets/galaxy-animated.png" id="2_fjple"]
+[ext_resource type="Shader" path="res://vfx/white.gdshader" id="2_m0qm2"]
+
+[sub_resource type="Animation" id="Animation_fbivc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Galaxy-animated:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Galaxy-animated:material:shader_parameter/whitening")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Galaxy-animated:material:shader")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Galaxy-animated:material:resource_local_to_scene")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_y0omn"]
+resource_name = "spinning"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Galaxy-animated:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.86),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 49]
+}
+
+[sub_resource type="Animation" id="Animation_dwppr"]
+resource_name = "white_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Galaxy-animated:material:shader_parameter/whitening")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Galaxy-animated:material:shader")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_m0qm2"), null]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Galaxy-animated:material:resource_local_to_scene")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jh67g"]
+_data = {
+"RESET": SubResource("Animation_fbivc"),
+"spinning": SubResource("Animation_y0omn"),
+"white_flash": SubResource("Animation_dwppr")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7sc7j"]
+resource_local_to_scene = true
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pthrg"]
+radius = 110.309
+height = 432.749
 
 [node name="Spawner" type="Node2D"]
 script = ExtResource("1_inap3")
+metadata/_edit_vertical_guides_ = []
 
 [node name="spawn_timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.0
 autostart = true
 
 [node name="Mobs" type="Node2D" parent="."]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jh67g")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jh67g")
+}
+
+[node name="Galaxy-animated" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_7sc7j")
+scale = Vector2(10, 10)
+texture = ExtResource("2_fjple")
+hframes = 50
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+rotation = 0.785397
+shape = SubResource("CapsuleShape2D_pthrg")
+
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

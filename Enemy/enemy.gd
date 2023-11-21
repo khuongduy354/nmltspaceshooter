@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-@export var move_speed = 20000
+signal destroyed
+
+@export var move_speed = 30000
 @export var patrol_radius = 300
 @export var max_hp = 60
 @export var min_dist = 100
@@ -18,6 +20,12 @@ var hp = max_hp
 func set_state(val):
 	prev_state = state
 	state = val
+	
+func _ready():
+	Global.swarm_player.connect(func():
+		target = Global.player
+		state = CHASE
+		)
 
 func _physics_process(delta):
 	match state: 
@@ -58,7 +66,7 @@ func _patrol(delta):
 	
 
 func _chase(delta):
-	if !is_player_in_zone() and target == null: 
+	if target == null: 
 		state = IDLE
 		return
 		
@@ -115,6 +123,7 @@ func _on_hurtbox_area_entered(area):
 		if(hp <= 0):
 			set_physics_process(false)
 			await get_tree().create_timer(.5).timeout
+			destroyed.emit()
 			queue_free()
 			$DropManager.drop_item()
 
