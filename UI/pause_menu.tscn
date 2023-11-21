@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://b5kqvwo8md4m"]
 
 [ext_resource type="Script" path="res://UI/pause_menu.gd" id="1_t04kh"]
-[ext_resource type="FontFile" uid="uid://bdhpjd3wou0xy" path="res://assets/ThaleahFat.ttf" id="2_6o5xa"]
+[ext_resource type="FontFile" uid="uid://bdhpjd3wou0xy" path="res://assets/UI/ThaleahFat.ttf" id="2_6o5xa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vguan"]
 bg_color = Color(0.372549, 0.141176, 0.65098, 1)

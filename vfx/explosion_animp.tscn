@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://by7dbt3l5m3eu"]
 
-[ext_resource type="Texture2D" uid="uid://by7k1mxdfyeo0" path="res://assets/THANHVFX/1.png" id="1_pfdri"]
+[ext_resource type="Texture2D" uid="uid://by7k1mxdfyeo0" path="res://assets/VFX/1.png" id="1_pfdri"]
 
 [sub_resource type="Animation" id="Animation_3pm0g"]
 resource_name = "explosion1"

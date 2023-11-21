@@ -42,17 +42,17 @@ func setup_size():
 	speed = randf_range(min_speed, max_speed)
 	match size: 
 		AsteroidSize.LARGE:
-			sprite.texture = preload("res://assets/meteorGrey_big4.png")
+			sprite.texture = preload("res://assets/Objects/meteorGrey_big4.png")
 			colli_shape.shape = large
 			realcolli_shape.shape = large
 		AsteroidSize.MEDIUM:
-			sprite.texture = preload("res://assets/meteorGrey_med2.png") 
+			sprite.texture = preload("res://assets/Objects/meteorGrey_med2.png") 
 			speed*=1.2
 			colli_shape.shape = med
 #			realcolli_shape.shape = med
 			
 		AsteroidSize.SMALL: 
-			sprite.texture = preload("res://assets/asteroid_small.png") 
+			sprite.texture = preload("res://assets/Objects/asteroid_small.png") 
 			speed*=1.5
 			colli_shape.shape = small
 #			realcolli_shape.shape = small

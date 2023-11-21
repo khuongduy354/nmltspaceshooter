@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfbkt0sj1y8go"]
 
-[ext_resource type="Texture2D" uid="uid://rxq1ijtqo5nv" path="res://assets/Explosions/Super Pixel Effects Mini Pack 1/spritesheet/fx1_explosion_small_orange/spritesheet.png" id="1_o75i3"]
+[ext_resource type="Texture2D" uid="uid://rxq1ijtqo5nv" path="res://assets/VFX/Explosions/Super Pixel Effects Mini Pack 1/spritesheet/fx1_explosion_small_orange/spritesheet.png" id="1_o75i3"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jtimb"]
 particles_animation = true

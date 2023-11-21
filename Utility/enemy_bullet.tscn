@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://oakjgyh1v2o8"]
 
 [ext_resource type="Script" path="res://Utility/bullet.gd" id="1_ug2q0"]
-[ext_resource type="Texture2D" uid="uid://bul78v8wxmg48" path="res://assets/THANHVFX/nPoQD5-removebg-preview.png" id="2_1ixb3"]
+[ext_resource type="Texture2D" uid="uid://bul78v8wxmg48" path="res://assets/VFX/nPoQD5-removebg-preview.png" id="2_1ixb3"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="3_2meke"]
 
 [sub_resource type="GDScript" id="GDScript_dfyh7"]

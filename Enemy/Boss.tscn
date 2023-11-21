@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://Enemy/BossDecisionPicker.gd" id="2_7w34k"]
 [ext_resource type="PackedScene" uid="uid://bbavwc7ru83hs" path="res://Utility/laser.tscn" id="3_sylkh"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="4_68xxy"]
-[ext_resource type="Texture2D" uid="uid://bs7dyyxrjw0hp" path="res://assets/THANHVFX/ENEMIES/bossassets (1) (1).png" id="5_6vcti"]
 [ext_resource type="Shader" path="res://vfx/white.gdshader" id="6_0d4pm"]
 [ext_resource type="PackedScene" uid="uid://dqwdievi228ip" path="res://vfx/hit_particles.tscn" id="7_54llg"]
 [ext_resource type="Script" path="res://Enemy/BossStateManager.gd" id="8_u2m2k"]
@@ -13,6 +12,9 @@
 radius = 103.564
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4n30s"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nd2uu"]
+load_path = "res://.godot/imported/bossassets (1) (1).png-67c168416ebb1a36678a9993bdcd97ef.ctex"
 
 [sub_resource type="Animation" id="Animation_hk4uj"]
 length = 0.001
@@ -115,7 +117,7 @@ laser_mwidth = 40
 material = SubResource("ShaderMaterial_4n30s")
 rotation = -1.65054
 scale = Vector2(2, 2)
-texture = ExtResource("5_6vcti")
+texture = SubResource("CompressedTexture2D_nd2uu")
 
 [node name="Guns" type="Node2D" parent="."]
 

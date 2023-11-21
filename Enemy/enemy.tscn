@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://djassl30m6em3" path="res://Utility/drop_manager.tscn" id="4_pfdlo"]
 [ext_resource type="PackedScene" uid="uid://dqwdievi228ip" path="res://vfx/hit_particles.tscn" id="5_leg8t"]
 [ext_resource type="Shader" path="res://vfx/white.gdshader" id="6_2od8f"]
-[ext_resource type="Texture2D" uid="uid://bi38duaq34p1k" path="res://assets/THANHVFX/ENEMIES/enemy-removebg-preview (1).png" id="7_au75r"]
+[ext_resource type="Texture2D" uid="uid://bi38duaq34p1k" path="res://assets/Objects/enemy-removebg-preview (1).png" id="7_au75r"]
 [ext_resource type="PackedScene" uid="uid://bfbkt0sj1y8go" path="res://vfx/explosion2.tscn" id="8_nbrcx"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="9_l6upo"]
 

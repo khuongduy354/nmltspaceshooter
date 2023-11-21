@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://c5xx0vnf5ij2r"]
 
-[ext_resource type="Texture2D" uid="uid://vfusddo0l0fh" path="res://assets/background.png" id="1_anoqj"]
+[ext_resource type="Texture2D" uid="uid://vfusddo0l0fh" path="res://assets/Backgrounds/background.png" id="1_anoqj"]
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_kgwp4"]
-[ext_resource type="FontFile" uid="uid://bdhpjd3wou0xy" path="res://assets/ThaleahFat.ttf" id="2_3oldd"]
+[ext_resource type="FontFile" uid="uid://bdhpjd3wou0xy" path="res://assets/UI/ThaleahFat.ttf" id="2_3oldd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jydvw"]
 bg_color = Color(0.360784, 0.266667, 0.615686, 1)

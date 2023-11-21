@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d32cyk5np447i"]
 
-[ext_resource type="Texture2D" uid="uid://by7k1mxdfyeo0" path="res://assets/THANHVFX/1.png" id="1_wi0dx"]
+[ext_resource type="Texture2D" uid="uid://by7k1mxdfyeo0" path="res://assets/VFX/1.png" id="1_wi0dx"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rfcba"]
 particles_animation = true

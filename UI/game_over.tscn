@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://beb7514v2abnj"]
 
-[ext_resource type="FontFile" uid="uid://bdhpjd3wou0xy" path="res://assets/ThaleahFat.ttf" id="1_kx2nd"]
+[ext_resource type="FontFile" uid="uid://bdhpjd3wou0xy" path="res://assets/UI/ThaleahFat.ttf" id="1_kx2nd"]
 [ext_resource type="Texture2D" uid="uid://0rr7t0jqji5o" path="res://icon.svg" id="2_pxvdw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6788x"]

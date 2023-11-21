@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://0rr7t0jqji5o" path="res://icon.svg" id="1_7ukju"]
 [ext_resource type="Script" path="res://UI/PlayerInfo.gd" id="1_oirin"]
-[ext_resource type="FontFile" uid="uid://bdhpjd3wou0xy" path="res://assets/ThaleahFat.ttf" id="2_jiyak"]
-[ext_resource type="Texture2D" uid="uid://6nqv5gjwt8vm" path="res://assets/hearts.svg" id="3_k432u"]
-[ext_resource type="Texture2D" uid="uid://cj6i8s5cfoal2" path="res://assets/ribbon-medal.svg" id="4_oa6k1"]
+[ext_resource type="FontFile" uid="uid://bdhpjd3wou0xy" path="res://assets/UI/ThaleahFat.ttf" id="2_jiyak"]
+[ext_resource type="Texture2D" uid="uid://6nqv5gjwt8vm" path="res://assets/UI/hearts.svg" id="3_k432u"]
+[ext_resource type="Texture2D" uid="uid://cj6i8s5cfoal2" path="res://assets/UI/ribbon-medal.svg" id="4_oa6k1"]
 
 [node name="PlayerInfor" type="Panel"]
 offset_left = 8.0

@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://csn57a6yu2cxa"]
 
-[ext_resource type="Texture2D" uid="uid://b6fksgfysqso2" path="res://assets/Dynamic Space Background FREE/Nebula Aqua-Pink.png" id="1_pkf2x"]
-[ext_resource type="Texture2D" uid="uid://fx7djaprht6o" path="res://assets/Dynamic Space Background FREE/Stars Small_1.png" id="2_rfndy"]
-[ext_resource type="Texture2D" uid="uid://ciyr8i8hggs2r" path="res://assets/Dynamic Space Background FREE/Stars Small_2.png" id="3_mqujj"]
-[ext_resource type="Texture2D" uid="uid://2qy6dflo66mq" path="res://assets/Dynamic Space Background FREE/Stars-Big_1_1_PC.png" id="4_mt72b"]
-[ext_resource type="Texture2D" uid="uid://b4fb0uhuc2lkb" path="res://assets/Dynamic Space Background FREE/Stars-Big_1_2_PC.png" id="5_jloun"]
+[ext_resource type="Texture2D" uid="uid://b6fksgfysqso2" path="res://assets/Backgrounds/Dynamic Space Background FREE/Nebula Aqua-Pink.png" id="1_pkf2x"]
+[ext_resource type="Texture2D" uid="uid://fx7djaprht6o" path="res://assets/Backgrounds/Dynamic Space Background FREE/Stars Small_1.png" id="2_rfndy"]
+[ext_resource type="Texture2D" uid="uid://ciyr8i8hggs2r" path="res://assets/Backgrounds/Dynamic Space Background FREE/Stars Small_2.png" id="3_mqujj"]
+[ext_resource type="Texture2D" uid="uid://2qy6dflo66mq" path="res://assets/Backgrounds/Dynamic Space Background FREE/Stars-Big_1_1_PC.png" id="4_mt72b"]
+[ext_resource type="Texture2D" uid="uid://b4fb0uhuc2lkb" path="res://assets/Backgrounds/Dynamic Space Background FREE/Stars-Big_1_2_PC.png" id="5_jloun"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 

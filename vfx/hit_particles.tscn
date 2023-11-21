@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqwdievi228ip"]
 
-[ext_resource type="Texture2D" uid="uid://yjim2jn0lkeu" path="res://assets/ice_particle_white.png" id="1_ejww5"]
+[ext_resource type="Texture2D" uid="uid://yjim2jn0lkeu" path="res://assets/VFX/ice_particle_white.png" id="1_ejww5"]
 
 [sub_resource type="Curve" id="Curve_irp5c"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.983333, 0), 0.0, 0.0, 0, 0]
