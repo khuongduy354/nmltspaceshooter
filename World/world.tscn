@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1b70jrguueoh"]
+[gd_scene load_steps=15 format=3 uid="uid://c1b70jrguueoh"]
 
 [ext_resource type="PackedScene" uid="uid://bfr44igkgfima" path="res://World/spawner.tscn" id="1_21gxd"]
 [ext_resource type="Script" path="res://World/world.gd" id="1_asl7k"]
@@ -17,10 +17,19 @@
 shader = ExtResource("2_y1ow7")
 shader_parameter/bg_color = Vector3(0.08, 0.02, 0.1)
 
+[sub_resource type="Environment" id="Environment_t1sb5"]
+background_mode = 3
+ambient_light_source = 2
+ambient_light_color = Color(0.160784, 0.0627451, 0.247059, 1)
+glow_enabled = true
+glow_bloom = 0.01
+glow_blend_mode = 0
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_asl7k")
 
 [node name="ParallaxBackground2" parent="." instance=ExtResource("12_j7e43")]
+layer = -1
 
 [node name="StarField" type="ColorRect" parent="."]
 visible = false
@@ -28,7 +37,7 @@ offset_left = -1305.0
 offset_top = -623.0
 offset_right = 10026.0
 offset_bottom = 6213.0
-color = Color(0.0356024, 0.0233416, 0.000171791, 1)
+color = Color(0.196078, 0.133333, 0.2, 1)
 
 [node name="StarField" parent="StarField" instance=ExtResource("11_d6jpl")]
 position = Vector2(4748, 1979)
@@ -96,5 +105,8 @@ position = Vector2(5281, 1235)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.701961, 0.701961, 0.701961, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_t1sb5")
 
 [connection signal="timeout" from="AsteroidCheck" to="." method="_on_asteroid_check_timeout"]

@@ -113,11 +113,11 @@ self_modulate = Color(1, 0, 0, 1)
 position = Vector2(0.000859618, 137)
 
 [node name="StandardLight" parent="Tail" instance=ExtResource("6_kwre7")]
-energy = 30.0
+energy = 10.0
 
 [node name="StandardLight" parent="." instance=ExtResource("6_kwre7")]
 color = Color(0.129412, 0.14902, 0.180392, 1)
-energy = 30.0
+energy = 10.0
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_ociqc")

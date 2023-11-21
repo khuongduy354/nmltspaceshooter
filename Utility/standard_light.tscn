@@ -5,5 +5,5 @@
 [node name="StandardLight" type="PointLight2D"]
 color = Color(0.584794, 0.70682, 0.786702, 1)
 energy = 0.5
-shadow_enabled = true
+range_layer_min = -1
 texture = ExtResource("1_w3dkk")
