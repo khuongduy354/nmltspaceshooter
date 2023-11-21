@@ -1,18 +1,27 @@
 [gd_scene load_steps=4 format=3 uid="uid://wcdphdlj8iwg"]
 
-[ext_resource type="Texture2D" uid="uid://by7k1mxdfyeo0" path="res://assets/THANHVFX/1.png" id="1_8ovj2"]
+[ext_resource type="Texture2D" uid="uid://74p0brl2f2ac" path="res://assets/wills_pixel_explosions_sample/round_explosion/spritesheet/spritesheet.png" id="1_u82gf"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i2xtu"]
+particles_animation = true
+particles_anim_h_frames = 10
+particles_anim_v_frames = 8
+particles_anim_loop = false
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hx37m"]
 particle_flag_disable_z = true
 gravity = Vector3(0, 0, 0)
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
+scale_min = 15.0
+scale_max = 15.0
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
 [node name="GPUParticles2D" type="GPUParticles2D"]
 material = SubResource("CanvasItemMaterial_i2xtu")
+amount = 1
 process_material = SubResource("ParticleProcessMaterial_hx37m")
-texture = ExtResource("1_8ovj2")
+texture = ExtResource("1_u82gf")
+speed_scale = 1.3
+explosiveness = 1.0

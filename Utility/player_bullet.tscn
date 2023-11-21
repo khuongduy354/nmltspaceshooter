@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpq8l77snu0yu"]
+[gd_scene load_steps=6 format=3 uid="uid://dpq8l77snu0yu"]
 
 [ext_resource type="Script" path="res://Utility/bullet.gd" id="1_x3ddi"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="3_yxuhg"]
+[ext_resource type="PackedScene" uid="uid://4ld00o7gyjxj" path="res://vfx/trail.tscn" id="4_61ivj"]
 [ext_resource type="Texture2D" uid="uid://bul78v8wxmg48" path="res://assets/THANHVFX/nPoQD5-removebg-preview.png" id="4_ypiks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bu2b"]
@@ -27,8 +28,10 @@ position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_7bu2b")
 
 [node name="Icon" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0.501961, 1, 1)
+self_modulate = Color(0.360784, 0.635294, 1, 1)
 scale = Vector2(8, 8)
 texture = ExtResource("4_ypiks")
 region_enabled = true
 region_rect = Rect2(168, 207, 20, 6)
+
+[node name="Trail" parent="." instance=ExtResource("4_61ivj")]

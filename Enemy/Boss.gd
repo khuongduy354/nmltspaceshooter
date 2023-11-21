@@ -225,17 +225,26 @@ func apply_hit_particles(impact_pos):
 		if !particle.emitting: 
 			particle.emitting = true
 	
-	#explosion
-	var explosion = preload("res://vfx/explosion2.tscn").instantiate()
-	add_child(explosion)
-	explosion.global_position = impact_pos
-	explosion.emitting = true
+	#explosions
+	var explosion2 = preload("res://vfx/explosion2.tscn").instantiate()
+	var explosion1 = preload("res://vfx/explosion1.tscn").instantiate()
+	
+	add_child(explosion1)
+	add_child(explosion2)
+
+	explosion2.global_position = impact_pos
+	
+	explosion1.emitting = true
+	explosion2.emitting = true
+	
 
 	# white flash
 	animp.play("white_flash")
 	
 	# cleanup
 	await get_tree().create_timer(0.5).timeout
-	explosion.queue_free()
+	explosion1.queue_free()
+	explosion2.queue_free()
+	
 	
 	

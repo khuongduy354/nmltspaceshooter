@@ -90,7 +90,6 @@ func _physics_process(delta):
 	if Input.is_action_pressed("mouse_lclick"): 
 		if bullet_count > 0:
 			cam.shake(0.2,10)
-			muzzle.flash()
 			$Gun.shoot()
 			
 
@@ -100,6 +99,7 @@ func _physics_process(delta):
 
 func _on_gun_shot():
 	bullet_count -= 1
+	muzzle.flash()
 
 
 func _on_hurtbox_area_entered(area):

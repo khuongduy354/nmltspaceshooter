@@ -19,6 +19,7 @@ region_enabled = true
 region_rect = Rect2(80, 208, 56, 24)
 
 [node name="HitParticles" parent="." instance=ExtResource("4_ciqjn")]
+scale = Vector2(2, 2)
 amount = 20
 preprocess = 0.0
 speed_scale = 2.0
