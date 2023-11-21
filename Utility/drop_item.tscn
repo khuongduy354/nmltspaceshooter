@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bvqtjxf6nhpvc"]
 
-[ext_resource type="Texture2D" uid="uid://6nqv5gjwt8vm" path="res://assets/hearts.svg" id="1_b6wov"]
+[ext_resource type="Texture2D" uid="uid://6nqv5gjwt8vm" path="res://assets/UI/hearts.svg" id="1_b6wov"]
 [ext_resource type="Script" path="res://Utility/drop_item.gd" id="1_l6se6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_asl2j"]

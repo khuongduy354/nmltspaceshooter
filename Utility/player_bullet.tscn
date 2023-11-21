@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Utility/bullet.gd" id="1_x3ddi"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="3_yxuhg"]
 [ext_resource type="PackedScene" uid="uid://4ld00o7gyjxj" path="res://vfx/trail.tscn" id="4_61ivj"]
-[ext_resource type="Texture2D" uid="uid://bul78v8wxmg48" path="res://assets/THANHVFX/nPoQD5-removebg-preview.png" id="4_ypiks"]
+[ext_resource type="Texture2D" uid="uid://bul78v8wxmg48" path="res://assets/VFX/nPoQD5-removebg-preview.png" id="4_ypiks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bu2b"]
 size = Vector2(161, 47)

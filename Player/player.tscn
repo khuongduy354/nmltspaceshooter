@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_5m4uk"]
 [ext_resource type="PackedScene" uid="uid://bwb2brmvqr300" path="res://Utility/gun.tscn" id="3_6gaby"]
-[ext_resource type="Texture2D" uid="uid://donmcfpt3dyst" path="res://assets/THANHVFX/PLAYERSHIP/01.png" id="3_s4mlv"]
+[ext_resource type="Texture2D" uid="uid://donmcfpt3dyst" path="res://assets/Objects/PLAYERSHIP/01.png" id="3_s4mlv"]
 [ext_resource type="PackedScene" uid="uid://dpq8l77snu0yu" path="res://Utility/player_bullet.tscn" id="4_5mx2c"]
 [ext_resource type="PackedScene" uid="uid://4ld00o7gyjxj" path="res://vfx/trail.tscn" id="5_qs2tt"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="6_5y0gn"]
 [ext_resource type="PackedScene" uid="uid://cl1yt4kd5awk8" path="res://vfx/ShakeCamera.tscn" id="6_6wddw"]
 [ext_resource type="PackedScene" uid="uid://bf66rpi2eibve" path="res://vfx/Muzzle.tscn" id="7_3nmef"]
-[ext_resource type="Texture2D" uid="uid://dicvcfc7q84yw" path="res://assets/THANHVFX/PLAYERSHIP/031.png" id="9_lq2yx"]
+[ext_resource type="Texture2D" uid="uid://dicvcfc7q84yw" path="res://assets/Objects/PLAYERSHIP/031.png" id="9_lq2yx"]
 
 [sub_resource type="Animation" id="Animation_7qdiu"]
 length = 0.001

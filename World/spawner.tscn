@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bfr44igkgfima"]
 
 [ext_resource type="Script" path="res://World/spawner.gd" id="1_inap3"]
-[ext_resource type="Texture2D" uid="uid://ci00rng45b3xj" path="res://assets/galaxy-animated.png" id="2_fjple"]
+[ext_resource type="Texture2D" uid="uid://ci00rng45b3xj" path="res://assets/Objects/galaxy-animated.png" id="2_fjple"]
 [ext_resource type="Shader" path="res://vfx/white.gdshader" id="2_m0qm2"]
 
 [sub_resource type="Animation" id="Animation_fbivc"]

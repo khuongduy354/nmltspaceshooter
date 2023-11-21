@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bf66rpi2eibve"]
 
 [ext_resource type="Script" path="res://vfx/Muzzle.gd" id="1_acs7j"]
-[ext_resource type="Texture2D" uid="uid://cc50sbngg01ki" path="res://assets/Sprites - Lasers Bullets #1 [66]v2.5/light.png" id="1_i3d6q"]
-[ext_resource type="Texture2D" uid="uid://dt03gbayi58hy" path="res://assets/muzzle.png" id="3_k8cmt"]
+[ext_resource type="Texture2D" uid="uid://cc50sbngg01ki" path="res://assets/VFX/Laser/light.png" id="1_i3d6q"]
+[ext_resource type="Texture2D" uid="uid://dt03gbayi58hy" path="res://assets/VFX/muzzle.png" id="3_k8cmt"]
 [ext_resource type="PackedScene" uid="uid://dqwdievi228ip" path="res://vfx/hit_particles.tscn" id="4_ciqjn"]
 
 [node name="PointLight2D" type="PointLight2D"]
