@@ -93,7 +93,7 @@ position = Vector2(116, -2)
 BulletScene = ExtResource("4_5mx2c")
 
 [node name="Camera2D" parent="Gun" instance=ExtResource("6_6wddw")]
-zoom = Vector2(0.35, 0.35)
+zoom = Vector2(0.26, 0.26)
 
 [node name="PointLight2D" parent="Gun" instance=ExtResource("7_3nmef")]
 position = Vector2(-28, 0)
@@ -101,25 +101,45 @@ rotation = 6.28318
 energy = 0.1
 
 [node name="PName" type="Node2D" parent="."]
+position = Vector2(58, -256)
 
 [node name="pname" type="Label" parent="PName"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -25.5
-offset_top = -120.0
-offset_right = 25.5
-offset_bottom = -94.0
+offset_left = -157.5
+offset_right = 157.5
+offset_bottom = 140.0
 grow_horizontal = 2
+theme_override_font_sizes/font_size = 80
 text = "GUEST"
 
 [node name="StandardLight" parent="." instance=ExtResource("6_5y0gn")]
-energy = 0.1
+position = Vector2(92, 0)
+energy = 0.8
+
+[node name="TailLight" parent="." instance=ExtResource("6_5y0gn")]
+position = Vector2(-86, 0)
+color = Color(0.129412, 0.521569, 0.54902, 1)
+energy = 6.95
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_8wlta")
 }
+
+[node name="facing" type="Marker2D" parent="."]
+position = Vector2(171, -5)
+
+[node name="Debug" type="RayCast2D" parent="."]
+self_modulate = Color(1, 0.00999999, 0.0264997, 1)
+position = Vector2(198, -4)
+scale = Vector2(4, 4)
+target_position = Vector2(0, 68.5)
+
+[node name="Debug2" type="RayCast2D" parent="."]
+position = Vector2(198, -4)
+scale = Vector2(4, 4)
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="shot" from="Gun" to="." method="_on_gun_shot"]

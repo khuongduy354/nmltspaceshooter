@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
-@export var move_speed = 15000
+@export var move_speed = 20000
 @export var patrol_radius = 300
-@export var max_hp = 100
+@export var max_hp = 60
 @export var min_dist = 100
+@export var drag_vector = Vector2(0.15, 0.15)
 
 @onready var pdetector = $PlayerDetector
 @onready var animp = $AnimationPlayer 
@@ -67,7 +68,12 @@ func _chase(delta):
 	look_at(tpos)
 	$Gun.shoot()
 	
-	velocity = dir * move_speed * delta
+	# steering 
+	var desired_velocity = dir * move_speed * delta;
+	var previous_velocity = velocity;
+	var change = (desired_velocity - previous_velocity) * drag_vector;
+	
+	velocity += change
 	move_and_slide()
 	
 func _on_player_detector_body_exited(body):
@@ -100,13 +106,17 @@ func _on_hurtbox_area_entered(area):
 #		var impact_vec = area.global_position.direction_to(global_position)
 #		$HitParticles.rotation = Vector2.RIGHT.rotated($HitParticles.rotation).angle_to(impact_vec)
 		$HitParticles.emitting = true
+		$Explosion2.global_position = area.global_position
+		$Explosion2.emitting = true
 		animp.play("white_flash")
 		
+		area.owner._damage_dealt()
 		
 		if(hp <= 0):
+			set_physics_process(false)
+			await get_tree().create_timer(.5).timeout
 			queue_free()
 			$DropManager.drop_item()
-
 
 func _on_chase_timeout_timeout():
 	target = null

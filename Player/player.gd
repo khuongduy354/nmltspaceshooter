@@ -4,11 +4,12 @@ class_name Player
 signal bullet_changed
 signal health_changed 
 
-@export var max_speed = 800
-@export var accel = 1400
+@export var max_speed = 60000
+@export var accel = 2000
 @export var friction = 800
 @export var max_bullet = 100
 @export var max_health = 100
+@export var drag = 0.5
 
 @onready var animp = $AnimationPlayer
 @onready var muzzle = $Gun/PointLight2D
@@ -23,7 +24,7 @@ func pick_up_item(_item):
 		"HEALTH":
 			current_health += 20
 			_item.queue_free()
-			
+
 func set_health(val): 
 	current_health = val 
 	if current_health <= 0: 
@@ -50,29 +51,45 @@ func _ready():
 	pname.text = Global.player_name
 	
 func accelerate(dir,delta): 
-	velocity = velocity.move_toward(max_speed*dir,accel*delta)
+	var current_dir = global_position.direction_to($Gun.global_position) 
+	
+	
+	velocity = velocity.move_toward(max_speed*dir*delta,accel*delta)
+	
+	
 func apply_friction(delta): 
 	velocity = velocity.move_toward(Vector2.ZERO, friction*delta)
-func _process(delta):
-	look_at(get_global_mouse_position())
-	print(global_position)
+
+func format_rot(rot: float, is_neg = false): 
+	if is_neg:
+		# 120 -> -240 for example 
+		if rot > 0: 
+			rot = rot - 360.0
+	else:
+		# -240 -> 120 for example
+		if rot < 0: 
+			rot = rot + 360.0
+			
+	return rot
+	
+	
 func _physics_process(delta):
 	var dir = global_position.direction_to(get_global_mouse_position())
-	
+	look_at(get_global_mouse_position())
 	# move 
-	velocity = velocity.rotated(velocity.angle_to(dir))
-	apply_friction(delta)
 	if Input.is_action_pressed("move"): 
 		accelerate(dir,delta)
+		$TailLight.enabled = true
 		animp.play("fly")
 	else: 
+		$TailLight.enabled = false
 		apply_friction(delta)
 		animp.play("idle")
 		
 	# shoot
 	if Input.is_action_pressed("mouse_lclick"): 
 		if bullet_count > 0:
-			cam.shake(0.2,5)
+			cam.shake(0.2,10)
 			muzzle.flash()
 			$Gun.shoot()
 			
