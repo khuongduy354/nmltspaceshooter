@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1b70jrguueoh"]
+[gd_scene load_steps=14 format=3 uid="uid://c1b70jrguueoh"]
 
 [ext_resource type="PackedScene" uid="uid://bfr44igkgfima" path="res://World/spawner.tscn" id="1_21gxd"]
 [ext_resource type="Script" path="res://World/world.gd" id="1_asl7k"]
@@ -11,13 +11,16 @@
 [ext_resource type="PackedScene" uid="uid://b5kqvwo8md4m" path="res://UI/pause_menu.tscn" id="8_jmpai"]
 [ext_resource type="PackedScene" uid="uid://ckwx36ydstxxk" path="res://Enemy/enemy.tscn" id="10_5xm5v"]
 [ext_resource type="PackedScene" uid="uid://cx5p4woeocnqg" path="res://vfx/star_field.tscn" id="11_d6jpl"]
+[ext_resource type="PackedScene" uid="uid://csn57a6yu2cxa" path="res://World/withplanet-bg.tscn" id="12_j7e43"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hvpgb"]
 shader = ExtResource("2_y1ow7")
-shader_parameter/bg_color = Vector4(0, 0, 0, 1)
+shader_parameter/bg_color = Vector3(0.08, 0.02, 0.1)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_asl7k")
+
+[node name="ParallaxBackground2" parent="." instance=ExtResource("12_j7e43")]
 
 [node name="StarField" type="ColorRect" parent="."]
 visible = false
@@ -32,6 +35,7 @@ position = Vector2(4748, 1979)
 amount = 256
 
 [node name="Bg" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_hvpgb")
 offset_left = -2265.0
 offset_top = -1510.0
@@ -39,11 +43,6 @@ offset_right = 6335.0
 offset_bottom = 5057.0
 scale = Vector2(1.76228, 1.64329)
 color = Color(0.0784314, 0.0196078, 0.101961, 1)
-
-[node name="Spawner" parent="." instance=ExtResource("1_21gxd")]
-process_mode = 4
-visible = false
-position = Vector2(664, 242)
 
 [node name="Player" parent="." instance=ExtResource("2_3lgcc")]
 position = Vector2(2725, 1418)
@@ -78,9 +77,6 @@ autostart = true
 [node name="PauseMenu" parent="." instance=ExtResource("8_jmpai")]
 visible = false
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.839216, 0.839216, 0.839216, 1)
-
 [node name="Enemy" parent="." instance=ExtResource("10_5xm5v")]
 position = Vector2(1247, 567)
 
@@ -92,5 +88,13 @@ position = Vector2(1468, 945)
 
 [node name="Enemy4" parent="." instance=ExtResource("10_5xm5v")]
 position = Vector2(1040, 898)
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="Spawner" parent="Spawners" instance=ExtResource("1_21gxd")]
+position = Vector2(5281, 1235)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.701961, 0.701961, 0.701961, 1)
 
 [connection signal="timeout" from="AsteroidCheck" to="." method="_on_asteroid_check_timeout"]

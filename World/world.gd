@@ -1,11 +1,19 @@
 extends Node2D
+
 @onready var boss = $Boss 
 @onready var player = $Player as Player
 @onready var playerUI = $PlayerUI
 @onready var asteroids = $Asteroids 
 @onready var pause_menu = $PauseMenu
+@onready var spawners = $Spawners
+
 func _ready():
+	Global.cam = player.cam
 	boss._initialize_(player)
+	boss.spawned_mob.connect(func(): Global.mobs_count+=1)
+	
+	for spawner in spawners.get_children(): 
+		spawner.spawned_mob.connect(func(): Global.mobs_count+=1)
 	
 	playerUI.set_bullet(player.max_bullet)
 	playerUI.set_health(player.max_health)
