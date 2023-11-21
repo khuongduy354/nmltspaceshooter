@@ -12,6 +12,8 @@ script = ExtResource("1_x3ddi")
 BULLET_SPEED = 1500
 
 [node name="StandardLight" parent="." instance=ExtResource("3_yxuhg")]
+color = Color(0.568627, 0.752941, 1, 1)
+energy = 5.0
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(0.3, 0.1)
@@ -25,6 +27,7 @@ position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_7bu2b")
 
 [node name="Icon" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0.501961, 1, 1)
 scale = Vector2(8, 8)
 texture = ExtResource("4_ypiks")
 region_enabled = true

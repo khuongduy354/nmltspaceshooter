@@ -8,6 +8,8 @@ enum DROP_TYPE{
 }
 # world payload 
 var player_name = "GUEST"
+var mobs_count = 0
+var cam: Camera2D = null
 
 func check_out_screen(gpos:Vector2): 
 	var out_width = gpos.x > GAME_WIDTH * 1.25 or gpos.x < -1000

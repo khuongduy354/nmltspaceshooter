@@ -16,8 +16,8 @@ func _physics_process(delta):
 	move_and_collide(veloc*delta)
 	
 func _damage_dealt(): 
-	self.queue_free()
 	emit_signal("dealt_damage")
+	self.queue_free()
 	
 	
 func set_dir(dir:Vector2): 

@@ -15,14 +15,8 @@ size = Vector2(90, 36)
 
 [node name="Bullet" type="CharacterBody2D"]
 script = ExtResource("1_ug2q0")
-BULLET_SPEED = 800
+BULLET_SPEED = 600
 damage = 10
-
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(6, 6)
-texture = ExtResource("2_1ixb3")
-region_enabled = true
-region_rect = Rect2(191, 207, 15, 6)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-1, 1)
@@ -36,3 +30,12 @@ script = SubResource("GDScript_dfyh7")
 shape = SubResource("RectangleShape2D_7bu2b")
 
 [node name="StandardLight" parent="." instance=ExtResource("3_2meke")]
+color = Color(0, 0.847059, 0.666667, 1)
+energy = 4.03
+
+[node name="Icon" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0.4, 0.309804, 1)
+scale = Vector2(6, 6)
+texture = ExtResource("2_1ixb3")
+region_enabled = true
+region_rect = Rect2(191, 207, 15, 6)
