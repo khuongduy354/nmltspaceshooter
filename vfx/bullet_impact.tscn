@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://d32cyk5np447i"]
+
+[ext_resource type="Texture2D" uid="uid://by7k1mxdfyeo0" path="res://assets/THANHVFX/1.png" id="1_wi0dx"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rfcba"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mgtrb"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqs1g"]
+atlas = ExtResource("1_wi0dx")
+region = Rect2(158, 137, 199, 46)
+
+[node name="BulletImpact" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_rfcba")
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_mgtrb")
+texture = SubResource("AtlasTexture_bqs1g")

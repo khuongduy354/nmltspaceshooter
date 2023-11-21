@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfbkt0sj1y8go"]
+
+[ext_resource type="Texture2D" uid="uid://rxq1ijtqo5nv" path="res://assets/Explosions/Super Pixel Effects Mini Pack 1/spritesheet/fx1_explosion_small_orange/spritesheet.png" id="1_o75i3"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jtimb"]
+particles_animation = true
+particles_anim_h_frames = 11
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7lm24"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 10.0
+scale_max = 10.0
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Explosion2" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_jtimb")
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_7lm24")
+texture = ExtResource("1_o75i3")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0

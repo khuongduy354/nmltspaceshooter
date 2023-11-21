@@ -20,8 +20,9 @@ func shake(time,amount):
 	set_process(true)
 	timer.start()
 
-
-func _on_timer_timeout():
+func shake_off(): 
 	set_process(false)
 	var tween = create_tween()
 	tween.tween_property(self,"offset",default_offset,0.1)
+func _on_timer_timeout():
+	shake_off()

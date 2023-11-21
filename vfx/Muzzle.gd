@@ -6,3 +6,4 @@ func flash():
 	await get_tree().create_timer(flash_time).timeout
 	enabled = false 
 	$Muzzle.visible = false 
+	$HitParticles.emitting = true
