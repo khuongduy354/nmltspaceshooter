@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("pause") and get_tree().paused == true: 
+	if Input.is_action_just_pressed("pause"): 
 		_on_resume_pressed()
 
 func _on_main_menu_pressed():
@@ -12,6 +12,7 @@ func _on_main_menu_pressed():
 
 func _on_resume_pressed():
 	self.visible = false
+	set_physics_process(false)
 	get_tree().paused = false
 	pass # Replace with function body.
 

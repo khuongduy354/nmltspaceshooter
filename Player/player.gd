@@ -88,9 +88,8 @@ func _physics_process(delta):
 		
 	# shoot
 	if Input.is_action_pressed("mouse_lclick"): 
-		if bullet_count > 0:
-			cam.shake(0.2,10)
-			$Gun.shoot()
+		cam.shake(0.2,10)
+		$Gun.shoot()
 			
 
 	$PName.global_rotation = 0

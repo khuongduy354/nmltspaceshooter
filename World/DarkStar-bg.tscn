@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4uvy1txfqbsk"]
+
+[ext_resource type="Shader" path="res://vfx/starshader.gdshader" id="1_fdrrt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hvpgb"]
+shader = ExtResource("1_fdrrt")
+shader_parameter/bg_color = Vector3(0.08, 0.02, 0.1)
+
+[node name="Bg" type="ColorRect"]
+visible = false
+material = SubResource("ShaderMaterial_hvpgb")
+offset_left = -2265.0
+offset_top = -1510.0
+offset_right = 6335.0
+offset_bottom = 5057.0
+scale = Vector2(1.76228, 1.64329)
+color = Color(0.0784314, 0.0196078, 0.101961, 1)

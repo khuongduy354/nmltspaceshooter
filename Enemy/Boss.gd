@@ -6,7 +6,7 @@ signal spawned_mob
 @export var move_speed = 25000
 @export var orbiting_speed = 15000
 @export var gun_counts = 12
-@export var orbiting_distance = 700
+@export var orbiting_distance = 1500
 
 @export var max_hp = 10000
 
@@ -41,6 +41,7 @@ var should_look = true
 var current_hp = max_hp
 
 func _ready():
+	setup_gun()
 	picker._initialize_(self)
 	state_enter(shoot_patterns.NONE)
 	laser.turn_off()
@@ -189,7 +190,6 @@ func update_debug():
 	$Debug.rotation_degrees = 0
 func _initialize_(p: Player): 
 	player = p
-	setup_gun()
 
 func setup_gun(): 
 	# load (12) guns around boss 
@@ -214,7 +214,7 @@ func _on_hurtbox_area_entered(area):
 		area.owner._damage_dealt()
 		if(current_hp <= 0):
 			queue_free()
-		
+#		Global.frame_freeze(0.8,.5)
 
 func change_ammo(i: int): 
 	for gun in guns.get_children(): 

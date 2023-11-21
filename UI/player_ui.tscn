@@ -1,56 +1,37 @@
 [gd_scene load_steps=6 format=3 uid="uid://bks23t4amyvx2"]
 
 [ext_resource type="Script" path="res://UI/player_ui.gd" id="1_ttbss"]
-[ext_resource type="Texture2D" uid="uid://ds5qy3q50gwu2" path="res://assets/spiderboss.png" id="2_xcvey"]
+[ext_resource type="Texture2D" uid="uid://b8tpfb7f5ephd" path="res://assets/Pixel UI pack 3/06.png" id="2_ppaxg"]
 [ext_resource type="PackedScene" uid="uid://0ve3b1lr402g" path="res://UI/P_UI.tscn" id="3_6qihj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_efa5p"]
-atlas = ExtResource("2_xcvey")
-region = Rect2(570, 198, 32, 5)
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0jcx"]
+atlas = ExtResource("2_ppaxg")
+region = Rect2(195, 21, 42, 7)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7brob"]
-atlas = ExtResource("2_xcvey")
-region = Rect2(570, 189, 32, 5)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bfux"]
+atlas = ExtResource("2_ppaxg")
+region = Rect2(3, 21, 42, 7)
 
 [node name="PlayerUI" type="CanvasLayer"]
 script = ExtResource("1_ttbss")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = 32.0
-offset_top = 48.0
-offset_right = 90.0
-offset_bottom = 53.0
-scale = Vector2(7.09569, 7.09569)
-texture_under = SubResource("AtlasTexture_efa5p")
-texture_progress = SubResource("AtlasTexture_7brob")
+custom_minimum_size = Vector2(252, 42)
+offset_left = 340.0
+offset_top = 23.0
+offset_right = 592.0
+offset_bottom = 65.0
+value = 1.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_t0jcx")
+texture_progress = SubResource("AtlasTexture_0bfux")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
-grow_horizontal = 0
-theme_override_constants/margin_top = 27
-theme_override_constants/margin_right = 44
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 499.0
+offset_bottom = 120.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="PlayerInfor" parent="HBoxContainer" instance=ExtResource("3_6qihj")]
+custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Bullets:"
-
-[node name="BulletCount" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "0"
-
-[node name="PlayerInfor" parent="." instance=ExtResource("3_6qihj")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -125.0
-offset_top = 16.0
-offset_right = 125.0
-offset_bottom = 119.0
-grow_horizontal = 2

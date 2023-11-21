@@ -92,6 +92,9 @@ texture = ExtResource("3_s4mlv")
 position = Vector2(116, -2)
 BulletScene = ExtResource("4_5mx2c")
 
+[node name="camera_pos" type="Marker2D" parent="Gun"]
+position = Vector2(32, 0)
+
 [node name="Camera2D" parent="Gun" instance=ExtResource("6_6wddw")]
 position = Vector2(32, 0)
 zoom = Vector2(0.2, 0.2)

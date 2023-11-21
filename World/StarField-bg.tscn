@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://hwoo8mkxrlb5"]
+
+[ext_resource type="PackedScene" uid="uid://cx5p4woeocnqg" path="res://vfx/star_field.tscn" id="1_cjr57"]
+
+[node name="StarField" type="ColorRect"]
+visible = false
+offset_left = -1305.0
+offset_top = -623.0
+offset_right = 10026.0
+offset_bottom = 6213.0
+color = Color(0.196078, 0.133333, 0.2, 1)
+
+[node name="StarField" parent="." instance=ExtResource("1_cjr57")]
+position = Vector2(4748, 1979)
+amount = 256
