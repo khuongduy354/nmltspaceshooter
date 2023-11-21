@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd2xkvfamdbd3"]
+
+[ext_resource type="PackedScene" uid="uid://oakjgyh1v2o8" path="res://Utility/enemy_bullet.tscn" id="1_galid"]
+
+[sub_resource type="GDScript" id="GDScript_e5sn8"]
+script/source = "extends Area2D
+
+@onready var damage = owner.damage
+"
+
+[node name="BossBullet" instance=ExtResource("1_galid")]
+BULLET_SPEED = 1000
+
+[node name="HitBox" parent="." index="1"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = null
+
+[node name="StandardLight" parent="." index="2"]
+color = Color(1, 0.294118, 0.196078, 1)
+
+[node name="Icon" parent="." index="3"]
+self_modulate = Color(1, 1, 1, 1)
+scale = Vector2(10, 10)
+region_rect = Rect2(97, 225, 21, 20)
+
+[node name="HitBox2" type="Area2D" parent="." index="4" groups=["enemy_bullet"]]
+collision_layer = 16
+script = SubResource("GDScript_e5sn8")

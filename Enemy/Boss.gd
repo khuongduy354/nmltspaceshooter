@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name BossI
 
+signal spawned_mob
+
 @export var move_speed = 25000
 @export var orbiting_speed = 15000
 @export var gun_counts = 12
@@ -9,12 +11,12 @@ class_name BossI
 @export var max_hp = 10000
 
 @export var laser_duration = 3
-@export var straight_duration = 3 
-@export var circle_duration = 3
-@export var triple_duration = 3 
+@export var straight_duration = 5
+@export var circle_duration = 5
+@export var triple_duration = 5 
 @export var none_shoot_duration = 2
 @export var spawn_duration = 3
-@export var spawn_count = 3 
+@export var spawn_count = 1 
 
 
 @onready var guns = $Guns
@@ -48,6 +50,7 @@ func _physics_process(delta):
 		var dir = global_position.direction_to(player.global_position)
 		var dest_rot = Vector2.RIGHT.angle_to(dir)
 		create_tween().tween_property(self,"rotation",dest_rot,0.5)
+		
 	update_debug()
 	_move(delta)
 		
@@ -92,14 +95,22 @@ func _move(delta):
 func state_enter(s): 
 	sdur.stop()
 	should_look = true
+	if Global.cam: 
+		Global.cam.shake_off()
 	
 	match s: 
 		shoot_patterns.CIRCLE: 
 			get_tree().create_timer(circle_duration).timeout.connect(change_attack_pattern)
+			Global.cam.shake(circle_duration,10)
+			change_ammo(1)
 		shoot_patterns.TRIPLE: 
 			get_tree().create_timer(triple_duration).timeout.connect(change_attack_pattern)
+			Global.cam.shake(triple_duration,10)
+			change_ammo(2)
 		shoot_patterns.STRAIGHT: 
 			get_tree().create_timer(straight_duration).timeout.connect(change_attack_pattern)
+			Global.cam.shake(straight_duration,5)
+			change_ammo(3  )
 		shoot_patterns.NONE: 
 			get_tree().create_timer(none_shoot_duration).timeout.connect(change_attack_pattern)
 		shoot_patterns.SPAWN: 
@@ -110,6 +121,8 @@ func state_enter(s):
 			should_look = false 
 			await get_tree().create_timer(1).timeout			
 			laser.turn_on()
+			Global.cam.shake(laser_duration,5)
+
 func _laser(): 
 	velocity =Vector2.ZERO
 	pass 
@@ -126,6 +139,8 @@ func _circle():
 	if sdur.is_stopped(): 
 		sdur.start()
 func _spawn(): 
+	if Global.mobs_count >= 40: 
+		return
 	sdur.wait_time = spawn_duration/spawn_count
 	if !sdur.is_stopped(): 
 		return
@@ -133,6 +148,7 @@ func _spawn():
 	var enem = preload("res://Enemy/enemy.tscn").instantiate()
 	get_tree().root.add_child(enem)
 	enem.global_position = global_position
+	spawned_mob.emit()
 	
 	if sdur.is_stopped(): 
 		sdur.start()
@@ -193,11 +209,33 @@ func _on_hurtbox_area_entered(area):
 		current_hp -= area.owner.damage
 		
 		# particles 
-#		var impact_vec = area.global_position.direction_to(global_position)
-#		$HitParticles.rotation = Vector2.RIGHT.rotated($HitParticles.rotation).angle_to(impact_vec)
-		$HitParticles.emitting = true
-		animp.play("white_flash")
+		apply_hit_particles(area.global_position)
 		
-		
+		area.owner._damage_dealt()
 		if(current_hp <= 0):
 			queue_free()
+		
+
+func change_ammo(i: int): 
+	for gun in guns.get_children(): 
+		gun.BulletScene = load("res://Utility/boss_bullet_"+str(i)+".tscn")
+func apply_hit_particles(impact_pos): 
+	# hit particles
+	for particle in $HitParticles2.get_children(): 
+		if !particle.emitting: 
+			particle.emitting = true
+	
+	#explosion
+	var explosion = preload("res://vfx/explosion2.tscn").instantiate()
+	add_child(explosion)
+	explosion.global_position = impact_pos
+	explosion.emitting = true
+
+	# white flash
+	animp.play("white_flash")
+	
+	# cleanup
+	await get_tree().create_timer(0.5).timeout
+	explosion.queue_free()
+	
+	

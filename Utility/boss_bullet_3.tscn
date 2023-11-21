@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://yna7xlosh5t4"]
+
+[ext_resource type="PackedScene" uid="uid://dcdum1buju0c7" path="res://Utility/boss_bullet.tscn" id="1_b5oc1"]
+
+[node name="BossBullet" instance=ExtResource("1_b5oc1")]
+
+[node name="Icon" parent="." index="3"]
+scale = Vector2(10, 10)
+region_rect = Rect2(161, 150, 14, 10)
