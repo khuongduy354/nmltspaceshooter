@@ -33,3 +33,20 @@ of 30 degrees)
 to its first colliding target. If no target hitted, max_length to limited laser.
 - Moving: has player as target position, if boss position > thresh_hold distance, 
 move straight to player position, else orbiting the player
+
+# Enemy Design 
+Idle means velocity = 0, chase = move toward player, when idle too long without finding 
+player, it patrols a.k.a moving to a recent place
+
+- FSM as Boss, but 3 states: IDLE, PATROL, CHASE more simple
+-> has no state_enter or state_exit, logic is handle in physics_process state functions
+
+# Asteroids Design 
+
+# Spawners Design
+
+# Other components 
+- DropManager 
+- Hurt/Hitbox
+- Gun & Bullet
+

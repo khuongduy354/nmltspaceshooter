@@ -6,9 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://djassl30m6em3" path="res://Utility/drop_manager.tscn" id="4_pfdlo"]
 [ext_resource type="PackedScene" uid="uid://dqwdievi228ip" path="res://vfx/hit_particles.tscn" id="5_leg8t"]
 [ext_resource type="Shader" path="res://vfx/white.gdshader" id="6_2od8f"]
-[ext_resource type="Texture2D" uid="uid://bi38duaq34p1k" path="res://assets/Objects/enemy-removebg-preview (1).png" id="7_au75r"]
+[ext_resource type="Texture2D" uid="uid://bi38duaq34p1k" path="res://assets/Objects/enemy-removebg-preview (1).png" id="7_anyu2"]
 [ext_resource type="PackedScene" uid="uid://bfbkt0sj1y8go" path="res://vfx/explosion2.tscn" id="8_nbrcx"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="9_l6upo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_chq4n"]
+resource_local_to_scene = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hws4g"]
 radius = 70.0
@@ -74,19 +77,34 @@ _data = {
 "white_flash": SubResource("Animation_in2ym")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_chq4n"]
-resource_local_to_scene = true
-
 [node name="Enemy" type="CharacterBody2D"]
 texture_filter = 3
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_l0c2e")
 
-[node name="HitParticles" parent="." instance=ExtResource("5_leg8t")]
-position = Vector2(-18, 0)
-rotation = -3.14159
-amount = 10
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-72, -77)
+scale = Vector2(4, 4)
+polygon = PackedVector2Array(0, 3, 8, 8, 23, 11, 24, 6, 29, 5, 31, 13, 39, 18, 31, 23, 31, 30, 25, 34, 22, 31, 10, 31, -1, 36, -1, 30, 4, 27, 1, 21, 1, 14)
+
+[node name="Enemies" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_chq4n")
+rotation = -1.57079
+scale = Vector2(2, 2)
+texture = ExtResource("7_anyu2")
+region_rect = Rect2(104, 56, 40, 40)
+
+[node name="Gun" parent="." instance=ExtResource("2_r85m8")]
+position = Vector2(22, 0)
+BulletScene = ExtResource("3_5gnfk")
+fire_cooldown = 1.2
+
+[node name="patrol_interval" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="chase_timeout" type="Timer" parent="."]
+wait_time = 3.0
 
 [node name="PlayerDetector" type="Area2D" parent="."]
 collision_layer = 2
@@ -94,14 +112,6 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 scale = Vector2(37.9672, 37.9672)
 shape = SubResource("CircleShape2D_hws4g")
-
-[node name="patrol_interval" type="Timer" parent="."]
-wait_time = 2.0
-
-[node name="Gun" parent="." instance=ExtResource("2_r85m8")]
-position = Vector2(22, 0)
-BulletScene = ExtResource("3_5gnfk")
-fire_cooldown = 1.2
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -122,28 +132,20 @@ libraries = {
 "": SubResource("AnimationLibrary_ubglr")
 }
 
-[node name="Enemies" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_chq4n")
-rotation = -1.57079
-scale = Vector2(2, 2)
-texture = ExtResource("7_au75r")
-region_rect = Rect2(104, 56, 40, 40)
+[node name="Particles" type="Node2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-72, -77)
-scale = Vector2(4, 4)
-polygon = PackedVector2Array(0, 3, 8, 8, 23, 11, 24, 6, 29, 5, 31, 13, 39, 18, 31, 23, 31, 30, 25, 34, 22, 31, 10, 31, -1, 36, -1, 30, 4, 27, 1, 21, 1, 14)
+[node name="HitParticles" parent="Particles" instance=ExtResource("5_leg8t")]
+position = Vector2(-18, 0)
+rotation = -3.14159
+amount = 10
 
-[node name="chase_timeout" type="Timer" parent="."]
-wait_time = 3.0
-
-[node name="Explosion2" parent="." instance=ExtResource("8_nbrcx")]
+[node name="Explosion2" parent="Particles" instance=ExtResource("8_nbrcx")]
 
 [node name="StandardLight" parent="." instance=ExtResource("9_l6upo")]
 energy = 1.0
 
+[connection signal="timeout" from="patrol_interval" to="." method="_on_patrol_interval_timeout"]
+[connection signal="timeout" from="chase_timeout" to="." method="_on_chase_timeout_timeout"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
-[connection signal="timeout" from="patrol_interval" to="." method="_on_patrol_interval_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
-[connection signal="timeout" from="chase_timeout" to="." method="_on_chase_timeout_timeout"]

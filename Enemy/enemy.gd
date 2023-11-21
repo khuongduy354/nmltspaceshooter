@@ -17,6 +17,7 @@ var prev_state = IDLE
 var target = null
 var hp = max_hp
 
+# setters
 func set_state(val):
 	prev_state = state
 	state = val
@@ -33,18 +34,14 @@ func _physics_process(delta):
 		PATROL: _patrol(delta)
 		CHASE: _chase(delta)
 			
+# physic process states
 func _idle(): 
 	velocity = Vector2.ZERO
 	if $patrol_interval.is_stopped(): 
 		$patrol_interval.start()
 	move_and_slide()
 
-func is_player_in_zone(): 
-	for body in pdetector.get_overlapping_bodies(): 
-		if body is Player: 
-			target = body
-			return true
-	return false
+
 
 var patrol_dir = null
 var patrol_start_pos = null
@@ -84,6 +81,15 @@ func _chase(delta):
 	velocity += change
 	move_and_slide()
 	
+# helpers 
+func is_player_in_zone(): 
+	for body in pdetector.get_overlapping_bodies(): 
+		if body is Player: 
+			target = body
+			return true
+	return false
+	
+# signals
 func _on_player_detector_body_exited(body):
 	if body is Player: 
 		$chase_timeout.start()
@@ -101,10 +107,6 @@ func _on_player_detector_body_entered(body):
 		$patrol_interval.stop() 
 		state = CHASE
 		$chase_timeout.stop()
-
-
-
-
 
 func _on_hurtbox_area_entered(area):
 	if area.is_in_group("player_bullet"):
