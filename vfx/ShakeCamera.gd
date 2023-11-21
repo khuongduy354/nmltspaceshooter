@@ -1,4 +1,5 @@
 extends Camera2D
+class_name ShakeCamera
 
 @onready var timer = $Timer
 
@@ -24,5 +25,12 @@ func shake_off():
 	set_process(false)
 	var tween = create_tween()
 	tween.tween_property(self,"offset",default_offset,0.1)
+
+func move_to(dest: Vector2, time = 0.5):
+	var tween = create_tween()
+	tween.tween_property(self,"global_position",dest, time)
+	
+
 func _on_timer_timeout():
 	shake_off()
+	
