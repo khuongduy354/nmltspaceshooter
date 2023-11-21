@@ -1,7 +1,7 @@
 extends Node
 class_name BossDecisionPicker
 
-var boss:BossI = null 
+var b:BossI = null 
 var prob_table = { 
 	"CIRCLE":20,
 	"NONE":5, 
@@ -10,8 +10,10 @@ var prob_table = {
 	"SPAWN":15,
 	"TRIPLE":15, # pick 3 guns, 45 degrees spread
 }
-func _initialize_(b:BossI): 
-	boss = b
+
+func _initialize_(_b:BossI): 
+	b = _b
+
 func pick_shoot_pattern(): 
 	var act = prob_table.keys()[randi()%prob_table.size()]
 	while true:
@@ -22,6 +24,6 @@ func pick_shoot_pattern():
 			
 
 func str_to_enum(val): 
-	return boss.shoot_patterns.get(val)
+	return b.fsm.shoot_patterns.get(val)
 	
 

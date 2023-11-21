@@ -36,6 +36,7 @@ color = Color(0.701961, 0.701961, 0.701961, 1)
 script = ExtResource("7_350iw")
 
 [node name="Spawners" type="Node2D" parent="."]
+process_mode = 4
 
 [node name="Spawner" parent="Spawners" instance=ExtResource("1_21gxd")]
 position = Vector2(9564, 1206)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ch6fjww4kthl7"]
+[gd_scene load_steps=14 format=3 uid="uid://ch6fjww4kthl7"]
 
 [ext_resource type="Script" path="res://Enemy/Boss.gd" id="1_rndc0"]
 [ext_resource type="Script" path="res://Enemy/BossDecisionPicker.gd" id="2_7w34k"]
@@ -7,18 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://bs7dyyxrjw0hp" path="res://assets/THANHVFX/ENEMIES/bossassets (1) (1).png" id="5_6vcti"]
 [ext_resource type="Shader" path="res://vfx/white.gdshader" id="6_0d4pm"]
 [ext_resource type="PackedScene" uid="uid://dqwdievi228ip" path="res://vfx/hit_particles.tscn" id="7_54llg"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4n30s"]
+[ext_resource type="Script" path="res://Enemy/BossStateManager.gd" id="8_u2m2k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m3d3c"]
 radius = 103.564
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4n30s"]
 
 [sub_resource type="Animation" id="Animation_hk4uj"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Bossassets(1)(1):material:shader")
+tracks/0/path = NodePath("Sprite:material:shader")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -30,7 +31,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Bossassets(1)(1):material:shader_parameter/whitening")
+tracks/1/path = NodePath("Sprite:material:shader_parameter/whitening")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -46,7 +47,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Bossassets(1)(1):material:shader")
+tracks/0/path = NodePath("Sprite:material:shader")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -58,7 +59,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Bossassets(1)(1):material:shader_parameter/whitening")
+tracks/1/path = NodePath("Sprite:material:shader_parameter/whitening")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -81,15 +82,24 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_rndc0")
 
-[node name="Debug" type="Label" parent="."]
-offset_top = -346.408
-offset_right = 68.0
-offset_bottom = -233.408
-theme_override_font_sizes/font_size = 80
-text = "1"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_m3d3c")
 
-[node name="StatePicker" type="Node" parent="."]
+[node name="Debug" type="Label" parent="."]
+offset_left = -219.603
+offset_top = -468.025
+offset_right = 288.397
+offset_bottom = -242.025
+theme_override_font_sizes/font_size = 80
+text = "I'm not a boss.
+I'm a leader!"
+
+[node name="BossDecisionPicker" type="Node" parent="."]
 script = ExtResource("2_7w34k")
+
+[node name="BossStateManager" type="Node" parent="."]
+script = ExtResource("8_u2m2k")
 
 [node name="shoot_duration" type="Timer" parent="."]
 one_shot = true
@@ -101,17 +111,13 @@ collide_with_areas = true
 collide_with_bodies = false
 laser_mwidth = 40
 
-[node name="Bossassets(1)(1)" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_4n30s")
 rotation = -1.65054
 scale = Vector2(2, 2)
 texture = ExtResource("5_6vcti")
 
 [node name="Guns" type="Node2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(2, 2)
-shape = SubResource("CircleShape2D_m3d3c")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -120,11 +126,6 @@ collision_mask = 8
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_m3d3c")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_kkj3s")
-}
 
 [node name="HitParticles2" type="Node2D" parent="."]
 
@@ -164,6 +165,11 @@ energy = 1.0
 [node name="StandardLight5" parent="Lighting" instance=ExtResource("4_68xxy")]
 position = Vector2(39.1942, -4.0347)
 energy = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kkj3s")
+}
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

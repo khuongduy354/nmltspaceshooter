@@ -9,7 +9,6 @@ script/source = "extends Area2D
 "
 
 [node name="BossBullet" instance=ExtResource("1_tuko3")]
-BULLET_SPEED = 1000
 
 [node name="HitBox" parent="." index="1"]
 monitoring = false

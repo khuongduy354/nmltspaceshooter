@@ -17,7 +17,7 @@ func _ready():
 	setup_spawners()
 	spawn_asteroids()
 	pause_menu.set_physics_process(false)
-#	spawn_boss()
+	spawn_boss()
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("pause"): 
