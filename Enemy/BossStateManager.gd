@@ -120,6 +120,7 @@ func _spawn():
 	var enem = preload("res://Enemy/enemy.tscn").instantiate()
 	get_tree().root.add_child(enem)
 	enem.global_position = b.global_position
+	enem.destroyed.connect(func(): Global.destroyed_mobs += 1)
 	b.spawned_mob.emit()
 
 	if sdur.is_stopped(): 

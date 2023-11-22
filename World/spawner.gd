@@ -42,7 +42,7 @@ func spawn_mob():
 	mobs.add_child(mob)
 	spawned_mob.emit()
 	# -20 hp when its mob destroyed
-	mob.destroyed.connect(func(): hp -= 20)
+	mob.destroyed.connect(_on_mob_destroyed)
 
 func _on_spawn_timer_timeout():
 	if mobs.get_child_count() > max_mob_counts: 
@@ -68,3 +68,6 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "spinning": 
 		hbshape.set_deferred("disabled",true)
 		
+func _on_mob_destroyed(): 
+	hp -= 20
+	Global.destroyed_mobs += 1

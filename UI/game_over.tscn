@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://beb7514v2abnj"]
+[gd_scene load_steps=6 format=3 uid="uid://beb7514v2abnj"]
 
+[ext_resource type="Script" path="res://UI/game_over.gd" id="1_jyyfr"]
 [ext_resource type="FontFile" uid="uid://bdhpjd3wou0xy" path="res://assets/UI/ThaleahFat.ttf" id="1_kx2nd"]
 [ext_resource type="Texture2D" uid="uid://0rr7t0jqji5o" path="res://icon.svg" id="2_pxvdw"]
 
@@ -10,6 +11,7 @@ bg_color = Color(0.360784, 0.266667, 0.615686, 1)
 Button/styles/normal = SubResource("StyleBoxFlat_6788x")
 
 [node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_jyyfr")
 
 [node name="GameOverPack" type="Panel" parent="."]
 anchors_preset = 8
@@ -24,127 +26,106 @@ offset_bottom = 282.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameOverText" type="Label" parent="GameOverPack"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="GameOverPack"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 13
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -215.5
-offset_top = -242.0
-offset_right = 215.5
-offset_bottom = -147.0
+anchor_bottom = 1.0
+offset_left = -172.5
+offset_top = 65.0
+offset_right = 172.5
+offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="GameOverText" type="Label" parent="GameOverPack/VBoxContainer2"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kx2nd")
 theme_override_font_sizes/font_size = 80
 text = "Game over"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScoreText" type="Label" parent="GameOverPack"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -96.5
-offset_top = -32.0
-offset_right = 96.5
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPack/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverPack/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScoreText" type="Label" parent="GameOverPack/VBoxContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kx2nd")
 theme_override_font_sizes/font_size = 40
-text = "Your Score"
+text = "Bosses Killed : "
 
-[node name="PlayerScore" type="Label" parent="GameOverPack/ScoreText"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -21.5
-offset_top = 10.0
-offset_right = 21.5
-offset_bottom = 68.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="BossKills" type="Label" parent="GameOverPack/VBoxContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kx2nd")
 theme_override_font_sizes/font_size = 60
 text = "0"
 horizontal_alignment = 1
 
-[node name="Avatar" type="TextureRect" parent="GameOverPack"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -152.0
-offset_right = 50.0
-offset_bottom = -52.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HBoxContainer2" type="HBoxContainer" parent="GameOverPack/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameOverPack/VBoxContainer2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kx2nd")
+theme_override_font_sizes/font_size = 40
+text = "MOBS Killed    : "
+
+[node name="MobsKills" type="Label" parent="GameOverPack/VBoxContainer2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kx2nd")
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="GameOverPack/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScoreText" type="Label" parent="GameOverPack/VBoxContainer2/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kx2nd")
+theme_override_font_sizes/font_size = 40
+text = "Survival time  : "
+
+[node name="SurvivalTime" type="Label" parent="GameOverPack/VBoxContainer2/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kx2nd")
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1
+
+[node name="Avatar" type="TextureRect" parent="GameOverPack/VBoxContainer2"]
+layout_mode = 2
 texture = ExtResource("2_pxvdw")
 expand_mode = 1
 
-[node name="MainMenu" type="Button" parent="GameOverPack"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 63.0
-offset_right = 100.0
-offset_bottom = 108.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Control" type="Control" parent="GameOverPack/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 71)
+layout_mode = 2
+
+[node name="MainMenu" type="Button" parent="GameOverPack/VBoxContainer2"]
+layout_mode = 2
 theme = SubResource("Theme_0ogx3")
 theme_override_colors/font_pressed_color = Color(0.847059, 0.85098, 0.870588, 0)
 theme_override_fonts/font = ExtResource("1_kx2nd")
 theme_override_font_sizes/font_size = 35
 text = "Main menu"
 
-[node name="Replay" type="Button" parent="GameOverPack"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 123.0
-offset_right = 100.0
-offset_bottom = 168.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Replay" type="Button" parent="GameOverPack/VBoxContainer2"]
+visible = false
+layout_mode = 2
 theme = SubResource("Theme_0ogx3")
 theme_override_colors/font_pressed_color = Color(0.847059, 0.85098, 0.870588, 0)
 theme_override_fonts/font = ExtResource("1_kx2nd")
 theme_override_font_sizes/font_size = 35
 text = "Replay"
 
-[node name="Exit" type="Button" parent="GameOverPack"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 183.0
-offset_right = 100.0
-offset_bottom = 228.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Exit" type="Button" parent="GameOverPack/VBoxContainer2"]
+layout_mode = 2
 theme = SubResource("Theme_0ogx3")
 theme_override_colors/font_pressed_color = Color(0.847059, 0.85098, 0.870588, 0)
 theme_override_fonts/font = ExtResource("1_kx2nd")

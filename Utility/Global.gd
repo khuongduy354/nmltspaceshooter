@@ -15,6 +15,9 @@ var player_name = "GUEST"
 var player: Player = null 
 var mobs_count = 0
 var cam: ShakeCamera = null
+var destroyed_mobs = 0
+var destroyed_bosses = 0
+var survival_time = 0
 
 func frame_freeze(time_scale, duration): 
 	Engine.time_scale = time_scale 

@@ -7,13 +7,14 @@ signal health_changed
 @export var max_speed = 60000
 @export var accel = 2000
 @export var friction = 800
-@export var max_health = 100
+@export var max_health = 1000
 @export var drag = 0.5
 
 @onready var animp = $AnimationPlayer
 @onready var muzzle = $Gun/PointLight2D
 @onready var cam = $Gun/Camera2D
 @onready var pname = $PName/pname
+@onready var tail_light = $Lighting/TailLight
 
 var current_health = max_health: set = set_health 
 
@@ -40,10 +41,10 @@ func _physics_process(delta):
 	# move or idle 
 	if Input.is_action_pressed("move"): 
 		accelerate(dir,delta)
-		$TailLight.enabled = true
+		tail_light.enabled = true
 		animp.play("fly")
 	else: 
-		$TailLight.enabled = false
+		tail_light.enabled = false
 		apply_friction(delta)
 		animp.play("idle")
 		

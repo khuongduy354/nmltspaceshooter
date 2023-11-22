@@ -10,6 +10,8 @@ signal destroyed
 
 @onready var pdetector = $PlayerDetector
 @onready var animp = $AnimationPlayer 
+@onready var hit_particle = $Particles/HitParticles
+@onready var explosion = $Particles/Explosion2
 
 enum {IDLE, PATROL, CHASE}
 var state = IDLE: set = set_state
@@ -115,9 +117,9 @@ func _on_hurtbox_area_entered(area):
 		# particles 
 #		var impact_vec = area.global_position.direction_to(global_position)
 #		$HitParticles.rotation = Vector2.RIGHT.rotated($HitParticles.rotation).angle_to(impact_vec)
-		$HitParticles.emitting = true
-		$Explosion2.global_position = area.global_position
-		$Explosion2.emitting = true
+		hit_particle.emitting = true
+		explosion.global_position = area.global_position
+		explosion.emitting = true
 		animp.play("white_flash")
 		
 		area.owner._damage_dealt()

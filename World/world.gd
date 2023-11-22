@@ -10,6 +10,7 @@ class_name World
 @onready var playerUI = $PlayerUI
 @onready var pause_menu = $PauseMenu
 
+@onready var timer_start = Time.get_unix_time_from_system()
 func _ready():
 	# setup game_flow
 	gflow._initialize_(self)
@@ -18,6 +19,7 @@ func _ready():
 	spawn_asteroids()
 	pause_menu.set_physics_process(false)
 	spawn_boss()
+	reset_global_params()
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("pause"): 
@@ -25,6 +27,9 @@ func _physics_process(delta):
 		pause_menu.visible=true 
 		pause_menu.set_physics_process(true)
 		
+	# set time played 
+	var time_now = Time.get_unix_time_from_system() - timer_start
+	playerUI.set_time(time_now)	
 
 # helpers
 func spawn_asteroids(): 
@@ -36,7 +41,8 @@ func spawn_boss():
 	boss = preload("res://Enemy/Boss.tscn").instantiate()
 	boss._initialize_(player)
 	boss.global_position = $Positions/boss_spawn.global_position
-	boss.spawned_mob.connect(func(): Global.mobs_count+=1)
+	boss.spawned_mob.connect(func(): Global.mobs_count += 1)
+	boss.destroyed.connect(func(): Global.destroyed_bosses += 1)
 	
 	add_child(boss)
 
@@ -47,9 +53,13 @@ func setup_player():
 	player.health_changed.connect(playerUI.set_health)
 	
 	add_child(player)
-	Global.cam = player.cam
+	
+func reset_global_params(): 
 	Global.player = player
-
+	Global.cam = player.cam
+	Global.destroyed_mobs = 0 
+	Global.mobs_count = 0
+	Global.destroyed_bosses = 0 
 
 func setup_spawners(): 
 	for spawner in spawners.get_children(): 

@@ -2,12 +2,13 @@ extends CharacterBody2D
 class_name BossI
 
 signal spawned_mob
+signal destroyed
 
 @export var move_speed = 25000
 @export var orbiting_speed = 15000
 @export var gun_counts = 12
 @export var orbiting_distance = 1500
-@export var max_hp = 10000
+@export var max_hp = 6000
 
 @onready var guns = $Guns
 @onready var sdur = $shoot_duration
@@ -128,6 +129,7 @@ func _on_hurtbox_area_entered(area):
 		
 		area.owner._damage_dealt()
 		if(current_hp <= 0):
+			destroyed.emit()
 			queue_free()
 #		Global.frame_freeze(0.8,.5)
 	

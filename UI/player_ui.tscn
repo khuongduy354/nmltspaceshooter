@@ -17,10 +17,10 @@ script = ExtResource("1_ttbss")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 custom_minimum_size = Vector2(252, 42)
-offset_left = 340.0
-offset_top = 23.0
-offset_right = 592.0
-offset_bottom = 65.0
+offset_left = 249.0
+offset_top = 20.0
+offset_right = 501.0
+offset_bottom = 62.0
 value = 1.0
 nine_patch_stretch = true
 texture_under = SubResource("AtlasTexture_t0jcx")
@@ -29,9 +29,8 @@ texture_progress = SubResource("AtlasTexture_0bfux")
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 offset_left = 16.0
 offset_top = 20.0
-offset_right = 499.0
+offset_right = 607.0
 offset_bottom = 120.0
 
 [node name="PlayerInfor" parent="HBoxContainer" instance=ExtResource("3_6qihj")]
-custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
