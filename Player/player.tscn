@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_5m4uk"]
 [ext_resource type="PackedScene" uid="uid://bwb2brmvqr300" path="res://Utility/gun.tscn" id="3_6gaby"]
-[ext_resource type="Texture2D" uid="uid://donmcfpt3dyst" path="res://assets/Objects/PLAYERSHIP/01.png" id="3_s4mlv"]
+[ext_resource type="Texture2D" uid="uid://donmcfpt3dyst" path="res://assets/Objects/PLAYERSHIP/01.png" id="3_lfui5"]
 [ext_resource type="PackedScene" uid="uid://dpq8l77snu0yu" path="res://Utility/player_bullet.tscn" id="4_5mx2c"]
 [ext_resource type="PackedScene" uid="uid://4ld00o7gyjxj" path="res://vfx/trail.tscn" id="5_qs2tt"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="6_5y0gn"]
 [ext_resource type="PackedScene" uid="uid://cl1yt4kd5awk8" path="res://vfx/ShakeCamera.tscn" id="6_6wddw"]
 [ext_resource type="PackedScene" uid="uid://bf66rpi2eibve" path="res://vfx/Muzzle.tscn" id="7_3nmef"]
-[ext_resource type="Texture2D" uid="uid://dicvcfc7q84yw" path="res://assets/Objects/PLAYERSHIP/031.png" id="9_lq2yx"]
+[ext_resource type="Texture2D" uid="uid://dicvcfc7q84yw" path="res://assets/Objects/PLAYERSHIP/031.png" id="9_ttlat"]
 
 [sub_resource type="Animation" id="Animation_7qdiu"]
 length = 0.001
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_s4mlv")]
+"values": [ExtResource("3_lfui5")]
 }
 
 [sub_resource type="Animation" id="Animation_vuq1l"]
@@ -38,7 +38,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("9_lq2yx")]
+"values": [ExtResource("9_ttlat")]
 }
 
 [sub_resource type="Animation" id="Animation_ko3tx"]
@@ -54,7 +54,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_s4mlv")]
+"values": [ExtResource("3_lfui5")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8wlta"]
@@ -68,14 +68,14 @@ _data = {
 collision_mask = 4
 script = ExtResource("1_5m4uk")
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(4, 4)
+polygon = PackedVector2Array(-4, -31, 11, -25, 10, -16, 21, -14, 19, -12, 13, -11, 13, -8, 18, -7, 23, -6, 23, -10, 28, -6, 36, -5, 41, -1, 34, 3, 28, 3, 23, 9, 24, 4, 19, 4, 14, 8, 11, 10, 21, 10, 20, 13, 16, 13, 10, 14, 10, 19, 12, 21, 12, 23, -4, 29, -5, 24, 4, 18, 0, 15, -9, 7, -16, 16, -23, 18, -24, 12, -20, 6, -18, 2, -14, -1, -16, -4, -18, -4, -18, -9, -22, -10, -24, -12, -24, -20, -17, -21, -10, -12, -8, -11, 2, -19, -5, -25)
+
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_mask = 16
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Hurtbox"]
-scale = Vector2(4, 4)
-polygon = PackedVector2Array(-4, -31, 11, -25, 10, -16, 21, -14, 19, -12, 13, -11, 13, -8, 18, -7, 23, -6, 23, -10, 28, -6, 36, -5, 41, -1, 34, 3, 28, 3, 23, 9, 24, 4, 19, 4, 14, 8, 11, 10, 21, 10, 20, 13, 16, 13, 10, 14, 10, 19, 12, 21, 12, 23, -4, 29, -5, 24, 4, 18, 0, 15, -9, 7, -16, 16, -23, 18, -24, 12, -20, 6, -18, 2, -14, -1, -16, -4, -18, -4, -18, -9, -22, -10, -24, -12, -24, -20, -17, -21, -10, -12, -8, -11, 2, -19, -5, -25)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(4, 4)
 polygon = PackedVector2Array(-4, -31, 11, -25, 10, -16, 21, -14, 19, -12, 13, -11, 13, -8, 18, -7, 23, -6, 23, -10, 28, -6, 36, -5, 41, -1, 34, 3, 28, 3, 23, 9, 24, 4, 19, 4, 14, 8, 11, 10, 21, 10, 20, 13, 16, 13, 10, 14, 10, 19, 12, 21, 12, 23, -4, 29, -5, 24, 4, 18, 0, 15, -9, 7, -16, 16, -23, 18, -24, 12, -20, 6, -18, 2, -14, -1, -16, -4, -18, -4, -18, -9, -22, -10, -24, -12, -24, -20, -17, -21, -10, -12, -8, -11, 2, -19, -5, -25)
 
@@ -86,7 +86,12 @@ default_color = Color(0, 0.427451, 0.364706, 1)
 [node name="Icon" type="Sprite2D" parent="."]
 rotation = 1.57079
 scale = Vector2(4, 4)
-texture = ExtResource("3_s4mlv")
+texture = ExtResource("3_lfui5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8wlta")
+}
 
 [node name="Gun" parent="." instance=ExtResource("3_6gaby")]
 position = Vector2(116, -2)
@@ -119,32 +124,16 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 80
 text = "GUEST"
 
-[node name="StandardLight" parent="." instance=ExtResource("6_5y0gn")]
+[node name="Lighting" type="Node2D" parent="."]
+
+[node name="StandardLight" parent="Lighting" instance=ExtResource("6_5y0gn")]
 position = Vector2(92, 0)
 energy = 0.8
 
-[node name="TailLight" parent="." instance=ExtResource("6_5y0gn")]
+[node name="TailLight" parent="Lighting" instance=ExtResource("6_5y0gn")]
 position = Vector2(-86, 0)
 color = Color(0.129412, 0.521569, 0.54902, 1)
 energy = 5.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_8wlta")
-}
-
-[node name="facing" type="Marker2D" parent="."]
-position = Vector2(171, -5)
-
-[node name="Debug" type="RayCast2D" parent="."]
-self_modulate = Color(1, 0.00999999, 0.0264997, 1)
-position = Vector2(198, -4)
-scale = Vector2(4, 4)
-target_position = Vector2(0, 68.5)
-
-[node name="Debug2" type="RayCast2D" parent="."]
-position = Vector2(198, -4)
-scale = Vector2(4, 4)
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="shot" from="Gun" to="." method="_on_gun_shot"]

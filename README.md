@@ -1,3 +1,24 @@
+# Core game design
+### Overall 
+Campaign and Endless Mode 
+Campaign comprises Cutscene to explain game plot, and 2 scenes to play. 
+Endless mode play until player dies. 
+Score is gained based on enemies killed, planets destroyed, and show survival time. 
+
+
+
+### Scenes
+main_menu.tscn 
+PreWorld.tscn contains most cutscenes
+World.tscn contains level 1
+World2.tscn contains level 2
+EndlessWorld.tscn contains endless game 
+gameover.tscn
+
+# Player design
+Player press space to move spaceship toward mouse position, left click mouse to shoot. 
+Just destroy everything and player should win!
+
 # Boss Design 
 
 ### How boss works?
@@ -5,6 +26,7 @@ Boss always target a player, it either move toward (chase) or orbiting player.
 While moving, it pick a shooting style, (called a shoot pattern).
 That's it!
 
+### Keys
 1. Finite state machine (FSM)
 - In BossStateManger.gd, comprise of shooting styles as
 states: laser, straight, circle,... presented as enums
@@ -40,8 +62,11 @@ player, it patrols a.k.a moving to a recent place
 
 - FSM as Boss, but 3 states: IDLE, PATROL, CHASE more simple
 -> has no state_enter or state_exit, logic is handle in physics_process state functions
+- 1 Gun 
+- Detect player if in zone
 
-# Asteroids Design 
+# Asteroids Design
+ 
 
 # Spawners Design
 
