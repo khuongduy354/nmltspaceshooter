@@ -15,9 +15,11 @@ signal health_changed
 @onready var cam = $Gun/Camera2D
 @onready var pname = $PName/pname
 @onready var tail_light = $Lighting/TailLight
+@onready var gun = $Gun
+@onready var sprite = $Icon
 
 var current_health = max_health: set = set_health 
-
+var should_look = true 
 # setters
 func set_health(val): 
 	current_health = val 
@@ -36,7 +38,7 @@ func _ready():
 func _physics_process(delta):
 	# look 
 	var dir = global_position.direction_to(get_global_mouse_position())
-	look_at(get_global_mouse_position())
+	if should_look: look_at(get_global_mouse_position())
 	
 	# move or idle 
 	if Input.is_action_pressed("move"): 

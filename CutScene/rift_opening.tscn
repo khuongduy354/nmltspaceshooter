@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://daim8ve3ljlwu"]
+
+[ext_resource type="PackedScene" uid="uid://c4uvy1txfqbsk" path="res://World/DarkStar-bg.tscn" id="1_anax3"]
+[ext_resource type="Script" path="res://CutScene/rift_opening.gd" id="1_qp3nl"]
+[ext_resource type="PackedScene" uid="uid://bfr44igkgfima" path="res://World/spawner.tscn" id="2_w3aex"]
+[ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="3_y3coy"]
+
+[node name="RiftOpening" type="Node2D"]
+script = ExtResource("1_qp3nl")
+
+[node name="Bg" parent="." instance=ExtResource("1_anax3")]
+color = Color(0.701961, 0.435294, 0.807843, 1)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.854902, 0.854902, 0.854902, 1)
+
+[node name="Spawner" parent="." instance=ExtResource("2_w3aex")]
+modulate = Color(0.541176, 0.133333, 0.145098, 1)
+position = Vector2(464, 223)
+scale = Vector2(0.521285, 0.521285)
+spawn_interval = 1
+
+[node name="StandardLight" parent="Spawner" instance=ExtResource("3_y3coy")]
+energy = 5.82

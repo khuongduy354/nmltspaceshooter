@@ -6,6 +6,7 @@ signal spawned_mob
 @export var spawn_radius = 50
 @export var max_mob_counts = 10
 @export var base_shield = 10
+@export var spawn_interval = 5
 
 @onready var mobs = $Mobs
 @onready var animp = $AnimationPlayer
@@ -16,8 +17,9 @@ var hp = max_hp : set = set_hp
 var destroyed = false 
 
 func _ready(): 
+	$spawn_timer.wait_time = spawn_interval
 	hbshape.set_deferred("disabled",true)
-	while mobs.get_child_count() <= 10: 
+	while mobs.get_child_count() < max_mob_counts: 
 		spawn_mob()
 
 func set_hp(val): 

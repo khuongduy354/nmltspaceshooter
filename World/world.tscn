@@ -36,7 +36,6 @@ color = Color(0.701961, 0.701961, 0.701961, 1)
 script = ExtResource("7_350iw")
 
 [node name="Spawners" type="Node2D" parent="."]
-process_mode = 4
 
 [node name="Spawner" parent="Spawners" instance=ExtResource("1_21gxd")]
 position = Vector2(9564, 1206)
@@ -60,6 +59,7 @@ environment = SubResource("Environment_t1sb5")
 [node name="Positions" type="Node2D" parent="."]
 
 [node name="player_spawn" type="Marker2D" parent="Positions"]
+position = Vector2(5543, 2866)
 
 [node name="boss_spawn" type="Marker2D" parent="Positions"]
 position = Vector2(5666, 2863)

@@ -1,0 +1,124 @@
+[gd_scene load_steps=8 format=3 uid="uid://dt23itom2etsx"]
+
+[ext_resource type="PackedScene" uid="uid://c4uvy1txfqbsk" path="res://World/DarkStar-bg.tscn" id="1_sidu1"]
+[ext_resource type="Script" path="res://CutScene/kepler_and_mars.gd" id="1_tfgv1"]
+[ext_resource type="PackedScene" uid="uid://dbep4up3hmdr4" path="res://Utility/kepler_spinning.tscn" id="2_mppc5"]
+[ext_resource type="Texture2D" uid="uid://cekbbqinv8j58" path="res://assets/Objects/PLAYERSHIP/02.png" id="3_cw0yr"]
+[ext_resource type="PackedScene" uid="uid://ddv3nx22abv56" path="res://Utility/mars_spinning.tscn" id="3_n262a"]
+[ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="5_sklrx"]
+[ext_resource type="Texture2D" uid="uid://dextw5to4c0np" path="res://assets/Objects/enemy-PhotoRoom.png-PhotoRoom (2).png" id="5_sutjk"]
+
+[node name="KeplerAndMars" type="Node2D"]
+script = ExtResource("1_tfgv1")
+
+[node name="Bg" parent="." instance=ExtResource("1_sidu1")]
+offset_left = -469.0
+offset_top = -412.0
+offset_right = 856.0
+offset_bottom = 690.0
+
+[node name="kepler_spinning" parent="." instance=ExtResource("2_mppc5")]
+position = Vector2(163, 216)
+scale = Vector2(1.69876, 1.69876)
+
+[node name="Label" type="Label" parent="kepler_spinning"]
+offset_left = -93.1993
+offset_top = -76.0388
+offset_right = 106.801
+offset_bottom = -50.0388
+text = "Kepler B52 - Unexplored"
+
+[node name="Sprites" type="Node" parent="kepler_spinning"]
+
+[node name="02" type="Sprite2D" parent="kepler_spinning/Sprites"]
+position = Vector2(660.85, 269.395)
+rotation = -1.36944
+scale = Vector2(0.69196, 0.69196)
+texture = ExtResource("3_cw0yr")
+
+[node name="03" type="Sprite2D" parent="kepler_spinning/Sprites"]
+position = Vector2(605.85, 393.395)
+rotation = -0.842294
+scale = Vector2(0.69196, 0.69196)
+texture = ExtResource("3_cw0yr")
+
+[node name="06" type="Sprite2D" parent="kepler_spinning/Sprites"]
+position = Vector2(716, 34)
+rotation = -1.92971
+scale = Vector2(0.69196, 0.69196)
+texture = ExtResource("3_cw0yr")
+
+[node name="05" type="Sprite2D" parent="kepler_spinning/Sprites"]
+position = Vector2(737, 385)
+rotation = -1.25784
+scale = Vector2(0.69196, 0.69196)
+texture = ExtResource("3_cw0yr")
+
+[node name="04" type="Sprite2D" parent="kepler_spinning/Sprites"]
+position = Vector2(636.85, 149.395)
+rotation = -1.45397
+scale = Vector2(0.69196, 0.69196)
+texture = ExtResource("3_cw0yr")
+
+[node name="StandardLight" parent="kepler_spinning" instance=ExtResource("5_sklrx")]
+
+[node name="mars_spinning" parent="." instance=ExtResource("3_n262a")]
+position = Vector2(809, 214)
+scale = Vector2(2.08988, 2.08988)
+
+[node name="Label2" type="Label" parent="mars_spinning"]
+offset_left = -100.006
+offset_top = -75.6026
+offset_right = 99.994
+offset_bottom = -49.6026
+text = "Mars - Explored long ago"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprites2" type="Node" parent="mars_spinning"]
+
+[node name="Enemy-photoRoom_png-photoRoom(2)" type="Sprite2D" parent="mars_spinning/Sprites2"]
+position = Vector2(376.487, 386.335)
+rotation = -1.65279
+scale = Vector2(0.300006, 0.300006)
+texture = ExtResource("5_sutjk")
+
+[node name="Enemy-photoRoom_png-photoRoom(2)6" type="Sprite2D" parent="mars_spinning/Sprites2"]
+position = Vector2(184, 56)
+rotation = -2.14214
+scale = Vector2(0.300006, 0.300006)
+texture = ExtResource("5_sutjk")
+
+[node name="Enemy-photoRoom_png-photoRoom(2)7" type="Sprite2D" parent="mars_spinning/Sprites2"]
+position = Vector2(135, 369)
+rotation = -1.03198
+scale = Vector2(0.300006, 0.300006)
+texture = ExtResource("5_sutjk")
+
+[node name="Enemy-photoRoom_png-photoRoom(2)2" type="Sprite2D" parent="mars_spinning/Sprites2"]
+position = Vector2(296.487, 240.335)
+rotation = -1.65279
+scale = Vector2(0.300006, 0.300006)
+texture = ExtResource("5_sutjk")
+
+[node name="Enemy-photoRoom_png-photoRoom(2)3" type="Sprite2D" parent="mars_spinning/Sprites2"]
+position = Vector2(327.487, 177.335)
+rotation = -0.879287
+scale = Vector2(0.300006, 0.300006)
+texture = ExtResource("5_sutjk")
+
+[node name="Enemy-photoRoom_png-photoRoom(2)4" type="Sprite2D" parent="mars_spinning/Sprites2"]
+position = Vector2(332.487, 287.335)
+rotation = -1.65279
+scale = Vector2(0.300006, 0.300006)
+texture = ExtResource("5_sutjk")
+
+[node name="Enemy-photoRoom_png-photoRoom(2)5" type="Sprite2D" parent="mars_spinning/Sprites2"]
+position = Vector2(305.487, 333.335)
+rotation = -1.65279
+scale = Vector2(0.300006, 0.300006)
+texture = ExtResource("5_sutjk")
+
+[node name="StandardLight" parent="mars_spinning" instance=ExtResource("5_sklrx")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.564706, 0.564706, 0.564706, 1)

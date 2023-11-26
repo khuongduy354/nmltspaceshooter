@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://kktgejyu263s"]
+
+[ext_resource type="Script" path="res://CutScene/world_1_rift.gd" id="1_cwmjh"]
+[ext_resource type="PackedScene" uid="uid://bfr44igkgfima" path="res://World/spawner.tscn" id="2_3y5uw"]
+[ext_resource type="Texture2D" uid="uid://b6fksgfysqso2" path="res://assets/Backgrounds/Dynamic Space Background FREE/Nebula Aqua-Pink.png" id="2_i18sp"]
+[ext_resource type="Texture2D" uid="uid://fx7djaprht6o" path="res://assets/Backgrounds/Dynamic Space Background FREE/Stars Small_1.png" id="3_ta12i"]
+[ext_resource type="Texture2D" uid="uid://ciyr8i8hggs2r" path="res://assets/Backgrounds/Dynamic Space Background FREE/Stars Small_2.png" id="4_ifdbw"]
+[ext_resource type="Texture2D" uid="uid://2qy6dflo66mq" path="res://assets/Backgrounds/Dynamic Space Background FREE/Stars-Big_1_1_PC.png" id="5_c7icn"]
+[ext_resource type="Texture2D" uid="uid://b4fb0uhuc2lkb" path="res://assets/Backgrounds/Dynamic Space Background FREE/Stars-Big_1_2_PC.png" id="6_sb86l"]
+[ext_resource type="PackedScene" uid="uid://b3ihofu15tb7d" path="res://Player/player.tscn" id="7_16nb1"]
+
+[node name="World1Rift" type="Node2D"]
+script = ExtResource("1_cwmjh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.246334, 0.126041)
+
+[node name="NebulaAqua-pink" type="Sprite2D" parent="Sprite2D"]
+self_modulate = Color(0.6, 0.6, 0.6, 1)
+texture_repeat = 2
+texture = ExtResource("2_i18sp")
+centered = false
+
+[node name="StarsSmall1" type="Sprite2D" parent="Sprite2D"]
+texture_repeat = 2
+texture = ExtResource("3_ta12i")
+centered = false
+
+[node name="StarsSmall2" type="Sprite2D" parent="Sprite2D"]
+texture_repeat = 2
+texture = ExtResource("4_ifdbw")
+centered = false
+
+[node name="Stars-big11Pc" type="Sprite2D" parent="Sprite2D"]
+texture_repeat = 2
+texture = ExtResource("5_c7icn")
+centered = false
+
+[node name="Stars-big12Pc" type="Sprite2D" parent="Sprite2D"]
+texture_repeat = 2
+texture = ExtResource("6_sb86l")
+centered = false
+
+[node name="Spawner" parent="." instance=ExtResource("2_3y5uw")]
+position = Vector2(118, 78)
+scale = Vector2(0.239657, 0.239657)
+max_mob_counts = 0
+
+[node name="Spawner2" parent="." instance=ExtResource("2_3y5uw")]
+position = Vector2(118, 374)
+scale = Vector2(0.239657, 0.239657)
+max_mob_counts = 0
+
+[node name="Spawner3" parent="." instance=ExtResource("2_3y5uw")]
+position = Vector2(857, 78)
+scale = Vector2(0.239657, 0.239657)
+max_mob_counts = 0
+
+[node name="Spawner4" parent="." instance=ExtResource("2_3y5uw")]
+position = Vector2(857, 374)
+scale = Vector2(0.239657, 0.239657)
+max_mob_counts = 0
+
+[node name="Player" parent="." instance=ExtResource("7_16nb1")]
+position = Vector2(484, 225)
+scale = Vector2(0.0548008, 0.0548008)

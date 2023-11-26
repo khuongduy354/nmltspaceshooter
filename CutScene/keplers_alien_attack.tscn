@@ -1,0 +1,166 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjudw8gy54k4r"]
+
+[ext_resource type="PackedScene" uid="uid://c4uvy1txfqbsk" path="res://World/DarkStar-bg.tscn" id="1_f6jre"]
+[ext_resource type="Script" path="res://CutScene/keplers_alien_attack.gd" id="1_g4v3b"]
+[ext_resource type="PackedScene" uid="uid://b3ihofu15tb7d" path="res://Player/player.tscn" id="2_njud3"]
+[ext_resource type="PackedScene" uid="uid://ckwx36ydstxxk" path="res://Enemy/enemy.tscn" id="3_py6d7"]
+[ext_resource type="PackedScene" uid="uid://ch6fjww4kthl7" path="res://Enemy/Boss.tscn" id="5_0yeg6"]
+[ext_resource type="PackedScene" uid="uid://cl1yt4kd5awk8" path="res://vfx/ShakeCamera.tscn" id="5_wm7t3"]
+
+[node name="KeplersAlienAttack" type="Node2D"]
+script = ExtResource("1_g4v3b")
+
+[node name="Bg" parent="." instance=ExtResource("1_f6jre")]
+color = Color(0.701961, 0.435294, 0.807843, 1)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.854902, 0.854902, 0.854902, 1)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("3_py6d7")]
+position = Vector2(335, -46)
+rotation = 1.18181
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("3_py6d7")]
+position = Vector2(511, 134)
+rotation = 1.13655
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("3_py6d7")]
+position = Vector2(161, 25)
+rotation = 1.70264
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("3_py6d7")]
+position = Vector2(559, -124)
+rotation = 1.62863
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy5" parent="Enemies" instance=ExtResource("3_py6d7")]
+position = Vector2(506, -6.99999)
+rotation = 1.24395
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy6" parent="Enemies" instance=ExtResource("3_py6d7")]
+position = Vector2(682, 173)
+rotation = 1.1987
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy7" parent="Enemies" instance=ExtResource("3_py6d7")]
+position = Vector2(332, 64)
+rotation = 1.76478
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy13" parent="Enemies" instance=ExtResource("3_py6d7")]
+position = Vector2(1150, -17)
+rotation = 1.24395
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy8" parent="Enemies" instance=ExtResource("3_py6d7")]
+position = Vector2(-318, 9.53674e-06)
+rotation = 1.70264
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy9" parent="Enemies" instance=ExtResource("3_py6d7")]
+position = Vector2(203, 148)
+rotation = 1.1987
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy17" parent="Enemies" instance=ExtResource("3_py6d7")]
+position = Vector2(671, -42)
+rotation = 1.24395
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy14" parent="Enemies" instance=ExtResource("3_py6d7")]
+position = Vector2(1326, 163)
+rotation = 1.1987
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy15" parent="Enemies" instance=ExtResource("3_py6d7")]
+position = Vector2(976, 54)
+rotation = 1.76478
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy18" parent="Enemies" instance=ExtResource("3_py6d7")]
+position = Vector2(-97, 67)
+rotation = 1.76478
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy19" parent="Enemies" instance=ExtResource("3_py6d7")]
+position = Vector2(8, -8.99999)
+rotation = 1.46902
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy16" parent="Enemies" instance=ExtResource("3_py6d7")]
+position = Vector2(1374, -95)
+rotation = 1.69077
+scale = Vector2(0.5, 0.5)
+
+[node name="MarsSupporters" type="Node2D" parent="."]
+position = Vector2(-182, -14)
+
+[node name="Player" parent="MarsSupporters" instance=ExtResource("2_njud3")]
+position = Vector2(-42, 437)
+rotation = -0.656538
+scale = Vector2(0.334723, 0.334723)
+
+[node name="Player2" parent="MarsSupporters" instance=ExtResource("2_njud3")]
+position = Vector2(335, 562)
+rotation = -0.656538
+scale = Vector2(0.334609, 0.334609)
+
+[node name="Player3" parent="MarsSupporters" instance=ExtResource("2_njud3")]
+position = Vector2(153, 356)
+rotation = -0.656538
+scale = Vector2(0.297899, 0.297899)
+
+[node name="Player4" parent="MarsSupporters" instance=ExtResource("2_njud3")]
+position = Vector2(66, 553)
+rotation = -0.656538
+scale = Vector2(0.317841, 0.317841)
+
+[node name="KeplerSupporters" type="Node2D" parent="."]
+position = Vector2(1145, 389)
+rotation = 3.0356
+
+[node name="Player" parent="KeplerSupporters" instance=ExtResource("2_njud3")]
+position = Vector2(-11.2779, 209.985)
+rotation = 6.27064
+scale = Vector2(0.37005, 0.37005)
+
+[node name="Player2" parent="KeplerSupporters" instance=ExtResource("2_njud3")]
+position = Vector2(94.9746, 24.1832)
+rotation = 6.34698
+scale = Vector2(0.37005, 0.37005)
+
+[node name="Player3" parent="KeplerSupporters" instance=ExtResource("2_njud3")]
+position = Vector2(-117.105, -33.5771)
+rotation = 6.27064
+scale = Vector2(0.37005, 0.37005)
+
+[node name="Player4" parent="KeplerSupporters" instance=ExtResource("2_njud3")]
+position = Vector2(-10.8522, -219.379)
+rotation = 6.34698
+scale = Vector2(0.37005, 0.37005)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(519, 248)
+
+[node name="Camera2D" parent="Marker2D" instance=ExtResource("5_wm7t3")]
+zoom = Vector2(0.5, 0.5)
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+position_smoothing_enabled = false
+
+[node name="Boss" parent="." instance=ExtResource("5_0yeg6")]
+position = Vector2(429, -655)
+rotation = 1.56563
+scale = Vector2(0.693987, 0.693987)
+move_speed = 2500
+orbiting_speed = 1500
+orbiting_distance = 1000

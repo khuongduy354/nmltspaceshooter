@@ -18,7 +18,7 @@ func _ready():
 	setup_spawners()
 	spawn_asteroids()
 	pause_menu.set_physics_process(false)
-	spawn_boss()
+#	spawn_boss()
 	reset_global_params()
 	
 func _physics_process(delta):

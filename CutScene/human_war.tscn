@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1t2rjdnmjw15"]
+
+[ext_resource type="PackedScene" uid="uid://c4uvy1txfqbsk" path="res://World/DarkStar-bg.tscn" id="1_8cj4t"]
+[ext_resource type="Script" path="res://CutScene/human_war.gd" id="1_c0eqp"]
+[ext_resource type="PackedScene" uid="uid://b3ihofu15tb7d" path="res://Player/player.tscn" id="4_nhk06"]
+
+[node name="HumanWar" type="Node2D"]
+script = ExtResource("1_c0eqp")
+
+[node name="Bg" parent="." instance=ExtResource("1_8cj4t")]
+
+[node name="MarsSupporters" type="Node2D" parent="."]
+position = Vector2(-182, -14)
+
+[node name="Player" parent="MarsSupporters" instance=ExtResource("4_nhk06")]
+position = Vector2(42, 74)
+scale = Vector2(0.334723, 0.334723)
+
+[node name="Player2" parent="MarsSupporters" instance=ExtResource("4_nhk06")]
+position = Vector2(375, 467)
+scale = Vector2(0.334609, 0.334609)
+
+[node name="Player3" parent="MarsSupporters" instance=ExtResource("4_nhk06")]
+position = Vector2(337, 51)
+scale = Vector2(0.297899, 0.297899)
+
+[node name="Player4" parent="MarsSupporters" instance=ExtResource("4_nhk06")]
+position = Vector2(62, 326)
+scale = Vector2(0.317841, 0.317841)
+
+[node name="Player5" parent="MarsSupporters" instance=ExtResource("4_nhk06")]
+position = Vector2(280, 161)
+scale = Vector2(0.334723, 0.334723)
+
+[node name="Player6" parent="MarsSupporters" instance=ExtResource("4_nhk06")]
+position = Vector2(479, 388)
+scale = Vector2(0.334609, 0.334609)
+
+[node name="Player7" parent="MarsSupporters" instance=ExtResource("4_nhk06")]
+position = Vector2(413, 227)
+scale = Vector2(0.297899, 0.297899)
+
+[node name="Player8" parent="MarsSupporters" instance=ExtResource("4_nhk06")]
+position = Vector2(266, 354)
+scale = Vector2(0.317841, 0.317841)
+
+[node name="KeplerSupporters" type="Node2D" parent="."]
+position = Vector2(1145, 389)
+rotation = 3.0356
+
+[node name="Player" parent="KeplerSupporters" instance=ExtResource("4_nhk06")]
+position = Vector2(337.498, 381.847)
+rotation = 6.27064
+scale = Vector2(0.37005, 0.37005)
+
+[node name="Player2" parent="KeplerSupporters" instance=ExtResource("4_nhk06")]
+position = Vector2(375.497, 289.348)
+rotation = 6.27064
+scale = Vector2(0.37005, 0.37005)
+
+[node name="Player3" parent="KeplerSupporters" instance=ExtResource("4_nhk06")]
+position = Vector2(346.279, 157.517)
+rotation = 6.27064
+scale = Vector2(0.37005, 0.37005)
+
+[node name="Player4" parent="KeplerSupporters" instance=ExtResource("4_nhk06")]
+position = Vector2(434.802, 53.2975)
+rotation = 6.27064
+scale = Vector2(0.37005, 0.37005)
+
+[node name="Player5" parent="KeplerSupporters" instance=ExtResource("4_nhk06")]
+position = Vector2(303.818, -19.9707)
+rotation = 6.27064
+scale = Vector2(0.37005, 0.37005)
+
+[node name="Player6" parent="KeplerSupporters" instance=ExtResource("4_nhk06")]
+position = Vector2(200.294, 206.347)
+rotation = 6.27064
+scale = Vector2(0.37005, 0.37005)
+
+[node name="Player7" parent="KeplerSupporters" instance=ExtResource("4_nhk06")]
+position = Vector2(108.535, 303.183)
+rotation = 6.27064
+scale = Vector2(0.37005, 0.37005)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.466667, 0.466667, 0.466667, 1)

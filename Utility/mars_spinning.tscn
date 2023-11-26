@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddv3nx22abv56"]
+
+[ext_resource type="PackedScene" uid="uid://bscdnklwj0ogq" path="res://Utility/planet_spinning.tscn" id="1_etdwg"]
+[ext_resource type="Texture2D" uid="uid://d2avaxwmub2wr" path="res://assets/Objects/planets/mars.png" id="2_stx2i"]
+
+[node name="mars_spinning" instance=ExtResource("1_etdwg")]
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_stx2i")

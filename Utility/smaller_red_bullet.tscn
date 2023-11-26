@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfa0nmhwoxcsg"]
+
+[ext_resource type="PackedScene" uid="uid://cmo1akatydw8j" path="res://Utility/smaller_player_bullet.tscn" id="1_1jsj7"]
+
+[node name="smaller_red_bullet" instance=ExtResource("1_1jsj7")]
+
+[node name="Icon" parent="." index="3"]
+self_modulate = Color(0.545098, 0.109804, 0.203922, 1)

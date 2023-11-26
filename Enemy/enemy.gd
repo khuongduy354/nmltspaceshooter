@@ -12,6 +12,8 @@ signal destroyed
 @onready var animp = $AnimationPlayer 
 @onready var hit_particle = $Particles/HitParticles
 @onready var explosion = $Particles/Explosion2
+@onready var colli_shape = $CollisionPolygon2D
+@onready var gun = $Gun
 
 enum {IDLE, PATROL, CHASE}
 var state = IDLE: set = set_state

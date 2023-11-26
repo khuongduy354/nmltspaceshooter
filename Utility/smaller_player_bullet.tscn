@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmo1akatydw8j"]
+
+[ext_resource type="PackedScene" uid="uid://dpq8l77snu0yu" path="res://Utility/player_bullet.tscn" id="1_ygiu0"]
+
+[node name="smaller_player_bullet" instance=ExtResource("1_ygiu0")]
+scale = Vector2(0.210804, 0.210804)
