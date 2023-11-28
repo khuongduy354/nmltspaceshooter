@@ -31,7 +31,9 @@ func play_sequential_cutscenes(scenes: Array[PackedScene],times: Array[int]):
 		idx += 1 
 
 func pregame_flow(): 
-	play_sequential_cutscenes([EarthOnly,KeplerMar,HumanWar,KeplerRiftOpening,KeplerAliensAttack,KeplerWithAlien,world1rift],[5,5,5,10,8,5,5])
+	var scenes = [EarthOnly,KeplerMar,HumanWar,KeplerRiftOpening,KeplerAliensAttack,KeplerWithAlien,world1rift]
+	var durations = [5,5,5,10,8,5,5]
+	play_sequential_cutscenes(scenes,durations)
 
 	
 func wait(t): 
