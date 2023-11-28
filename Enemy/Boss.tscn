@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ch6fjww4kthl7"]
+[gd_scene load_steps=15 format=3 uid="uid://ch6fjww4kthl7"]
 
 [ext_resource type="Script" path="res://Enemy/Boss.gd" id="1_rndc0"]
 [ext_resource type="Script" path="res://Enemy/BossDecisionPicker.gd" id="2_7w34k"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="4_68xxy"]
 [ext_resource type="Shader" path="res://vfx/white.gdshader" id="6_0d4pm"]
 [ext_resource type="PackedScene" uid="uid://dqwdievi228ip" path="res://vfx/hit_particles.tscn" id="7_54llg"]
+[ext_resource type="PackedScene" uid="uid://c7h3ale4lmqc8" path="res://vfx/explosion_2_chain.tscn" id="8_8kv8a"]
 [ext_resource type="Script" path="res://Enemy/BossStateManager.gd" id="8_u2m2k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m3d3c"]
@@ -146,6 +147,8 @@ amount = 20
 position = Vector2(-5.76385, 224.79)
 rotation = -4.71238
 amount = 20
+
+[node name="Death" parent="HitParticles2" instance=ExtResource("8_8kv8a")]
 
 [node name="Lighting" type="Node2D" parent="."]
 

@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjbo881ivo6kw"]
+
+[ext_resource type="PackedScene" uid="uid://dgxywwrc3i4e8" path="res://World/game_flow_manager.tscn" id="1_3ic27"]
+[ext_resource type="Script" path="res://World/endless_world.gd" id="1_f1t4o"]
+[ext_resource type="PackedScene" uid="uid://csn57a6yu2cxa" path="res://World/withplanet-bg.tscn" id="2_houkx"]
+[ext_resource type="PackedScene" uid="uid://bks23t4amyvx2" path="res://UI/player_ui.tscn" id="3_461gn"]
+[ext_resource type="PackedScene" uid="uid://b5kqvwo8md4m" path="res://UI/pause_menu.tscn" id="4_a1j27"]
+[ext_resource type="Script" path="res://World/Asteriod/AsteroidsManager.gd" id="5_dvjql"]
+[ext_resource type="PackedScene" uid="uid://bfr44igkgfima" path="res://World/spawner.tscn" id="6_cn7wn"]
+
+[node name="EndlessWorld" type="Node2D"]
+script = ExtResource("1_f1t4o")
+
+[node name="GameFlowManager" parent="." instance=ExtResource("1_3ic27")]
+script = null
+
+[node name="ParallaxBackground2" parent="." instance=ExtResource("2_houkx")]
+layer = -1
+
+[node name="PlayerUI" parent="." instance=ExtResource("3_461gn")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_a1j27")]
+visible = false
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.631373, 0.631373, 0.631373, 1)
+
+[node name="Asteroids" type="Node" parent="."]
+script = ExtResource("5_dvjql")
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="Spawner" parent="Spawners" instance=ExtResource("6_cn7wn")]
+position = Vector2(9564, 1206)
+
+[node name="Spawner2" parent="Spawners" instance=ExtResource("6_cn7wn")]
+position = Vector2(947, 1107)
+
+[node name="Spawner3" parent="Spawners" instance=ExtResource("6_cn7wn")]
+position = Vector2(1393, 4558)
+
+[node name="Spawner4" parent="Spawners" instance=ExtResource("6_cn7wn")]
+position = Vector2(9575, 4828)
+
+[node name="AsteroidCheck" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Positions" type="Node2D" parent="."]
+
+[node name="player_spawn" type="Marker2D" parent="Positions"]
+position = Vector2(5543, 2866)

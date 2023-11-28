@@ -130,6 +130,7 @@ func _on_hurtbox_area_entered(area):
 		area.owner._damage_dealt()
 		if(current_hp <= 0):
 			destroyed.emit()
+			$HitParticles2/Death.emitting = true
 			queue_free()
 #		Global.frame_freeze(0.8,.5)
 	

@@ -59,7 +59,7 @@ theme_override_font_sizes/font_size = 140
 text = "Space Shooter"
 horizontal_alignment = 1
 
-[node name="StartgameButton" type="Button" parent="Background"]
+[node name="StoryGameButton" type="Button" parent="Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -76,9 +76,9 @@ theme = SubResource("Theme_0ykdi")
 theme_override_colors/font_pressed_color = Color(0.631373, 0.631373, 0.631373, 1)
 theme_override_fonts/font = ExtResource("2_3oldd")
 theme_override_font_sizes/font_size = 40
-text = "start game"
+text = "Story Mode"
 
-[node name="SoundsettingButton" type="Button" parent="Background"]
+[node name="EndlessGameButton" type="Button" parent="Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -95,9 +95,9 @@ theme = SubResource("Theme_0ykdi")
 theme_override_colors/font_pressed_color = Color(0.631373, 0.631373, 0.631373, 1)
 theme_override_fonts/font = ExtResource("2_3oldd")
 theme_override_font_sizes/font_size = 40
-text = "sound"
+text = "Endless Mode"
 
-[node name="ExitButton" type="Button" parent="Background"]
+[node name="Sound" type="Button" parent="Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -114,7 +114,7 @@ theme = SubResource("Theme_0ykdi")
 theme_override_colors/font_pressed_color = Color(0.631373, 0.631373, 0.631373, 1)
 theme_override_fonts/font = ExtResource("2_3oldd")
 theme_override_font_sizes/font_size = 40
-text = "exit"
+text = "Sound"
 
 [node name="PlayerName" type="LineEdit" parent="Background"]
 layout_mode = 1
@@ -235,7 +235,6 @@ theme_override_fonts/font = ExtResource("2_3oldd")
 theme_override_font_sizes/font_size = 40
 text = "Enter"
 
-[connection signal="pressed" from="Background/StartgameButton" to="." method="_on_startgame_button_pressed"]
-[connection signal="pressed" from="Background/SoundsettingButton" to="." method="_on_soundsetting_button_pressed"]
-[connection signal="pressed" from="Background/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Background/StoryGameButton" to="." method="_on_startgame_button_pressed"]
+[connection signal="pressed" from="Background/Sound" to="." method="_on_soundsetting_button_pressed"]
 [connection signal="pressed" from="Background/SoundEdit/Done" to="." method="_on_done_pressed"]
