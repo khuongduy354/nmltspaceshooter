@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1b70jrguueoh"]
+[gd_scene load_steps=8 format=3 uid="uid://c1b70jrguueoh"]
 
 [ext_resource type="PackedScene" uid="uid://bfr44igkgfima" path="res://World/spawner.tscn" id="1_21gxd"]
 [ext_resource type="Script" path="res://World/world.gd" id="1_asl7k"]
@@ -7,14 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b5kqvwo8md4m" path="res://UI/pause_menu.tscn" id="8_jmpai"]
 [ext_resource type="PackedScene" uid="uid://csn57a6yu2cxa" path="res://World/withplanet-bg.tscn" id="12_j7e43"]
 [ext_resource type="PackedScene" uid="uid://dgxywwrc3i4e8" path="res://World/game_flow_manager.tscn" id="13_m55q6"]
-
-[sub_resource type="Environment" id="Environment_t1sb5"]
-background_mode = 3
-ambient_light_source = 2
-ambient_light_color = Color(0.160784, 0.0627451, 0.247059, 1)
-glow_enabled = true
-glow_bloom = 0.01
-glow_blend_mode = 0
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_asl7k")
@@ -30,7 +22,7 @@ layer = -1
 visible = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.701961, 0.701961, 0.701961, 1)
+color = Color(0.631373, 0.631373, 0.631373, 1)
 
 [node name="Asteroids" type="Node" parent="."]
 script = ExtResource("7_350iw")
@@ -52,9 +44,6 @@ position = Vector2(9575, 4828)
 [node name="AsteroidCheck" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_t1sb5")
 
 [node name="Positions" type="Node2D" parent="."]
 

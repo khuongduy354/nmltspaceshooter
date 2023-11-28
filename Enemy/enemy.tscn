@@ -145,6 +145,7 @@ amount = 10
 [node name="StandardLight" parent="." instance=ExtResource("9_l6upo")]
 energy = 1.0
 
+[connection signal="shot" from="Gun" to="." method="_on_gun_shot"]
 [connection signal="timeout" from="patrol_interval" to="." method="_on_patrol_interval_timeout"]
 [connection signal="timeout" from="chase_timeout" to="." method="_on_chase_timeout_timeout"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

@@ -10,7 +10,7 @@ size = Vector2(161, 47)
 
 [node name="Bullet" type="CharacterBody2D"]
 script = ExtResource("1_x3ddi")
-BULLET_SPEED = 1500
+BULLET_SPEED = 2000
 
 [node name="StandardLight" parent="." instance=ExtResource("3_yxuhg")]
 color = Color(0.568627, 0.752941, 1, 1)

@@ -15,6 +15,7 @@ size = Vector2(90, 36)
 
 [node name="Bullet" type="CharacterBody2D"]
 script = ExtResource("1_ug2q0")
+BULLET_SPEED = 1200
 damage = 10
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

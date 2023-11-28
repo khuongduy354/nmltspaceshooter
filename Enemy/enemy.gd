@@ -135,3 +135,6 @@ func _on_hurtbox_area_entered(area):
 
 func _on_chase_timeout_timeout():
 	target = null
+
+
+

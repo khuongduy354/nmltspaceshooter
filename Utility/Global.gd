@@ -34,3 +34,9 @@ func percent_pick(val):
 	if randi()%100+1 <=  val: 
 		return true 
 	return false
+
+func fade_left_trans_to(path: String,speed = 1.0): 
+	var fade_trans = preload("res://vfx/swipe_transistion.tscn").instantiate()
+	get_tree().root.add_child(fade_trans)
+	fade_trans.animp.playback_speed = speed
+	fade_trans.transition_to(path)

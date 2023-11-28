@@ -20,12 +20,13 @@ func set_is_on(val):
 	$Begin.visible = is_on 
 	beam_ptc.emitting = is_on
 func apply_light(): 
+#	$WorldEnvironment.glow.enabled = isn
 	var pos = $Line2D.points[1]
 	if is_on: 
 		var mid = (pos + Vector2.ZERO)/2
 		$StandardLight.position = mid 
 		$StandardLight.enabled = true 
-		
+
 	elif $Line2D.width == 0: 
 		$StandardLight.enabled = false
 func _physics_process(delta):
@@ -45,7 +46,6 @@ func _physics_process(delta):
 	
 	tail.position = cast_point
 	$Line2D.points[1]=cast_point 
-	apply_light()
 	
 	# set beam particles 
 	beam_ptc.position = cast_point * 0.5 

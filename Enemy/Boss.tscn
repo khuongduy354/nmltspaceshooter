@@ -114,6 +114,7 @@ collide_with_bodies = false
 laser_mwidth = 40
 
 [node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(0.9, 0.9, 0.9, 1)
 material = SubResource("ShaderMaterial_4n30s")
 rotation = -1.65054
 scale = Vector2(2, 2)

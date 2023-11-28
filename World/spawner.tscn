@@ -57,7 +57,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_y0omn"]
 resource_name = "spinning"
-length = 2.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -65,7 +65,7 @@ tracks/0/path = NodePath("Galaxy-animated:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.86),
+"times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0, 49]

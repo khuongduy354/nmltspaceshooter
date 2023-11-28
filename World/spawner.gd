@@ -4,9 +4,9 @@ signal spawned_mob
 
 @export var max_hp = 1000
 @export var spawn_radius = 50
-@export var max_mob_counts = 10
+@export var max_mob_counts = 3
 @export var base_shield = 10
-@export var spawn_interval = 5
+@export var spawn_interval = 3
 
 @onready var mobs = $Mobs
 @onready var animp = $AnimationPlayer
