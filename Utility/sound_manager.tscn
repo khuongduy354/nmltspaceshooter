@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctva7jwaf3v5t"]
+
+[ext_resource type="Script" path="res://Utility/sound_manager.gd" id="1_pxlg1"]
+[ext_resource type="AudioStream" uid="uid://75ilh1moujb1" path="res://assets/audio/boss/Bossmusic.mp3" id="2_0qvpg"]
+
+[node name="SoundManager2" type="Node2D"]
+script = ExtResource("1_pxlg1")
+
+[node name="BossMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0qvpg")
+volume_db = 10.0

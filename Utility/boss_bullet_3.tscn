@@ -1,10 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://yna7xlosh5t4"]
+[gd_scene load_steps=4 format=3 uid="uid://yna7xlosh5t4"]
 
 [ext_resource type="PackedScene" uid="uid://dcdum1buju0c7" path="res://Utility/boss_bullet.tscn" id="1_b5oc1"]
+[ext_resource type="PackedScene" uid="uid://cfxavqtalag7x" path="res://Utility/standard_audio.tscn" id="2_akiku"]
+[ext_resource type="AudioStream" uid="uid://inxucqakxbf3" path="res://assets/audio/boss/Gun/fireball.wav" id="3_xot5l"]
 
 [node name="BossBullet" instance=ExtResource("1_b5oc1")]
 BULLET_SPEED = 2000
+damage = 30
 
 [node name="Icon" parent="." index="3"]
 scale = Vector2(10, 10)
 region_rect = Rect2(161, 150, 14, 10)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox2" index="0"]
+polygon = PackedVector2Array(-70, 4, 30, -49, 71, -7, 70, 17, 35, 45, -2, 42)
+
+[node name="StandardAudio" parent="." index="5" instance=ExtResource("2_akiku")]
+stream = ExtResource("3_xot5l")

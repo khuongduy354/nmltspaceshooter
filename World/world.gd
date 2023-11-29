@@ -49,7 +49,7 @@ func spawn_boss():
 
 func setup_player(): 
 	player = preload("res://Player/player.tscn").instantiate()
-	playerUI.set_health(player.max_health)
+	playerUI.set_max_health(player.max_health)
 	player.health_changed.connect(playerUI.set_health)
 	
 	add_child(player)

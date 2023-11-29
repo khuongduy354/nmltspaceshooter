@@ -5,12 +5,15 @@ signal dealt_damage
 
 @export var BULLET_SPEED = 1000
 @export var damage = 30
-@export var max_distance = 2500
+@export var max_distance = 3500
 
 var original_pos = null
 var veloc = Vector2.ZERO
 
 func _ready():
+	var audio = get_node("StandardAudio")
+	if audio: 
+		audio.play()
 #	$Hitbox.connect("body_entered",Callable(self,"_on_hitbox_body_entered"))
 	original_pos = global_position
 	$VisibleOnScreenNotifier2D.connect("screen_exited",queue_free)

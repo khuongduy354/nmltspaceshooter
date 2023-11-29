@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5xx0vnf5ij2r"]
+[gd_scene load_steps=15 format=3 uid="uid://c5xx0vnf5ij2r"]
 
 [ext_resource type="Texture2D" uid="uid://vfusddo0l0fh" path="res://assets/Backgrounds/background.png" id="1_anoqj"]
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_kgwp4"]
 [ext_resource type="FontFile" uid="uid://bdhpjd3wou0xy" path="res://assets/UI/ThaleahFat.ttf" id="2_3oldd"]
+[ext_resource type="PackedScene" uid="uid://cfxavqtalag7x" path="res://Utility/standard_audio.tscn" id="4_7p5ql"]
+[ext_resource type="AudioStream" uid="uid://dro04g0teeasl" path="res://assets/audio/Menumusic/The Workout - Audio Network UK.mp3" id="5_03jvp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jydvw"]
 bg_color = Color(0.360784, 0.266667, 0.615686, 1)
@@ -234,6 +236,11 @@ theme_override_colors/font_pressed_color = Color(0.631373, 0.631373, 0.631373, 1
 theme_override_fonts/font = ExtResource("2_3oldd")
 theme_override_font_sizes/font_size = 40
 text = "Enter"
+
+[node name="StandardAudio" parent="." instance=ExtResource("4_7p5ql")]
+stream = ExtResource("5_03jvp")
+volume_db = 24.0
+autoplay = true
 
 [connection signal="pressed" from="Background/StoryGameButton" to="." method="_on_startgame_button_pressed"]
 [connection signal="pressed" from="Background/Sound" to="." method="_on_soundsetting_button_pressed"]

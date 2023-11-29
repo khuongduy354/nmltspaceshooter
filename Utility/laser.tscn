@@ -1,7 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bbavwc7ru83hs"]
+[gd_scene load_steps=16 format=3 uid="uid://bbavwc7ru83hs"]
 
 [ext_resource type="Script" path="res://Utility/laser.gd" id="1_04vaq"]
 [ext_resource type="Texture2D" uid="uid://bx1ow188321ya" path="res://assets/VFX/white_glowing_circle.png" id="3_3tbep"]
+[ext_resource type="PackedScene" uid="uid://cfxavqtalag7x" path="res://Utility/standard_audio.tscn" id="4_iastr"]
+[ext_resource type="AudioStream" uid="uid://bi0sfevcy3itb" path="res://assets/audio/boss/Gun/LaserBeam.mp3" id="5_rvhsx"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="6_kwre7"]
 
 [sub_resource type="Gradient" id="Gradient_k068n"]
@@ -64,14 +66,13 @@ background_mode = 3
 glow_intensity = 3.99
 glow_strength = 1.04
 glow_hdr_threshold = 1.56
-adjustment_enabled = true
 adjustment_contrast = 1.34
 adjustment_saturation = 1.39
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ociqc"]
 polygon = PackedVector2Array(2.99991, -14, 14.9999, -10.0001, 15.0003, 43.9999, 14.0007, 104, -0.999266, 117, -14.9993, 104, -15, -3.99991)
 
-[node name="Laser" type="RayCast2D"]
+[node name="Laser" type="RayCast2D" groups=["laser"]]
 rotation = -1.57079
 target_position = Vector2(0, 4000)
 script = ExtResource("1_04vaq")
@@ -139,3 +140,7 @@ environment = SubResource("Environment_c8vks")
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2(-6.67572e-06, -1)
 occluder = SubResource("OccluderPolygon2D_ociqc")
+
+[node name="StandardAudio" parent="." instance=ExtResource("4_iastr")]
+stream = ExtResource("5_rvhsx")
+volume_db = 10.0

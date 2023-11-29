@@ -36,5 +36,4 @@ func shoot():
 
 	$fire_cooldown.start()
 	shot.emit()
-	$AudioStreamPlayer2D.play()
 	

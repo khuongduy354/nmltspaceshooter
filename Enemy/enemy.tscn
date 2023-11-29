@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckwx36ydstxxk"]
+[gd_scene load_steps=18 format=3 uid="uid://ckwx36ydstxxk"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_l0c2e"]
 [ext_resource type="PackedScene" uid="uid://bwb2brmvqr300" path="res://Utility/gun.tscn" id="2_r85m8"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://bi38duaq34p1k" path="res://assets/Objects/enemy-removebg-preview (1).png" id="7_anyu2"]
 [ext_resource type="PackedScene" uid="uid://bfbkt0sj1y8go" path="res://vfx/explosion2.tscn" id="8_nbrcx"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="9_l6upo"]
+[ext_resource type="AudioStream" uid="uid://bvb54swbr2spr" path="res://assets/audio/enemy/enenmydeath.mp3" id="10_i04ia"]
+[ext_resource type="PackedScene" uid="uid://cfxavqtalag7x" path="res://Utility/standard_audio.tscn" id="11_15178"]
+[ext_resource type="AudioStream" uid="uid://bq5rm8kv08d62" path="res://assets/audio/hitting sound/hittinngeffect.mp3" id="12_jqrxn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_chq4n"]
 resource_local_to_scene = true
@@ -144,6 +147,14 @@ amount = 10
 
 [node name="StandardLight" parent="." instance=ExtResource("9_l6upo")]
 energy = 1.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_i04ia")
+volume_db = 24.0
+
+[node name="HurtSound" parent="." instance=ExtResource("11_15178")]
+stream = ExtResource("12_jqrxn")
+volume_db = 12.0
 
 [connection signal="shot" from="Gun" to="." method="_on_gun_shot"]
 [connection signal="timeout" from="patrol_interval" to="." method="_on_patrol_interval_timeout"]

@@ -4,6 +4,7 @@ signal turned_off
 
 @export var laser_mwidth = 10
 @export var light_interval = 130
+@export var dmg_per_tick = 2
 
 @onready var cast_ptc = $CastingParticles
 @onready var colli_ptc = $CollisionParticles
@@ -19,6 +20,9 @@ func set_is_on(val):
 	tail.visible = is_on 
 	$Begin.visible = is_on 
 	beam_ptc.emitting = is_on
+	if is_on: 
+		$StandardAudio.play()	
+
 func apply_light(): 
 #	$WorldEnvironment.glow.enabled = isn
 	var pos = $Line2D.points[1]
@@ -43,7 +47,11 @@ func _physics_process(delta):
 		colli_ptc.position = cast_point
 		colli_ptc.global_rotation = get_collision_normal().angle() - PI/2
 		
-	
+		# deals dmg
+		if is_on: 
+			var player_hurtbox = get_collider()
+			player_hurtbox.owner._take_laser_damage(dmg_per_tick)
+
 	tail.position = cast_point
 	$Line2D.points[1]=cast_point 
 	

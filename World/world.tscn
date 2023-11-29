@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1b70jrguueoh"]
+[gd_scene load_steps=10 format=3 uid="uid://c1b70jrguueoh"]
 
 [ext_resource type="PackedScene" uid="uid://bfr44igkgfima" path="res://World/spawner.tscn" id="1_21gxd"]
 [ext_resource type="Script" path="res://World/world.gd" id="1_asl7k"]
 [ext_resource type="PackedScene" uid="uid://bks23t4amyvx2" path="res://UI/player_ui.tscn" id="6_245lb"]
 [ext_resource type="Script" path="res://World/Asteriod/AsteroidsManager.gd" id="7_350iw"]
 [ext_resource type="PackedScene" uid="uid://b5kqvwo8md4m" path="res://UI/pause_menu.tscn" id="8_jmpai"]
+[ext_resource type="PackedScene" uid="uid://cfxavqtalag7x" path="res://Utility/standard_audio.tscn" id="8_kfgk6"]
+[ext_resource type="AudioStream" uid="uid://dixlpq1cnljb4" path="res://assets/audio/gameplaysound/gameplaymusic.mp3" id="9_eot2f"]
 [ext_resource type="PackedScene" uid="uid://csn57a6yu2cxa" path="res://World/withplanet-bg.tscn" id="12_j7e43"]
 [ext_resource type="PackedScene" uid="uid://dgxywwrc3i4e8" path="res://World/game_flow_manager.tscn" id="13_m55q6"]
 
@@ -52,5 +54,10 @@ position = Vector2(5543, 2866)
 
 [node name="boss_spawn" type="Marker2D" parent="Positions"]
 position = Vector2(5666, 2863)
+
+[node name="StandardAudio" parent="." instance=ExtResource("8_kfgk6")]
+stream = ExtResource("9_eot2f")
+volume_db = 10.0
+autoplay = true
 
 [connection signal="timeout" from="AsteroidCheck" to="." method="_on_asteroid_check_timeout"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://oakjgyh1v2o8"]
+[gd_scene load_steps=7 format=3 uid="uid://oakjgyh1v2o8"]
 
 [ext_resource type="Script" path="res://Utility/bullet.gd" id="1_ug2q0"]
 [ext_resource type="Texture2D" uid="uid://bul78v8wxmg48" path="res://assets/VFX/nPoQD5-removebg-preview.png" id="2_1ixb3"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="3_2meke"]
+[ext_resource type="AudioStream" uid="uid://bhg5qvg0rlxqp" path="res://assets/audio/enemy/enemygun.mp3" id="4_o1pv4"]
 
 [sub_resource type="GDScript" id="GDScript_dfyh7"]
 script/source = "extends Area2D
@@ -39,3 +40,8 @@ scale = Vector2(6, 6)
 texture = ExtResource("2_1ixb3")
 region_enabled = true
 region_rect = Rect2(191, 207, 15, 6)
+
+[node name="StandardAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_o1pv4")
+volume_db = 7.29
+max_distance = 5000.0

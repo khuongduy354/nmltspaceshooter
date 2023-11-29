@@ -125,9 +125,10 @@ func _on_hurtbox_area_entered(area):
 		animp.play("white_flash")
 		
 		area.owner._damage_dealt()
-		
+		$HurtSound.play()
 		if(hp <= 0):
 			set_physics_process(false)
+			$AudioStreamPlayer2D.play()
 			await get_tree().create_timer(.5).timeout
 			destroyed.emit()
 			queue_free()
