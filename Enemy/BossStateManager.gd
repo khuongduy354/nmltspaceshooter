@@ -7,7 +7,7 @@ class_name BossStateManager
 @export var triple_duration = 5 
 @export var none_shoot_duration = 2
 @export var spawn_duration = 3
-@export var spawn_count = 2 
+@export var spawn_count = 1
 
 enum shoot_patterns {LASER, CIRCLE, STRAIGHT, NONE, SPAWN, TRIPLE}
 

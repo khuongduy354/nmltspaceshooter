@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ch6fjww4kthl7"]
+[gd_scene load_steps=19 format=3 uid="uid://ch6fjww4kthl7"]
 
 [ext_resource type="Script" path="res://Enemy/Boss.gd" id="1_rndc0"]
 [ext_resource type="Script" path="res://Enemy/BossDecisionPicker.gd" id="2_7w34k"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dqwdievi228ip" path="res://vfx/hit_particles.tscn" id="7_54llg"]
 [ext_resource type="PackedScene" uid="uid://c7h3ale4lmqc8" path="res://vfx/explosion_2_chain.tscn" id="8_8kv8a"]
 [ext_resource type="Script" path="res://Enemy/BossStateManager.gd" id="8_u2m2k"]
+[ext_resource type="PackedScene" uid="uid://b2vsv6g2pplwd" path="res://Utility/general_healthbar.tscn" id="9_aqtph"]
+[ext_resource type="PackedScene" uid="uid://cfxavqtalag7x" path="res://Utility/standard_audio.tscn" id="10_vtxy6"]
+[ext_resource type="AudioStream" uid="uid://5jyqp3q1uba3" path="res://assets/audio/boss/Bossdeath.wav" id="11_guvxo"]
+[ext_resource type="AudioStream" uid="uid://bq5rm8kv08d62" path="res://assets/audio/hitting sound/hittinngeffect.mp3" id="12_gfgce"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m3d3c"]
 radius = 103.564
@@ -131,6 +135,8 @@ collision_mask = 8
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_m3d3c")
 
+[node name="Death" parent="." instance=ExtResource("8_8kv8a")]
+
 [node name="HitParticles2" type="Node2D" parent="."]
 
 [node name="HitParticles" parent="HitParticles2" instance=ExtResource("7_54llg")]
@@ -147,8 +153,6 @@ amount = 20
 position = Vector2(-5.76385, 224.79)
 rotation = -4.71238
 amount = 20
-
-[node name="Death" parent="HitParticles2" instance=ExtResource("8_8kv8a")]
 
 [node name="Lighting" type="Node2D" parent="."]
 
@@ -176,6 +180,21 @@ energy = 1.0
 libraries = {
 "": SubResource("AnimationLibrary_kkj3s")
 }
+
+[node name="GeneralHealthBar" parent="." instance=ExtResource("9_aqtph")]
+offset_left = -78.3884
+offset_top = -280.123
+offset_right = -30.3884
+offset_bottom = -240.123
+scale = Vector2(3.91295, 3.91295)
+
+[node name="StandardAudio" parent="." instance=ExtResource("10_vtxy6")]
+stream = ExtResource("11_guvxo")
+volume_db = 24.0
+
+[node name="HurtSound" parent="." instance=ExtResource("10_vtxy6")]
+stream = ExtResource("12_gfgce")
+volume_db = 12.0
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://b3ihofu15tb7d"]
+[gd_scene load_steps=21 format=3 uid="uid://b3ihofu15tb7d"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_5m4uk"]
 [ext_resource type="PackedScene" uid="uid://bwb2brmvqr300" path="res://Utility/gun.tscn" id="3_6gaby"]
+[ext_resource type="Shader" path="res://vfx/white.gdshader" id="3_h76fk"]
 [ext_resource type="Texture2D" uid="uid://donmcfpt3dyst" path="res://assets/Objects/PLAYERSHIP/01.png" id="3_lfui5"]
 [ext_resource type="PackedScene" uid="uid://dpq8l77snu0yu" path="res://Utility/player_bullet.tscn" id="4_5mx2c"]
 [ext_resource type="PackedScene" uid="uid://4ld00o7gyjxj" path="res://vfx/trail.tscn" id="5_qs2tt"]
@@ -9,6 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://cl1yt4kd5awk8" path="res://vfx/ShakeCamera.tscn" id="6_6wddw"]
 [ext_resource type="PackedScene" uid="uid://bf66rpi2eibve" path="res://vfx/Muzzle.tscn" id="7_3nmef"]
 [ext_resource type="Texture2D" uid="uid://dicvcfc7q84yw" path="res://assets/Objects/PLAYERSHIP/031.png" id="9_ttlat"]
+[ext_resource type="PackedScene" uid="uid://cfxavqtalag7x" path="res://Utility/standard_audio.tscn" id="11_twtcb"]
+[ext_resource type="AudioStream" uid="uid://bq5rm8kv08d62" path="res://assets/audio/hitting sound/hittinngeffect.mp3" id="12_xllb2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pbvjq"]
+resource_local_to_scene = true
 
 [sub_resource type="Animation" id="Animation_7qdiu"]
 length = 0.001
@@ -64,6 +70,67 @@ _data = {
 "idle": SubResource("Animation_ko3tx")
 }
 
+[sub_resource type="Animation" id="Animation_3nkgp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:material:shader_parameter/whitening")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:material:shader")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_sgjvi"]
+resource_name = "white_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:material:shader_parameter/whitening")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:material:shader")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_h76fk"), null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ulfqq"]
+_data = {
+"RESET": SubResource("Animation_3nkgp"),
+"white_flash": SubResource("Animation_sgjvi")
+}
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 4
 script = ExtResource("1_5m4uk")
@@ -84,6 +151,7 @@ position = Vector2(-55, 0)
 default_color = Color(0, 0.427451, 0.364706, 1)
 
 [node name="Icon" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_pbvjq")
 rotation = 1.57079
 scale = Vector2(4, 4)
 texture = ExtResource("3_lfui5")
@@ -127,13 +195,23 @@ text = "GUEST"
 [node name="Lighting" type="Node2D" parent="."]
 
 [node name="StandardLight" parent="Lighting" instance=ExtResource("6_5y0gn")]
-position = Vector2(92, 0)
-energy = 0.8
+position = Vector2(116, -2)
+energy = 0.3
 
 [node name="TailLight" parent="Lighting" instance=ExtResource("6_5y0gn")]
 position = Vector2(-86, 0)
 color = Color(0.129412, 0.521569, 0.54902, 1)
 energy = 5.0
 
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ulfqq")
+}
+
+[node name="HurtSound" parent="." instance=ExtResource("11_twtcb")]
+stream = ExtResource("12_xllb2")
+volume_db = 12.0
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="shot" from="Gun" to="." method="_on_gun_shot"]

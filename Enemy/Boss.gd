@@ -3,12 +3,13 @@ class_name BossI
 
 signal spawned_mob
 signal destroyed
+signal hp_changed 
 
 @export var move_speed = 25000
 @export var orbiting_speed = 15000
 @export var gun_counts = 12
 @export var orbiting_distance = 1500
-@export var max_hp = 6000
+@export var max_hp = 600
 
 @onready var guns = $Guns
 @onready var sdur = $shoot_duration
@@ -21,12 +22,26 @@ signal destroyed
 var primary_gun: Gun = null
 var player:Player = null 
 var should_look = true
-var current_hp = max_hp
+var current_hp = max_hp : set = set_hp 
+
+func set_hp(val): 
+	current_hp = val 
+	hp_changed.emit(current_hp)
+	if(current_hp <= 0):
+		fsm.set_physics_process(false)
+		$Death.emitting = true
+		destroyed.emit()
+		$StandardAudio.play()
+		laser.turn_off()
+		$Lighting.visible = false 
+		await  get_tree().create_timer(5).timeout
+		queue_free()
 
 func _initialize_(p: Player): 
 	player = p
 	
 func _ready():
+	SoundManager.play_sound("BossMusic")
 	fsm._initialize_(self)
 	setup_gun()
 	picker._initialize_(self)
@@ -73,6 +88,7 @@ func update_debug():
 	$Debug.rotation_degrees = 0
 	
 
+		
 func setup_gun(): 
 	# load 12 guns around boss 
 	var base_angle = 0 
@@ -126,11 +142,7 @@ func _on_hurtbox_area_entered(area):
 		
 		# particles 
 		apply_hit_particles(area.global_position)
-		
 		area.owner._damage_dealt()
-		if(current_hp <= 0):
-			destroyed.emit()
-			$HitParticles2/Death.emitting = true
-			queue_free()
-#		Global.frame_freeze(0.8,.5)
+		$HurtSound.play()
+		Global.frame_freeze(0.8,.5)
 	

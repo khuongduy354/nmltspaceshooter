@@ -33,15 +33,25 @@ func _ready():
 	$Gun/Camera2D.limit_bottom = Global.GAME_HEIGHT
 	pname.text = Global.player_name
 
-
-	
-func _physics_process(delta):
+@export var wasd_control = true
+func get_dir():
 	# look 
-	var dir = global_position.direction_to(get_global_mouse_position())
-	if should_look: look_at(get_global_mouse_position())
+	# space mode
+	var dir = Vector2.ZERO
+	if !wasd_control: 
+		if Input.is_action_pressed("move"):
+			dir = global_position.direction_to(get_global_mouse_position())
+	else: 
+		dir.x = Input.get_axis("ui_left","ui_right")
+		dir.y = Input.get_axis("ui_up","ui_down")
+	return dir
 	
+
+func _physics_process(delta):
+	if should_look: look_at(get_global_mouse_position())
+	var dir = get_dir()
 	# move or idle 
-	if Input.is_action_pressed("move"): 
+	if dir != Vector2.ZERO: 
 		accelerate(dir,delta)
 		tail_light.enabled = true
 		animp.play("fly")
@@ -49,7 +59,7 @@ func _physics_process(delta):
 		tail_light.enabled = false
 		apply_friction(delta)
 		animp.play("idle")
-		
+
 	# shoot
 	if Input.is_action_pressed("mouse_lclick"): 
 		cam.shake(0.2,10)
@@ -87,3 +97,25 @@ func _on_gun_shot():
 func _on_hurtbox_area_entered(area):
 	if area.is_in_group("enemy_bullet"): 
 		current_health -= area.owner.damage
+		$AnimationPlayer2.play("white_flash") 
+		area.owner._damage_dealt()
+		apply_hit_particles(area.global_position)
+		$HurtSound.play()
+		
+func apply_hit_particles(impact_pos): 
+	
+	#explosions
+	var explosion2 = preload("res://vfx/explosion2.tscn").instantiate()
+	add_child(explosion2)
+	explosion2.global_position = impact_pos
+	explosion2.emitting = true
+	
+	# cleanup
+	await get_tree().create_timer(explosion2.lifetime).timeout
+	explosion2.queue_free()
+	
+
+func _take_laser_damage(dmg): 
+	current_health -= dmg
+	$AnimationPlayer2.play("white_flash") 
+

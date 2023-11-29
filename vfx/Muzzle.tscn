@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bf66rpi2eibve"]
+[gd_scene load_steps=6 format=3 uid="uid://bf66rpi2eibve"]
 
 [ext_resource type="Script" path="res://vfx/Muzzle.gd" id="1_acs7j"]
 [ext_resource type="Texture2D" uid="uid://cc50sbngg01ki" path="res://assets/VFX/Laser/light.png" id="1_i3d6q"]
 [ext_resource type="Texture2D" uid="uid://dt03gbayi58hy" path="res://assets/VFX/muzzle.png" id="3_k8cmt"]
 [ext_resource type="PackedScene" uid="uid://dqwdievi228ip" path="res://vfx/hit_particles.tscn" id="4_ciqjn"]
+[ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="5_jdob4"]
 
 [node name="PointLight2D" type="PointLight2D"]
 enabled = false
+color = Color(0.454902, 0.0470588, 0, 1)
 energy = 50.0
 texture = ExtResource("1_i3d6q")
 script = ExtResource("1_acs7j")
@@ -17,6 +19,10 @@ position = Vector2(22, 2)
 texture = ExtResource("3_k8cmt")
 region_enabled = true
 region_rect = Rect2(80, 208, 56, 24)
+
+[node name="StandardLight" parent="Muzzle" instance=ExtResource("5_jdob4")]
+color = Color(0.721569, 0.121569, 0.0941176, 1)
+energy = 10.0
 
 [node name="HitParticles" parent="." instance=ExtResource("4_ciqjn")]
 scale = Vector2(2, 2)

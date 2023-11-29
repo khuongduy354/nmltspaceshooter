@@ -7,8 +7,8 @@ var prob_table = {
 	"NONE":5, 
 	"STRAIGHT":25, 
 	"LASER":20,
-	"SPAWN":15,
-	"TRIPLE":15, # pick 3 guns, 45 degrees spread
+	"SPAWN":10,
+	"TRIPLE":20, # pick 3 guns, 45 degrees spread
 }
 
 func _initialize_(_b:BossI): 
