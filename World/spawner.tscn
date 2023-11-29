@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfr44igkgfima"]
+[gd_scene load_steps=11 format=3 uid="uid://bfr44igkgfima"]
 
 [ext_resource type="Script" path="res://World/spawner.gd" id="1_inap3"]
 [ext_resource type="Texture2D" uid="uid://ci00rng45b3xj" path="res://assets/Objects/galaxy-animated.png" id="2_fjple"]
 [ext_resource type="Shader" path="res://vfx/white.gdshader" id="2_m0qm2"]
+[ext_resource type="PackedScene" uid="uid://b2vsv6g2pplwd" path="res://Utility/general_healthbar.tscn" id="4_ig28e"]
 
 [sub_resource type="Animation" id="Animation_fbivc"]
 length = 0.001
@@ -158,6 +159,13 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 rotation = 0.785397
 shape = SubResource("CapsuleShape2D_pthrg")
+
+[node name="GeneralHealthBar" parent="." instance=ExtResource("4_ig28e")]
+offset_left = -82.0
+offset_top = -274.0
+offset_right = 58.0
+offset_bottom = -212.0
+scale = Vector2(3.83418, 3.83418)
 
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

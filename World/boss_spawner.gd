@@ -1,5 +1,19 @@
 extends Node2D
 
+
+signal hp_changed
+
+@export var max_hp = 1000
+
+var hp = max_hp: set = set_hp 
+
+func set_hp(val): 
+	hp = val
+	hp_changed.emit(hp)
+	
+	if hp <= 0: 
+		hp = 0
+		
 func _ready(): 
 	spawn_boss()
 	

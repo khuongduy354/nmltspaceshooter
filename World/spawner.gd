@@ -1,10 +1,11 @@
 extends Node2D
 
 signal spawned_mob
+signal hp_changed 
 
 @export var max_hp = 1000
 @export var spawn_radius = 50
-@export var max_mob_counts = 3
+@export var max_mob_counts = 2
 @export var base_shield = 10
 @export var spawn_interval = 3
 
@@ -24,11 +25,11 @@ func _ready():
 
 func set_hp(val): 
 	hp = val
+	hp_changed.emit(hp)
 	if hp <= 0 and !destroyed: 
 		Global.spawner_destroyed.emit()
 		queue_free()
 		destroyed = true
-
 func gen_spawn_pos(): 
 	var x = randf_range(-spawn_radius,spawn_radius)
 	var y = randf_range(-spawn_radius,spawn_radius)
@@ -71,5 +72,6 @@ func _on_animation_player_animation_finished(anim_name):
 		hbshape.set_deferred("disabled",true)
 		
 func _on_mob_destroyed(): 
-	hp -= 20
+#	hp -= 20
+	# to be continue
 	Global.destroyed_mobs += 1
