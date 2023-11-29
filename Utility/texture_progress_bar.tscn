@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c63a5ynciwq1u"]
+
+[ext_resource type="Texture2D" uid="uid://0k6c3irs0uxt" path="res://assets/UI/05.png" id="1_lhq5q"]
+[ext_resource type="Script" path="res://Utility/texture_progress_bar.gd" id="2_rvf2b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0wt4"]
+atlas = ExtResource("1_lhq5q")
+region = Rect2(240, 20, 48, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8xu4"]
+atlas = ExtResource("1_lhq5q")
+region = Rect2(0, 20, 48, 8)
+
+[node name="GeneralHealthBar" type="TextureProgressBar"]
+offset_right = 40.0
+offset_bottom = 40.0
+value = 100.0
+texture_under = SubResource("AtlasTexture_c0wt4")
+texture_progress = SubResource("AtlasTexture_t8xu4")
+script = ExtResource("2_rvf2b")

@@ -7,6 +7,9 @@ func _ready():
 
 func set_time(val): 
 	p_info.set_time(val)
+	
+func set_max_health(val): 
+	healthbar.max_value = val
+	
 func set_health(val): 
 	healthbar.value = val
-	
