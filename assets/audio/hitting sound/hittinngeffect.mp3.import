@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bq5rm8kv08d62"
+path="res://.godot/imported/hittinngeffect.mp3-590b3e6d6e4f2fa385814ae42550cb7b.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/hitting sound/hittinngeffect.mp3"
+dest_files=["res://.godot/imported/hittinngeffect.mp3-590b3e6d6e4f2fa385814ae42550cb7b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
