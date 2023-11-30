@@ -1,5 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5qwjrhbf4ex5"]
+[gd_scene load_steps=4 format=3 uid="uid://b5qwjrhbf4ex5"]
 
 [ext_resource type="PackedScene" uid="uid://bvqtjxf6nhpvc" path="res://Utility/drop_item.tscn" id="1_egchf"]
+[ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="2_quafa"]
+[ext_resource type="Texture2D" uid="uid://ct3h766g1tcrs" path="res://assets/UI/All.png" id="2_rn5qd"]
 
 [node name="Health" instance=ExtResource("1_egchf")]
+
+[node name="Hearts" parent="." index="1"]
+position = Vector2(-1, -12)
+scale = Vector2(9.00694, 9.00694)
+texture = ExtResource("2_rn5qd")
+region_enabled = true
+region_rect = Rect2(114, 110, 12, 16)
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, 3)
+
+[node name="StandardLight" parent="." index="3" instance=ExtResource("2_quafa")]
+color = Color(0.0156863, 0.231373, 0.258824, 1)
+energy = 2.98

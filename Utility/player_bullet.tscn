@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpq8l77snu0yu"]
+[gd_scene load_steps=7 format=3 uid="uid://dpq8l77snu0yu"]
 
 [ext_resource type="Script" path="res://Utility/bullet.gd" id="1_x3ddi"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="3_yxuhg"]
 [ext_resource type="PackedScene" uid="uid://4ld00o7gyjxj" path="res://vfx/trail.tscn" id="4_61ivj"]
 [ext_resource type="Texture2D" uid="uid://bul78v8wxmg48" path="res://assets/VFX/nPoQD5-removebg-preview.png" id="4_ypiks"]
+[ext_resource type="AudioStream" uid="uid://cidt2h1fmpl3l" path="res://assets/audio/player/playergun.mp3" id="5_sbqar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bu2b"]
 size = Vector2(161, 47)
@@ -21,17 +22,22 @@ scale = Vector2(0.3, 0.1)
 
 [node name="HitBox" type="Area2D" parent="." groups=["player_bullet"]]
 collision_layer = 8
-collision_mask = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-0.5, -0.5)
+scale = Vector2(1.5777, 1.5777)
 shape = SubResource("RectangleShape2D_7bu2b")
 
 [node name="Icon" type="Sprite2D" parent="."]
 self_modulate = Color(0.360784, 0.635294, 1, 1)
-scale = Vector2(8, 8)
+scale = Vector2(12.6317, 12.6317)
 texture = ExtResource("4_ypiks")
 region_enabled = true
 region_rect = Rect2(168, 207, 20, 6)
 
 [node name="Trail" parent="." instance=ExtResource("4_61ivj")]
+
+[node name="StandardAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_sbqar")
+volume_db = 10.0

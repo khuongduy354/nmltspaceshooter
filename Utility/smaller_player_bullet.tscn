@@ -4,3 +4,6 @@
 
 [node name="smaller_player_bullet" instance=ExtResource("1_ygiu0")]
 scale = Vector2(0.210804, 0.210804)
+
+[node name="StandardAudio" parent="." index="5"]
+volume_db = -30.0

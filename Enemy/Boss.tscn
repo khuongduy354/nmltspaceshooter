@@ -94,10 +94,10 @@ scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_m3d3c")
 
 [node name="Debug" type="Label" parent="."]
-offset_left = -219.603
-offset_top = -468.025
-offset_right = 288.397
-offset_bottom = -242.025
+offset_left = -262.255
+offset_top = -541.802
+offset_right = 295.745
+offset_bottom = -315.802
 theme_override_font_sizes/font_size = 80
 text = "I'm not a boss.
 I'm a leader!"
@@ -113,10 +113,11 @@ one_shot = true
 
 [node name="Laser" parent="." instance=ExtResource("3_sylkh")]
 position = Vector2(68.0135, 1.90735e-06)
-target_position = Vector2(0, 1500)
+target_position = Vector2(0, 6000)
 collide_with_areas = true
 collide_with_bodies = false
 laser_mwidth = 40
+dmg_per_tick = 3
 
 [node name="Sprite" type="Sprite2D" parent="."]
 modulate = Color(0.9, 0.9, 0.9, 1)

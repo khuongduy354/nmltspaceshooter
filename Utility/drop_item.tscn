@@ -7,6 +7,7 @@
 radius = 65.7343
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_um536"]
+height = 24.0
 
 [node name="DropItem" type="CharacterBody2D"]
 collision_layer = 4

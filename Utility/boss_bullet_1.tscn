@@ -36,5 +36,5 @@ script = SubResource("GDScript_e5sn8")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox2" index="0"]
 polygon = PackedVector2Array(-89, 99, 96, 30, 105, 13, 104, -18, 68, -49, 50, -52, 32, -72, -87, -100, -62, -69, -86, -31, -41, 0, -57, 19, -100, 24, -89, 51, -57, 41, -45, 62, -80, 65, -64, 75, -65, 84)
 
-[node name="StandardAudio" parent="." index="5" instance=ExtResource("2_sau3p")]
+[node name="StandardAudio2" parent="." index="5" instance=ExtResource("2_sau3p")]
 stream = ExtResource("2_s42mf")

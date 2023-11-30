@@ -5,7 +5,7 @@ signal dealt_damage
 
 @export var BULLET_SPEED = 1000
 @export var damage = 30
-@export var max_distance = 3500
+@export var max_distance = 6000
 
 var original_pos = null
 var veloc = Vector2.ZERO

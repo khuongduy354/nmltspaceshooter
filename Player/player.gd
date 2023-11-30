@@ -5,8 +5,8 @@ signal bullet_changed
 signal health_changed 
 
 @export var max_speed = 60000
-@export var accel = 2000
-@export var friction = 800
+@export var accel = 4000
+@export var friction = 2000
 @export var max_health = 1000
 @export var drag = 0.5
 
