@@ -1,9 +1,80 @@
-[gd_scene load_steps=3 format=3 uid="uid://b16r8yqobddc6"]
+[gd_scene load_steps=10 format=3 uid="uid://b16r8yqobddc6"]
 
 [ext_resource type="Script" path="res://CutScene/cut_scene_manger.gd" id="1_chpbg"]
 [ext_resource type="PackedScene" uid="uid://cgog0rxe4gb65" path="res://vfx/swipe_transistion.tscn" id="2_fl3bl"]
+[ext_resource type="Texture2D" uid="uid://ct3h766g1tcrs" path="res://assets/UI/All.png" id="3_swvvk"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qo8g2"]
+load_path = "res://.godot/imported/All.png-d902ca614794033fb3845e1b6c447e94.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb1tc"]
+atlas = SubResource("CompressedTexture2D_qo8g2")
+region = Rect2(195, 32, 20, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1dq6g"]
+load_path = "res://.godot/imported/All.png-d902ca614794033fb3845e1b6c447e94.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilu04"]
+atlas = SubResource("CompressedTexture2D_1dq6g")
+region = Rect2(217, 32, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k312"]
+atlas = ExtResource("3_swvvk")
+region = Rect2(195, 0, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4byy"]
+atlas = ExtResource("3_swvvk")
+region = Rect2(217, 0, 20, 16)
 
 [node name="CutSceneManger" type="Node2D"]
 script = ExtResource("1_chpbg")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 22.0
+offset_top = 416.0
+offset_right = 270.0
+offset_bottom = 432.0
+grow_horizontal = 2
+scale = Vector2(4, 4)
+
+[node name="Prev" type="TextureButton" parent="CanvasLayer/HBoxContainer"]
+visible = false
+layout_mode = 2
+focus_mode = 1
+texture_normal = SubResource("AtlasTexture_vb1tc")
+texture_pressed = SubResource("AtlasTexture_ilu04")
+
+[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer/Prev"]
+layout_mode = 0
+offset_top = -16.25
+offset_right = 40.0
+offset_bottom = 9.75
+theme_override_font_sizes/font_size = 12
+text = "Prev"
+
+[node name="Control" type="Control" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+
+[node name="Next" type="TextureButton" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_5k312")
+texture_pressed = SubResource("AtlasTexture_c4byy")
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Next"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -16.25
+offset_right = 36.0
+offset_bottom = 9.75
+theme_override_font_sizes/font_size = 12
+text = "Next"
+
 [node name="SwipeTransistion" parent="." instance=ExtResource("2_fl3bl")]
+layer = 2
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Prev" to="." method="_on_prev_pressed"]

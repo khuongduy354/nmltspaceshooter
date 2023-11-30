@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dt23itom2etsx"]
+[gd_scene load_steps=9 format=3 uid="uid://dt23itom2etsx"]
 
 [ext_resource type="PackedScene" uid="uid://c4uvy1txfqbsk" path="res://World/DarkStar-bg.tscn" id="1_sidu1"]
 [ext_resource type="Script" path="res://CutScene/kepler_and_mars.gd" id="1_tfgv1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ddv3nx22abv56" path="res://Utility/mars_spinning.tscn" id="3_n262a"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="5_sklrx"]
 [ext_resource type="Texture2D" uid="uid://dextw5to4c0np" path="res://assets/Objects/enemy-PhotoRoom.png-PhotoRoom (2).png" id="5_sutjk"]
+[ext_resource type="PackedScene" uid="uid://c6a66p24wwy0d" path="res://UI/Dialouge/textbox.tscn" id="8_l5qtj"]
 
 [node name="KeplerAndMars" type="Node2D"]
 script = ExtResource("1_tfgv1")
@@ -122,3 +123,20 @@ texture = ExtResource("5_sutjk")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.564706, 0.564706, 0.564706, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Textbox" parent="CanvasLayer" instance=ExtResource("8_l5qtj")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -326.0
+offset_top = -116.0
+offset_right = 954.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 0
+prescripts = 1
+initial_text = "Two groups of Scientists, propose migrating people to 2 other planets: Mars and Kepler B52 to cope with the situation.......but these 2 don't seems get along with each other,"

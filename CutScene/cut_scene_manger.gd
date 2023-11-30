@@ -8,12 +8,11 @@ extends Node2D
 @onready var KeplerWithAlien = preload("res://CutScene/kepler_with_aliens.tscn")
 @onready var world1rift = preload("res://CutScene/world_1_rift.tscn")
 
+@onready var next =$CanvasLayer/HBoxContainer/Next
+@onready var prev = $CanvasLayer/HBoxContainer/Prev
 @onready var trans = $SwipeTransistion
 
-func play_sequential_cutscenes(scenes: Array[PackedScene],times: Array[int]): 
-	if scenes.size() != times.size(): 
-		print("ERROR: unmatched scene and its duration")
-		return 
+func play_sequential_cutscenes(scenes): 
 	var idx = 0 
 	for scene in scenes: 
 		
@@ -22,7 +21,7 @@ func play_sequential_cutscenes(scenes: Array[PackedScene],times: Array[int]):
 		trans.animp.play("open")
 		await trans.opened
 		
-		await wait(times[idx])
+		await next.pressed
 		
 		trans.animp.play("close")
 		await trans.closed
@@ -32,8 +31,8 @@ func play_sequential_cutscenes(scenes: Array[PackedScene],times: Array[int]):
 
 func pregame_flow(): 
 	var scenes = [EarthOnly,KeplerMar,HumanWar,KeplerRiftOpening,KeplerAliensAttack,KeplerWithAlien,world1rift]
-	var durations = [5,5,5,10,8,5,5]
-	play_sequential_cutscenes(scenes,durations)
+#	var durations = [5,5,5,10,8,5,5]
+	play_sequential_cutscenes(scenes)
 
 	
 func wait(t): 
@@ -42,3 +41,5 @@ func wait(t):
 	
 func _ready():
 	pregame_flow()
+
+

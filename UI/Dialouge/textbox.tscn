@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6a66p24wwy0d"]
+
+[ext_resource type="Script" path="res://UI/Dialouge/textbox.gd" id="1_22s7r"]
+[ext_resource type="Texture2D" uid="uid://i15a3dtb5cfr" path="res://assets/TextBox_Sci-Fi_02_transparent.png" id="2_440e6"]
+[ext_resource type="FontFile" uid="uid://bdrxrrn44bc7i" path="res://assets/UI/font/FreeUniversal-Regular.ttf" id="3_510me"]
+[ext_resource type="Script" path="res://UI/Dialouge/SoundQueue.gd" id="4_1qn2m"]
+[ext_resource type="PackedScene" uid="uid://cfxavqtalag7x" path="res://Utility/standard_audio.tscn" id="4_iwhr5"]
+[ext_resource type="AudioStream" uid="uid://bugwvoxwq5n6t" path="res://assets/audio/switch-click-and-beep-001a-11602.mp3" id="5_vn7e4"]
+
+[node name="Textbox" type="MarginContainer"]
+offset_right = 156.0
+offset_bottom = 76.0
+scale = Vector2(0.462517, 0.462517)
+script = ExtResource("1_22s7r")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_440e6")
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+visible = false
+z_index = -3
+layout_mode = 2
+offset_left = 346.0
+offset_top = 67.0
+offset_right = 2506.0
+offset_bottom = 255.0
+scale = Vector2(0.398357, 0.654135)
+color = Color(0.00784314, 0.00784314, 0.137255, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 362
+theme_override_constants/margin_top = -50
+theme_override_constants/margin_right = 91
+theme_override_constants/margin_bottom = -46
+
+[node name="Label" type="Label" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("3_510me")
+theme_override_font_sizes/font_size = 28
+autowrap_mode = 3
+
+[node name="LetterDisplayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SoundQueue" type="Node" parent="."]
+script = ExtResource("4_1qn2m")
+
+[node name="StandardAudio" parent="SoundQueue" instance=ExtResource("4_iwhr5")]
+stream = ExtResource("5_vn7e4")
+
+[node name="StandardAudio2" parent="SoundQueue" instance=ExtResource("4_iwhr5")]
+stream = ExtResource("5_vn7e4")
+
+[connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]

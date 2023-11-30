@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqct4xkmd5g14"]
+[gd_scene load_steps=8 format=3 uid="uid://dqct4xkmd5g14"]
 
 [ext_resource type="Script" path="res://CutScene/EarthOnly.gd" id="1_e3c1k"]
 [ext_resource type="PackedScene" uid="uid://c4uvy1txfqbsk" path="res://World/DarkStar-bg.tscn" id="1_rsamb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dextw5to4c0np" path="res://assets/Objects/enemy-PhotoRoom.png-PhotoRoom (2).png" id="4_4drrg"]
 [ext_resource type="Texture2D" uid="uid://cekbbqinv8j58" path="res://assets/Objects/PLAYERSHIP/02.png" id="4_7huwp"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="6_dn2ia"]
+[ext_resource type="PackedScene" uid="uid://c6a66p24wwy0d" path="res://UI/Dialouge/textbox.tscn" id="7_as4xq"]
 
 [node name="EarthOnly" type="Node2D"]
 script = ExtResource("1_e3c1k")
@@ -17,12 +18,6 @@ position = Vector2(485, 209)
 scale = Vector2(3.30883, 3.30883)
 
 [node name="Sprites2" type="Node" parent="."]
-
-[node name="Enemy-photoRoom_png-photoRoom(2)" type="Sprite2D" parent="Sprites2"]
-position = Vector2(313, 361)
-rotation = 1.09078
-scale = Vector2(0.300006, 0.300006)
-texture = ExtResource("4_4drrg")
 
 [node name="Enemy-photoRoom_png-photoRoom(2)2" type="Sprite2D" parent="Sprites2"]
 position = Vector2(233, 215)
@@ -44,6 +39,12 @@ texture = ExtResource("4_4drrg")
 
 [node name="Enemy-photoRoom_png-photoRoom(2)5" type="Sprite2D" parent="Sprites2"]
 position = Vector2(242, 308)
+rotation = 1.09078
+scale = Vector2(0.300006, 0.300006)
+texture = ExtResource("4_4drrg")
+
+[node name="Enemy-photoRoom_png-photoRoom(2)" type="Sprite2D" parent="Sprites2"]
+position = Vector2(313, 361)
 rotation = 1.09078
 scale = Vector2(0.300006, 0.300006)
 texture = ExtResource("4_4drrg")
@@ -74,3 +75,20 @@ energy = 0.3
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.690196, 0.690196, 0.690196, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Textbox" parent="CanvasLayer" instance=ExtResource("7_as4xq")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -326.0
+offset_top = -116.0
+offset_right = 954.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 0
+prescripts = 0
+initial_text = "In 2050, our civilization is able to travel to outer space, colonize, and explore many planets with the lastest AeroSpace technology."
