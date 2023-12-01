@@ -14,6 +14,7 @@ func drop_item():
 					node = preload("res://Utility/health.tscn").instantiate()
 	if node == null: 
 		return 
-	get_tree().root.add_child(node)	
+	if Global.drop_item_list: 
+		Global.drop_item_list.add_child(node)	
 	node.global_position = global_position
 	

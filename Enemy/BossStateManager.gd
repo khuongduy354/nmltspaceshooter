@@ -18,6 +18,9 @@ var shoot_pattern = shoot_patterns.NONE : set = set_shoot_state
 
 # setters
 func set_shoot_state(val):
+	if !b.player: 
+		return 
+
 	state_exit(shoot_pattern)
 	shoot_pattern = val
 	state_enter(shoot_pattern)
@@ -29,6 +32,8 @@ func _initialize_(_b:BossI):
 	shoot_pattern = shoot_patterns.NONE
 
 func _physics_process(delta):
+	if !b.player: 
+		return 
 	match shoot_pattern:
 		shoot_patterns.CIRCLE: 
 			_circle()

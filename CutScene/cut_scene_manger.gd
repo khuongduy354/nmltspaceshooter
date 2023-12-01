@@ -1,5 +1,7 @@
 extends Node2D
+class_name CutSceneManager 
 
+signal finished
 @onready var EarthOnly = preload("res://CutScene/EarthOnly.tscn")
 @onready var KeplerMar = preload("res://CutScene/kepler_and_mars.tscn")
 @onready var HumanWar = preload("res://CutScene/human_war.tscn")
@@ -28,6 +30,7 @@ func play_sequential_cutscenes(scenes):
 		node.queue_free()
 		
 		idx += 1 
+	finished.emit()
 
 func pregame_flow(): 
 	var scenes = [EarthOnly,KeplerMar,HumanWar,KeplerRiftOpening,KeplerAliensAttack,KeplerWithAlien,world1rift]
@@ -39,7 +42,9 @@ func wait(t):
 	await get_tree().create_timer(t).timeout
 	
 	
-func _ready():
-	pregame_flow()
 
 
+
+
+func _on_prev_pressed():
+	Global.fade_left_trans_to("res://UI/main_menu.tscn")

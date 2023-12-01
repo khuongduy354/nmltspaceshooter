@@ -77,6 +77,7 @@ energy = 0.3
 color = Color(0.690196, 0.690196, 0.690196, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="Textbox" parent="CanvasLayer" instance=ExtResource("7_as4xq")]
 anchors_preset = 7

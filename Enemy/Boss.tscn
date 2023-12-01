@@ -86,7 +86,7 @@ _data = {
 light_mask = 2
 scale = Vector2(1.73495, 1.73495)
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("1_rndc0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

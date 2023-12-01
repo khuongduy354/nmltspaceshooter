@@ -52,6 +52,7 @@ theme_override_font_sizes/font_size = 20
 text = "10"
 
 [node name="Score" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 texture = ExtResource("4_oa6k1")
@@ -59,6 +60,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ValueofScore" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_jiyak")
 theme_override_font_sizes/font_size = 20

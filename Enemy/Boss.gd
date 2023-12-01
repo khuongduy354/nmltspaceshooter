@@ -49,6 +49,8 @@ func _ready():
 	
 func _physics_process(delta):
 #	apply_rotation()
+	if !player: 
+		return 
 	if should_look: 
 		look_at(player.global_position)
 	update_debug()
@@ -146,3 +148,7 @@ func _on_hurtbox_area_entered(area):
 		$HurtSound.play()
 		Global.frame_freeze(0.8,.5)
 	
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
