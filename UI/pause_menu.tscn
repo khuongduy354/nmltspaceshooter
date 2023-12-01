@@ -87,8 +87,11 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 theme = SubResource("Theme_6mx2f")
+min_value = -30.0
+max_value = 0.0
 
 [node name="SFXLabel" type="Label" parent="PausePack"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -173,7 +176,7 @@ theme_override_font_sizes/font_size = 35
 text = "Resume
 "
 
-[node name="Replay" type="Button" parent="PausePack"]
+[node name="Exit" type="Button" parent="PausePack"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -190,9 +193,9 @@ theme = SubResource("Theme_estp2")
 theme_override_colors/font_pressed_color = Color(0.847059, 0.85098, 0.870588, 0)
 theme_override_fonts/font = ExtResource("2_6o5xa")
 theme_override_font_sizes/font_size = 35
-text = "Replay
-"
+text = "Exit"
 
+[connection signal="value_changed" from="PausePack/MusicLabel/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="pressed" from="PausePack/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="PausePack/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="PausePack/Replay" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="PausePack/Exit" to="." method="_on_exit_pressed"]

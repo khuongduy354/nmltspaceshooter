@@ -46,6 +46,23 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_anoqj")
 
+[node name="CheckBox" type="CheckBox" parent="Background"]
+offset_left = 840.0
+offset_top = 403.0
+offset_right = 864.0
+offset_bottom = 427.0
+scale = Vector2(2.49197, 2.49197)
+button_pressed = true
+
+[node name="Label" type="Label" parent="Background/CheckBox"]
+layout_mode = 0
+offset_left = -10.8348
+offset_top = -15.6503
+offset_right = 95.1652
+offset_bottom = 10.3497
+scale = Vector2(0.443613, 0.443613)
+text = "WASD control"
+
 [node name="Nameofgame" type="Label" parent="Background"]
 layout_mode = 1
 anchors_preset = 5
@@ -99,7 +116,7 @@ theme_override_fonts/font = ExtResource("2_3oldd")
 theme_override_font_sizes/font_size = 40
 text = "Endless Mode"
 
-[node name="Sound" type="Button" parent="Background"]
+[node name="Exit" type="Button" parent="Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -116,7 +133,7 @@ theme = SubResource("Theme_0ykdi")
 theme_override_colors/font_pressed_color = Color(0.631373, 0.631373, 0.631373, 1)
 theme_override_fonts/font = ExtResource("2_3oldd")
 theme_override_font_sizes/font_size = 40
-text = "Sound"
+text = "Exit"
 
 [node name="PlayerName" type="LineEdit" parent="Background"]
 layout_mode = 1
@@ -242,6 +259,8 @@ stream = ExtResource("5_03jvp")
 volume_db = 24.0
 autoplay = true
 
+[connection signal="toggled" from="Background/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="pressed" from="Background/StoryGameButton" to="." method="_on_startgame_button_pressed"]
-[connection signal="pressed" from="Background/Sound" to="." method="_on_soundsetting_button_pressed"]
+[connection signal="pressed" from="Background/EndlessGameButton" to="." method="_on_endless_game_button_pressed"]
+[connection signal="pressed" from="Background/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Background/SoundEdit/Done" to="." method="_on_done_pressed"]

@@ -10,6 +10,7 @@ enum DROP_TYPE{
 # world payload 
 signal spawner_destroyed
 signal swarm_player
+signal replay
 
 var player_name = "GUEST"
 var player: Player = null 
@@ -18,6 +19,9 @@ var cam: ShakeCamera = null
 var destroyed_mobs = 0
 var destroyed_bosses = 0
 var survival_time = 0
+var is_story = true
+var is_wasd = true
+var drop_item_list = null 
 
 func frame_freeze(time_scale, duration): 
 	Engine.time_scale = time_scale 
@@ -37,6 +41,14 @@ func percent_pick(val):
 
 func fade_left_trans_to(path: String,speed = 1.0): 
 	var fade_trans = preload("res://vfx/swipe_transistion.tscn").instantiate()
+	var canvas = CanvasLayer.new()
 	get_tree().root.add_child(fade_trans)
-	fade_trans.animp.playback_speed = speed
+	fade_trans.animp.speed_scale = speed
 	fade_trans.transition_to(path)
+		
+	
+	await fade_trans.closed 
+	get_tree().change_scene_to_file(path)
+	fade_trans.animp.play("open")
+	await fade_trans.opened 
+	fade_trans.queue_free()
