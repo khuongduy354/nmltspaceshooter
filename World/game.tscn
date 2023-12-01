@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkga0dv1261b"]
+
+[ext_resource type="Script" path="res://World/game.gd" id="1_ma6kv"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_ma6kv")
+
+[node name="DropItemsList" type="Node2D" parent="."]

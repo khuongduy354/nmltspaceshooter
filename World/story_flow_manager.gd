@@ -4,6 +4,7 @@ var stage = 1
 var w: World = null 
 var origin_spawners_count = null
 var spawners_killed = 0
+
 func _initialize_(_w:World): 
 	w = _w 
 	origin_spawners_count = w.spawners.get_child_count()
@@ -22,9 +23,9 @@ func _on_spawner_destroyed():
 		camdup.global_position = origin_cam_pos
 		camdup.enabled=true
 		
-		w.spawn_boss()
-		w.boss.set_physics_process(false)
-		var target = w.boss.global_position
+		var boss = w.spawn_boss()
+		boss.set_physics_process(false)
+		var target = boss.global_position
 		camdup.move_to(target)
 		
 		await get_tree().create_timer(5).timeout
@@ -33,6 +34,6 @@ func _on_spawner_destroyed():
 		await get_tree().create_timer(2).timeout
 		camdup.queue_free()
 		w.player.cam.enabled = true
-		w.boss.set_physics_process(true)		
+		boss.set_physics_process(true)		
 		
 		stage = 2	

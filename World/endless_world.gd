@@ -1,14 +1,13 @@
 extends World
 class_name EndlessWorld
 
-func _ready():
-	setup_player()
-	setup_spawners()
-	spawn_asteroids()
-	pause_menu.set_physics_process(false)
-	reset_global_params()
-	pass
+@onready var boss_spawners = $BossSpawners
 
-func _physics_process(delta): 
-	super._physics_process(delta)
-	pass
+func _ready():
+	premade_setup()
+	setup_boss_spawners()
+	
+func setup_boss_spawners(): 
+	var bspawner = boss_spawners.get_child(0)
+	bspawner.spawn_boss()
+	bspawner.spawn_timer.start()

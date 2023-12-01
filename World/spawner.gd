@@ -5,7 +5,7 @@ signal hp_changed
 
 @export var max_hp = 1000
 @export var spawn_radius = 50
-@export var max_mob_counts = 2
+@export var max_mob_counts = 5
 @export var base_shield = 10
 @export var spawn_interval = 3
 
@@ -20,7 +20,7 @@ var destroyed = false
 func _ready(): 
 	$spawn_timer.wait_time = spawn_interval
 	hbshape.set_deferred("disabled",true)
-	while mobs.get_child_count() < max_mob_counts: 
+	while mobs.get_child_count() < floori(max_mob_counts/2): 
 		spawn_mob()
 
 func set_hp(val): 

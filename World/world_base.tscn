@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://dl20uxi51h83c"]
+
+[ext_resource type="Script" path="res://World/world.gd" id="1_psw2j"]
+[ext_resource type="Script" path="res://World/Asteriod/AsteroidsManager.gd" id="2_c0v76"]
+[ext_resource type="PackedScene" uid="uid://bks23t4amyvx2" path="res://UI/player_ui.tscn" id="3_mk27h"]
+[ext_resource type="PackedScene" uid="uid://b5kqvwo8md4m" path="res://UI/pause_menu.tscn" id="4_gjrhr"]
+[ext_resource type="PackedScene" uid="uid://csn57a6yu2cxa" path="res://World/withplanet-bg.tscn" id="5_wjf8b"]
+[ext_resource type="PackedScene" uid="uid://cfxavqtalag7x" path="res://Utility/standard_audio.tscn" id="6_g8nnc"]
+[ext_resource type="AudioStream" uid="uid://dixlpq1cnljb4" path="res://assets/audio/gameplaysound/gameplaymusic.mp3" id="7_54a8u"]
+
+[node name="WorldBase" type="Node2D"]
+script = ExtResource("1_psw2j")
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="Asteroids" type="Node" parent="."]
+script = ExtResource("2_c0v76")
+
+[node name="GameFlowManager" type="Node2D" parent="."]
+
+[node name="PlayerUI" parent="." instance=ExtResource("3_mk27h")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_gjrhr")]
+visible = false
+
+[node name="ParallaxBackground2" parent="." instance=ExtResource("5_wjf8b")]
+layer = -1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.631373, 0.631373, 0.631373, 1)
+
+[node name="AsteroidCheck" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Positions" type="Node2D" parent="."]
+
+[node name="StandardAudio" parent="." instance=ExtResource("6_g8nnc")]
+stream = ExtResource("7_54a8u")
+volume_db = 10.0
+autoplay = true
+
+[connection signal="timeout" from="AsteroidCheck" to="." method="_on_asteroid_check_timeout"]
