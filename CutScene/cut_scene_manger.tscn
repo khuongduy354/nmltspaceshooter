@@ -46,7 +46,7 @@ scale = Vector2(4, 4)
 
 [node name="Prev" type="TextureButton" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
-focus_mode = 1
+focus_mode = 0
 texture_normal = SubResource("AtlasTexture_vb1tc")
 texture_pressed = SubResource("AtlasTexture_ilu04")
 
@@ -64,7 +64,7 @@ layout_mode = 2
 
 [node name="Next" type="TextureButton" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
-focus_mode = 1
+focus_mode = 0
 texture_normal = SubResource("AtlasTexture_5k312")
 texture_pressed = SubResource("AtlasTexture_c4byy")
 
