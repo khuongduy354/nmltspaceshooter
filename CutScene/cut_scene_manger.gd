@@ -3,6 +3,7 @@ class_name CutSceneManager
 
 signal finished
 @onready var EarthOnly = preload("res://CutScene/EarthOnly.tscn")
+@onready var OverPopulation = preload("res://over_population.tscn")
 @onready var KeplerMar = preload("res://CutScene/kepler_and_mars.tscn")
 @onready var HumanWar = preload("res://CutScene/human_war.tscn")
 @onready var KeplerRiftOpening = preload("res://CutScene/rift_opening.tscn")
@@ -33,7 +34,7 @@ func play_sequential_cutscenes(scenes):
 	finished.emit()
 
 func pregame_flow(): 
-	var scenes = [EarthOnly,KeplerMar,HumanWar,KeplerRiftOpening,KeplerAliensAttack,KeplerWithAlien,world1rift]
+	var scenes = [EarthOnly,OverPopulation,KeplerMar,HumanWar,KeplerRiftOpening,KeplerAliensAttack,KeplerWithAlien,world1rift]
 #	var durations = [5,5,5,10,8,5,5]
 	play_sequential_cutscenes(scenes)
 

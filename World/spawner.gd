@@ -48,9 +48,8 @@ func spawn_mob():
 	mob.destroyed.connect(_on_mob_destroyed)
 
 func _on_spawn_timer_timeout():
-	if mobs.get_child_count() > max_mob_counts: 
-		return 
-	spawn_mob()
+	if mobs.get_child_count() < max_mob_counts: 
+		spawn_mob()
 
 
 func _on_hurtbox_area_entered(area):

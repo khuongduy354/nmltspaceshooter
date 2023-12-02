@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1jshd442uq28"]
+
+[ext_resource type="Texture2D" uid="uid://c3pysybiveuj2" path="res://assets/Backgrounds/overpop.jpg" id="1_1q0by"]
+[ext_resource type="PackedScene" uid="uid://c6a66p24wwy0d" path="res://UI/Dialouge/textbox.tscn" id="2_0utyf"]
+
+[node name="OverPopulation" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = 327.0
+offset_top = 411.0
+offset_right = 741.0
+offset_bottom = 478.0
+color = Color(0.0352941, 0, 0.247059, 1)
+
+[node name="Textbox" parent="CanvasLayer" instance=ExtResource("2_0utyf")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -326.0
+offset_top = -116.0
+offset_right = 954.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 0
+prescripts = 1
+
+[node name="Overpop" type="Sprite2D" parent="."]
+position = Vector2(498, 305.674)
+scale = Vector2(0.798508, 0.874095)
+texture = ExtResource("1_1q0by")

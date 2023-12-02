@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://kktgejyu263s"]
+[gd_scene load_steps=10 format=3 uid="uid://kktgejyu263s"]
 
 [ext_resource type="Script" path="res://CutScene/world_1_rift.gd" id="1_cwmjh"]
 [ext_resource type="PackedScene" uid="uid://bfr44igkgfima" path="res://World/spawner.tscn" id="2_3y5uw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://2qy6dflo66mq" path="res://assets/Backgrounds/Dynamic Space Background FREE/Stars-Big_1_1_PC.png" id="5_c7icn"]
 [ext_resource type="Texture2D" uid="uid://b4fb0uhuc2lkb" path="res://assets/Backgrounds/Dynamic Space Background FREE/Stars-Big_1_2_PC.png" id="6_sb86l"]
 [ext_resource type="PackedScene" uid="uid://b3ihofu15tb7d" path="res://Player/player.tscn" id="7_16nb1"]
+[ext_resource type="PackedScene" uid="uid://c6a66p24wwy0d" path="res://UI/Dialouge/textbox.tscn" id="9_m0n11"]
 
 [node name="World1Rift" type="Node2D"]
 script = ExtResource("1_cwmjh")
@@ -41,26 +42,45 @@ texture_repeat = 2
 texture = ExtResource("6_sb86l")
 centered = false
 
-[node name="Spawner" parent="." instance=ExtResource("2_3y5uw")]
+[node name="Player" parent="." instance=ExtResource("7_16nb1")]
+position = Vector2(484, 225)
+scale = Vector2(0.0548008, 0.0548008)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Textbox" parent="CanvasLayer" instance=ExtResource("9_m0n11")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -326.0
+offset_top = -116.0
+offset_right = 954.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 0
+prescripts = 6
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="Spawner" parent="Spawners" instance=ExtResource("2_3y5uw")]
 position = Vector2(118, 78)
 scale = Vector2(0.239657, 0.239657)
 max_mob_counts = 0
 
-[node name="Spawner2" parent="." instance=ExtResource("2_3y5uw")]
+[node name="Spawner2" parent="Spawners" instance=ExtResource("2_3y5uw")]
 position = Vector2(118, 374)
 scale = Vector2(0.239657, 0.239657)
 max_mob_counts = 0
 
-[node name="Spawner3" parent="." instance=ExtResource("2_3y5uw")]
+[node name="Spawner3" parent="Spawners" instance=ExtResource("2_3y5uw")]
 position = Vector2(857, 78)
 scale = Vector2(0.239657, 0.239657)
 max_mob_counts = 0
 
-[node name="Spawner4" parent="." instance=ExtResource("2_3y5uw")]
+[node name="Spawner4" parent="Spawners" instance=ExtResource("2_3y5uw")]
 position = Vector2(857, 374)
 scale = Vector2(0.239657, 0.239657)
 max_mob_counts = 0
-
-[node name="Player" parent="." instance=ExtResource("7_16nb1")]
-position = Vector2(484, 225)
-scale = Vector2(0.0548008, 0.0548008)

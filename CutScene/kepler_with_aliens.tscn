@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://doqun0jyaxakq"]
+[gd_scene load_steps=7 format=3 uid="uid://doqun0jyaxakq"]
 
 [ext_resource type="Script" path="res://CutScene/kepler_with_aliens.gd" id="1_4icgl"]
 [ext_resource type="PackedScene" uid="uid://c4uvy1txfqbsk" path="res://World/DarkStar-bg.tscn" id="1_mxkcw"]
 [ext_resource type="PackedScene" uid="uid://dbep4up3hmdr4" path="res://Utility/kepler_spinning.tscn" id="2_ls6np"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="3_kpnte"]
 [ext_resource type="PackedScene" uid="uid://ckwx36ydstxxk" path="res://Enemy/enemy.tscn" id="4_ecpre"]
+[ext_resource type="PackedScene" uid="uid://c6a66p24wwy0d" path="res://UI/Dialouge/textbox.tscn" id="6_ixt3g"]
 
 [node name="KeplerWithAliens" type="Node2D"]
 script = ExtResource("1_4icgl")
@@ -149,3 +150,20 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(488, 212)
 scale = Vector2(1.9443, 2.68237)
 zoom = Vector2(0.5, 0.5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Textbox" parent="CanvasLayer" instance=ExtResource("6_ixt3g")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -322.0
+offset_top = -135.0
+offset_right = 958.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 0
+prescripts = 5

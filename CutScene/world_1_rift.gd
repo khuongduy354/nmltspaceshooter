@@ -7,3 +7,4 @@ func _ready():
 	$Player.cam.enabled = false
 	$Player.set_physics_process(false)
 	$Player/CollisionPolygon2D.set_deferred("disabled",true)
+	

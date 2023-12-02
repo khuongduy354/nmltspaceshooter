@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://daim8ve3ljlwu"]
+[gd_scene load_steps=6 format=3 uid="uid://daim8ve3ljlwu"]
 
 [ext_resource type="PackedScene" uid="uid://c4uvy1txfqbsk" path="res://World/DarkStar-bg.tscn" id="1_anax3"]
 [ext_resource type="Script" path="res://CutScene/rift_opening.gd" id="1_qp3nl"]
 [ext_resource type="PackedScene" uid="uid://bfr44igkgfima" path="res://World/spawner.tscn" id="2_w3aex"]
 [ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="3_y3coy"]
+[ext_resource type="PackedScene" uid="uid://c6a66p24wwy0d" path="res://UI/Dialouge/textbox.tscn" id="5_85e07"]
 
 [node name="RiftOpening" type="Node2D"]
 script = ExtResource("1_qp3nl")
@@ -21,4 +22,23 @@ scale = Vector2(0.521285, 0.521285)
 spawn_interval = 1
 
 [node name="StandardLight" parent="Spawner" instance=ExtResource("3_y3coy")]
+position = Vector2(38.3667, -36.4484)
+scale = Vector2(2.21058, 1.89586)
 energy = 5.82
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Textbox" parent="CanvasLayer" instance=ExtResource("5_85e07")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -326.0
+offset_top = -116.0
+offset_right = 954.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 0
+prescripts = 3
