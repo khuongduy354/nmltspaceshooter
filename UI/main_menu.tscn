@@ -47,6 +47,7 @@ grow_vertical = 2
 texture = ExtResource("1_anoqj")
 
 [node name="CheckBox" type="CheckBox" parent="Background"]
+layout_mode = 0
 offset_left = 840.0
 offset_top = 403.0
 offset_right = 864.0

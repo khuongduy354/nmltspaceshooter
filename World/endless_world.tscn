@@ -1,28 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://tfkbd03diwaf"]
+[gd_scene load_steps=7 format=3 uid="uid://tfkbd03diwaf"]
 
 [ext_resource type="Script" path="res://World/endless_world.gd" id="1_f1t4o"]
 [ext_resource type="PackedScene" uid="uid://dl20uxi51h83c" path="res://World/world_base.tscn" id="1_wh4sg"]
 [ext_resource type="PackedScene" uid="uid://c6tni4nd7c8n2" path="res://World/boss_spawner.tscn" id="3_kitcu"]
+[ext_resource type="PackedScene" uid="uid://72nqo5aa60l5" path="res://Utility/standard_light.tscn" id="4_tt34h"]
 [ext_resource type="Script" path="res://World/EndlessGameFlow.gd" id="4_wafq7"]
 [ext_resource type="PackedScene" uid="uid://bfr44igkgfima" path="res://World/spawner.tscn" id="6_cn7wn"]
 
 [node name="EndlessWorld" instance=ExtResource("1_wh4sg")]
 script = ExtResource("1_f1t4o")
 
-[node name="Spawner" parent="Spawners" index="0" instance=ExtResource("6_cn7wn")]
-position = Vector2(9659, 2138)
+[node name="Spawner8" parent="Spawners" index="0" instance=ExtResource("6_cn7wn")]
+position = Vector2(9621, 2936)
 
-[node name="Spawner2" parent="Spawners" index="1" instance=ExtResource("6_cn7wn")]
-position = Vector2(1460, 936)
+[node name="StandardLight2" parent="Spawners/Spawner8" index="7" instance=ExtResource("4_tt34h")]
+position = Vector2(14, 35.9999)
+scale = Vector2(3.89844, 2.96094)
 
-[node name="Spawner7" parent="Spawners" index="2" instance=ExtResource("6_cn7wn")]
-position = Vector2(6421, 2618)
+[node name="Spawner5" parent="Spawners" index="1" instance=ExtResource("6_cn7wn")]
+position = Vector2(3364, 5338)
 
-[node name="Spawner3" parent="Spawners" index="3" instance=ExtResource("6_cn7wn")]
-position = Vector2(1615, 3752)
+[node name="StandardLight" parent="Spawners/Spawner5" index="7" instance=ExtResource("4_tt34h")]
+position = Vector2(0, -18.9999)
+scale = Vector2(3.77344, 3.24219)
+energy = 1.0
 
-[node name="Spawner4" parent="Spawners" index="4" instance=ExtResource("6_cn7wn")]
-position = Vector2(7729, 1879)
+[node name="Spawner6" parent="Spawners" index="2" instance=ExtResource("6_cn7wn")]
+position = Vector2(7429, 5255)
+
+[node name="Spawner2" parent="Spawners" index="3" instance=ExtResource("6_cn7wn")]
+position = Vector2(1204, 2730)
+
+[node name="Spawner3" parent="Spawners" index="4" instance=ExtResource("6_cn7wn")]
+position = Vector2(7488, 1531)
 
 [node name="GameFlowManager" parent="." index="2"]
 script = ExtResource("4_wafq7")
@@ -35,4 +45,4 @@ position = Vector2(-645, 685)
 
 [node name="BossSpawner" parent="BossSpawners" index="0" instance=ExtResource("3_kitcu")]
 position = Vector2(4511, 1426)
-rotation = 3.14159
+rotation = 0.0586565

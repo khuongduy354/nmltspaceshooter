@@ -43,7 +43,7 @@ func spawn_mob():
 	mob.position =pos
 	
 	mobs.add_child(mob)
-	spawned_mob.emit()
+	spawned_mob.emit(mob)
 	# -20 hp when its mob destroyed
 	mob.destroyed.connect(_on_mob_destroyed)
 

@@ -67,7 +67,7 @@ func reset_global_params():
 
 func setup_spawners(): 
 	for spawner in spawners.get_children(): 
-		spawner.spawned_mob.connect(func(): Global.mobs_count+=1)
+		spawner.spawned_mob.connect(func(mob): Global.mobs_count+=1)
 
 # signals
 func _on_asteroid_check_timeout():
