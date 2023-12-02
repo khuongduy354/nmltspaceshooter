@@ -15,6 +15,6 @@ func drop_item():
 	if node == null: 
 		return 
 	if Global.drop_item_list: 
-		Global.drop_item_list.add_child(node)	
+		Global.drop_item_list.add_child(node)
 	node.global_position = global_position
 	

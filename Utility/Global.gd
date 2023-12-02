@@ -21,7 +21,7 @@ var destroyed_bosses = 0
 var survival_time = 0
 var is_story = true
 var is_wasd = true
-var drop_item_list = null 
+var drop_item_list = null
 
 func frame_freeze(time_scale, duration): 
 	Engine.time_scale = time_scale 
