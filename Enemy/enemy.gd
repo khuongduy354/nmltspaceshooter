@@ -19,8 +19,19 @@ enum {IDLE, PATROL, CHASE}
 var state = IDLE: set = set_state
 var prev_state = IDLE
 var target = null
-var hp = max_hp
+var hp = max_hp: set = set_hp
+var death = false
 
+func set_hp(val): 
+	hp = val 
+	if(hp <= 0 and !death):
+		death = true
+		set_physics_process(false)
+		$AudioStreamPlayer2D.play()
+		await get_tree().create_timer(.5).timeout
+		destroyed.emit()
+		queue_free()
+		$DropManager.drop_item()
 # setters
 func set_state(val):
 	prev_state = state
@@ -126,13 +137,7 @@ func _on_hurtbox_area_entered(area):
 		
 		area.owner._damage_dealt()
 		$HurtSound.play()
-		if(hp <= 0):
-			set_physics_process(false)
-			$AudioStreamPlayer2D.play()
-			await get_tree().create_timer(.5).timeout
-			destroyed.emit()
-			queue_free()
-			$DropManager.drop_item()
+
 
 func _on_chase_timeout_timeout():
 	target = null

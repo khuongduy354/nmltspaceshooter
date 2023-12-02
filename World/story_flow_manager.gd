@@ -24,6 +24,7 @@ func _on_spawner_destroyed():
 		camdup.enabled=true
 		
 		var boss = w.spawn_boss()
+		boss.max_hp *= 2
 		boss.set_physics_process(false)
 		var target = boss.global_position
 		camdup.move_to(target)

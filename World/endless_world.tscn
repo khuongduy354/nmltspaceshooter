@@ -27,12 +27,15 @@ energy = 1.0
 
 [node name="Spawner6" parent="Spawners" index="2" instance=ExtResource("6_cn7wn")]
 position = Vector2(7429, 5255)
+max_mob_counts = 2
 
 [node name="Spawner2" parent="Spawners" index="3" instance=ExtResource("6_cn7wn")]
 position = Vector2(1204, 2730)
+max_mob_counts = 2
 
 [node name="Spawner3" parent="Spawners" index="4" instance=ExtResource("6_cn7wn")]
 position = Vector2(7488, 1531)
+max_mob_counts = 2
 
 [node name="GameFlowManager" parent="." index="2"]
 script = ExtResource("4_wafq7")
@@ -46,3 +49,6 @@ position = Vector2(-645, 685)
 [node name="BossSpawner" parent="BossSpawners" index="0" instance=ExtResource("3_kitcu")]
 position = Vector2(4511, 1426)
 rotation = 0.0586565
+
+[node name="CollisionShape2D3" parent="Boundaries/StaticBody2D" index="1"]
+position = Vector2(11800, 2747)

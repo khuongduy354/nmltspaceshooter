@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://cfxavqtalag7x" path="res://Utility/standard_audio.tscn" id="2_xbpyf"]
 
 [node name="BossBullet2" instance=ExtResource("1_ptiin")]
-damage = 30
 
 [node name="Icon" parent="." index="3"]
 scale = Vector2(10, 10)
@@ -14,5 +13,5 @@ region_rect = Rect2(50, 82, 8, 8)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox2" index="0"]
 polygon = PackedVector2Array(-40, 20, -2, 20, 0, -19, -38, -19, -41, -38, 15, -41, 39, -2, 38, 12, 11, 42, -38, 42)
 
-[node name="StandardAudio" parent="." index="5" instance=ExtResource("2_xbpyf")]
+[node name="StandardAudio2" parent="." index="5" instance=ExtResource("2_xbpyf")]
 stream = ExtResource("2_m34qg")

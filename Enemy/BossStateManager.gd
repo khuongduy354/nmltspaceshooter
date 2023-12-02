@@ -1,7 +1,7 @@
 extends Node
 class_name BossStateManager
 
-@export var laser_duration = 3
+@export var laser_duration = 2
 @export var straight_duration = 5
 @export var circle_duration = 5
 @export var triple_duration = 5 
@@ -72,7 +72,7 @@ func state_enter(s):
 			get_tree().create_timer(laser_duration).timeout.connect(laser.turn_off)
 			laser.turned_off.connect(change_attack_pattern)
 			b.should_look = false 
-			await get_tree().create_timer(1).timeout			
+			await get_tree().create_timer(.3).timeout			
 			laser.turn_on()
 			Global.cam.shake(laser_duration,5)
 # state exit 

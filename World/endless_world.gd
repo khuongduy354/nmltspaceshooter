@@ -26,10 +26,7 @@ func setup_special_spawners():
 	var earth = spawners.get_child(0)
 	earth.get_node("Galaxy-animated").texture = preload("res://assets/Objects/planets/earth.png")
 	earth.add_child(colli)
-	var _on_mob_spawned = func(mob): 
-		mob.get_node("Enemies").texture = preload("res://assets/Objects/PLAYERSHIP/031.png")
-		mob.get_node("Enemies").scale.x = abs(mob.get_node("Enemies").scale.x)
-	earth.spawned_mob.connect(_on_mob_spawned)
+	earth.spawned_mob.connect(func(mob): mob.get_node("Enemies").texture = preload("res://assets/Objects/enemy-PhotoRoom.png-PhotoRoom (2).png"))
 	
 	var mars = spawners.get_child(1)
 	mars.get_node("Galaxy-animated").texture = preload("res://assets/Objects/planets/mars.png")

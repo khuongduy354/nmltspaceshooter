@@ -7,7 +7,6 @@ extends Node2D
 func drop_item(): 
 	var node = null 
 	for drop in drops.keys(): 
-		print(drop)
 		if Global.percent_pick(drops[drop]): 
 			match drop: 
 				"HEALTH": 

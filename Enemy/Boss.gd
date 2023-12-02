@@ -9,7 +9,7 @@ signal hp_changed
 @export var orbiting_speed = 15000
 @export var gun_counts = 12
 @export var orbiting_distance = 1500
-@export var max_hp = 600
+@export var max_hp = 2000
 
 @onready var guns = $Guns
 @onready var sdur = $shoot_duration
@@ -23,16 +23,18 @@ var primary_gun: Gun = null
 var player:Player = null 
 var should_look = true
 var current_hp = max_hp : set = set_hp 
+var death = false 
 
 func set_hp(val): 
 	current_hp = val 
 	hp_changed.emit(current_hp)
-	if(current_hp <= 0):
+	if(current_hp <= 0 and !death):
+		death = true 
 		fsm.set_physics_process(false)
 		$Death.emitting = true
 		destroyed.emit()
 		$StandardAudio.play()
-		laser.turn_off()
+		laser.queue_free()
 		$Lighting.visible = false 
 		await  get_tree().create_timer(5).timeout
 		queue_free()

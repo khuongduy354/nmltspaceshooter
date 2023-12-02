@@ -3,7 +3,7 @@ extends Node2D
 signal spawned_mob
 signal hp_changed 
 
-@export var max_hp = 1000
+@export var max_hp = 3000
 @export var spawn_radius = 50
 @export var max_mob_counts = 5
 @export var base_shield = 10

@@ -6,7 +6,6 @@
 
 [node name="BossBullet" instance=ExtResource("1_b5oc1")]
 BULLET_SPEED = 2000
-damage = 30
 
 [node name="Icon" parent="." index="3"]
 scale = Vector2(10, 10)
@@ -15,5 +14,5 @@ region_rect = Rect2(161, 150, 14, 10)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox2" index="0"]
 polygon = PackedVector2Array(-70, 4, 30, -49, 71, -7, 70, 17, 35, 45, -2, 42)
 
-[node name="StandardAudio" parent="." index="5" instance=ExtResource("2_akiku")]
+[node name="StandardAudio2" parent="." index="5" instance=ExtResource("2_akiku")]
 stream = ExtResource("3_xot5l")

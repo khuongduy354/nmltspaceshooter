@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dl20uxi51h83c"]
+[gd_scene load_steps=10 format=3 uid="uid://dl20uxi51h83c"]
 
 [ext_resource type="Script" path="res://World/world.gd" id="1_psw2j"]
 [ext_resource type="Script" path="res://World/Asteriod/AsteroidsManager.gd" id="2_c0v76"]
@@ -7,6 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://csn57a6yu2cxa" path="res://World/withplanet-bg.tscn" id="5_wjf8b"]
 [ext_resource type="PackedScene" uid="uid://cfxavqtalag7x" path="res://Utility/standard_audio.tscn" id="6_g8nnc"]
 [ext_resource type="AudioStream" uid="uid://dixlpq1cnljb4" path="res://assets/audio/gameplaysound/gameplaymusic.mp3" id="7_54a8u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ba3ti"]
+size = Vector2(7000, 90.9971)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hwc4a"]
+size = Vector2(12000, 18.502)
 
 [node name="WorldBase" type="Node2D"]
 script = ExtResource("1_psw2j")
@@ -39,5 +45,31 @@ autostart = true
 stream = ExtResource("7_54a8u")
 volume_db = 10.0
 autoplay = true
+
+[node name="Boundaries" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundaries"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+position = Vector2(-49, 3349)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_ba3ti")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+position = Vector2(11863, 3377)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_ba3ti")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+position = Vector2(5853, 6175)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_hwc4a")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+position = Vector2(5987, -4)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_hwc4a")
 
 [connection signal="timeout" from="AsteroidCheck" to="." method="_on_asteroid_check_timeout"]
