@@ -52,3 +52,10 @@ func fade_left_trans_to(path: String,speed = 1.0):
 	fade_trans.animp.play("open")
 	await fade_trans.opened 
 	fade_trans.queue_free()
+
+func set_master_db(value): 
+	AudioServer.set_bus_volume_db(0,value)
+	if value == -30: 
+		AudioServer.set_bus_mute(0,true)
+	else:
+		AudioServer.set_bus_mute(0,false)

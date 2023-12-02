@@ -21,8 +21,8 @@ const MAX_WIDTH = 256
 var text = ""
 var letter_index = 0
 
-var letter_time = 0.05
-var space_time = 0.1
+var letter_time = 0.03
+var space_time = 0.05 
 var punctuation_time = 0.5
 signal finished_displaying()
 var	finished = false
@@ -40,7 +40,7 @@ func load_premade_scripts():
 		Scripts.OverPopulation: 
 			result = "Tuy nhiên Trái Đất đã quá tải về dân số, vấn đề thiếu đất sinh sống ngày một trầm trọng, dẫn đến nhu cầu di cư ngoài vũ trụ tăng cao."
 		Scripts.KeplerMarsIntro:
-			result = "Các nhà khoa học đã đề xuất hai hành tinh để di cư đó là Sao Hoả và một hành tinh xa xôi mang tên Kepler B52. Tuy nhiên việc quyết định hành tinh nào để di cư vẫn gây tranh cãi quyết liệt, lúc này thế giới chia làm hai nửa, xung đột xảy ra gay gắt đến nỗi chỉ còn có thể giải quyết bằng vũ lực!"
+			result = "Các nhà khoa học đã đề xuất hai hành tinh để di cư: Sao Hoả và Kepler B52. Tuy nhiên việc quyết định hành tinh nào để di cư vẫn gây tranh cãi quyết liệt, lúc này thế giới chia làm hai nửa, xung đột xảy ra gay gắt đến nỗi chỉ còn có thể giải quyết bằng vũ lực!"
 		Scripts.HumanWar:
 			result = "Trận chiến vô nghĩa ấy đã nổ ra, chưa kể đến thiệt hại chung cho nhân loại, con người đã tự kéo bản thân vào đại thảm hoạ với quy mô vũ trụ…"
 		Scripts.KeplerRiftOpening:

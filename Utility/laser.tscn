@@ -144,4 +144,3 @@ occluder = SubResource("OccluderPolygon2D_ociqc")
 
 [node name="StandardAudio" parent="." instance=ExtResource("4_iastr")]
 stream = ExtResource("5_rvhsx")
-volume_db = 10.0

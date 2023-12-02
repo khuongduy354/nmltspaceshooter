@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5xx0vnf5ij2r"]
+[gd_scene load_steps=16 format=3 uid="uid://c5xx0vnf5ij2r"]
 
 [ext_resource type="Texture2D" uid="uid://vfusddo0l0fh" path="res://assets/Backgrounds/background.png" id="1_anoqj"]
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_kgwp4"]
 [ext_resource type="FontFile" uid="uid://bdhpjd3wou0xy" path="res://assets/UI/ThaleahFat.ttf" id="2_3oldd"]
 [ext_resource type="PackedScene" uid="uid://cfxavqtalag7x" path="res://Utility/standard_audio.tscn" id="4_7p5ql"]
+[ext_resource type="Script" path="res://UI/SoundEdit.gd" id="4_pdndi"]
 [ext_resource type="AudioStream" uid="uid://dro04g0teeasl" path="res://assets/audio/Menumusic/The Workout - Audio Network UK.mp3" id="5_03jvp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jydvw"]
@@ -117,7 +118,7 @@ theme_override_fonts/font = ExtResource("2_3oldd")
 theme_override_font_sizes/font_size = 40
 text = "Endless Mode"
 
-[node name="Exit" type="Button" parent="Background"]
+[node name="Sound" type="Button" parent="Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -134,7 +135,7 @@ theme = SubResource("Theme_0ykdi")
 theme_override_colors/font_pressed_color = Color(0.631373, 0.631373, 0.631373, 1)
 theme_override_fonts/font = ExtResource("2_3oldd")
 theme_override_font_sizes/font_size = 40
-text = "Exit"
+text = "Sound"
 
 [node name="PlayerName" type="LineEdit" parent="Background"]
 layout_mode = 1
@@ -169,6 +170,7 @@ offset_bottom = 168.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_arugu")
+script = ExtResource("4_pdndi")
 
 [node name="MusicLabel" type="Label" parent="Background/SoundEdit"]
 layout_mode = 1
@@ -202,8 +204,12 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 theme = SubResource("Theme_8got4")
+min_value = -30.0
+max_value = 0.0
+value = -10.0
 
 [node name="SFXLabel" type="Label" parent="Background/SoundEdit"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -257,11 +263,12 @@ text = "Enter"
 
 [node name="StandardAudio" parent="." instance=ExtResource("4_7p5ql")]
 stream = ExtResource("5_03jvp")
-volume_db = 24.0
+volume_db = 0.0
 autoplay = true
 
 [connection signal="toggled" from="Background/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="pressed" from="Background/StoryGameButton" to="." method="_on_startgame_button_pressed"]
 [connection signal="pressed" from="Background/EndlessGameButton" to="." method="_on_endless_game_button_pressed"]
-[connection signal="pressed" from="Background/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Background/Sound" to="." method="_on_soundsetting_button_pressed"]
+[connection signal="value_changed" from="Background/SoundEdit/MusicLabel/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="pressed" from="Background/SoundEdit/Done" to="." method="_on_done_pressed"]

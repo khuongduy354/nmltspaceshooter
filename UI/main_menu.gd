@@ -8,9 +8,9 @@ func _on_exit_button_pressed():
 	pass # Replace with function body.
 
 
-#func _on_soundsetting_button_pressed():
-#	sound_edit.visible = true  
-#	pass # Replace with function body.
+func _on_soundsetting_button_pressed():
+	sound_edit.visible = true  
+	pass # Replace with function body.
 
 
 func _on_startgame_button_pressed():
@@ -37,3 +37,7 @@ func _on_endless_game_button_pressed():
 
 func _on_check_box_toggled(button_pressed):
 	Global.is_wasd = button_pressed
+
+
+func _on_music_slider_value_changed(value):
+	Global.set_master_db(value)

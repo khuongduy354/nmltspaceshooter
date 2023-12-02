@@ -7,8 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://bugwvoxwq5n6t" path="res://assets/audio/switch-click-and-beep-001a-11602.mp3" id="5_vn7e4"]
 
 [node name="Textbox" type="MarginContainer"]
-offset_right = 156.0
-offset_bottom = 76.0
+custom_minimum_size = Vector2(1658, 452)
+offset_right = 1658.0
+offset_bottom = 452.0
 scale = Vector2(0.462517, 0.462517)
 script = ExtResource("1_22s7r")
 
@@ -30,13 +31,13 @@ color = Color(0.00784314, 0.00784314, 0.137255, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 362
-theme_override_constants/margin_top = -50
+theme_override_constants/margin_left = 477
+theme_override_constants/margin_top = -37
 theme_override_constants/margin_right = 91
 theme_override_constants/margin_bottom = -46
 
 [node name="Label" type="Label" parent="MarginContainer"]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 152)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = 0
@@ -44,6 +45,7 @@ theme_override_constants/outline_size = 0
 theme_override_constants/shadow_outline_size = 0
 theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 28
+text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 autowrap_mode = 3
 
 [node name="LetterDisplayTimer" type="Timer" parent="."]

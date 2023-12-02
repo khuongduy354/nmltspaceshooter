@@ -19,11 +19,7 @@ func _on_resume_pressed():
 
 
 func _on_music_slider_value_changed(value):
-	AudioServer.set_bus_volume_db(0,value)
-	if value == $PausePack/MusicLabel/MusicSlider.min_value: 
-		AudioServer.set_bus_mute(0,true)
-	else:
-		AudioServer.set_bus_mute(0,false)
+	Global.set_master_db(value)
 		
 
 

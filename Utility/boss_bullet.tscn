@@ -29,3 +29,6 @@ region_rect = Rect2(97, 225, 21, 20)
 [node name="HitBox2" type="Area2D" parent="." index="4" groups=["enemy_bullet"]]
 collision_layer = 16
 script = SubResource("GDScript_e5sn8")
+
+[node name="StandardAudio" parent="." index="5"]
+volume_db = -5.0

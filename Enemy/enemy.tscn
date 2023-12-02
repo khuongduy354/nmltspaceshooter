@@ -101,7 +101,7 @@ region_rect = Rect2(104, 56, 40, 40)
 [node name="Gun" parent="." instance=ExtResource("2_r85m8")]
 position = Vector2(22, 0)
 BulletScene = ExtResource("3_5gnfk")
-fire_cooldown = 1.2
+fire_cooldown = 1.4
 
 [node name="patrol_interval" type="Timer" parent="."]
 wait_time = 2.0

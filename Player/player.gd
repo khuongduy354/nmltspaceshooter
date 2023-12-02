@@ -33,6 +33,10 @@ func _ready():
 	$Gun/Camera2D.limit_right = Global.GAME_WIDTH
 	$Gun/Camera2D.limit_bottom = Global.GAME_HEIGHT
 	pname.text = Global.player_name
+	$Hurtbox/CollisionPolygon2D2.set_deferred("disabled",true)
+	await  get_tree().create_timer(3).timeout
+	$Hurtbox/CollisionPolygon2D2.set_deferred("disabled",false)
+	
 
 @export var wasd_control = true
 func get_dir():
@@ -96,6 +100,7 @@ func _on_gun_shot():
 	muzzle.flash()
 
 func _on_hurtbox_area_entered(area):
+	print("hi")
 	if area.is_in_group("enemy_bullet"): 
 		current_health -= area.owner.damage
 		$AnimationPlayer2.play("white_flash") 

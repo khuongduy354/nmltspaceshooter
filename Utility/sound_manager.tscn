@@ -8,4 +8,4 @@ script = ExtResource("1_pxlg1")
 
 [node name="BossMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_0qvpg")
-volume_db = 10.0
+volume_db = -10.0

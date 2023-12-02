@@ -42,5 +42,5 @@ region_rect = Rect2(191, 207, 15, 6)
 
 [node name="StandardAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_o1pv4")
-volume_db = 7.29
+volume_db = -15.0
 max_distance = 5000.0

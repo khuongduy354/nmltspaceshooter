@@ -40,4 +40,4 @@ region_rect = Rect2(168, 207, 20, 6)
 
 [node name="StandardAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_sbqar")
-volume_db = 10.0
+volume_db = -5.0

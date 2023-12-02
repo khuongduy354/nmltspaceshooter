@@ -55,7 +55,7 @@ func _physics_process(delta):
 		return 
 	if should_look: 
 		look_at(player.global_position)
-	update_debug()
+#	update_debug()
 	_move(delta)
 
 
@@ -154,3 +154,7 @@ func _on_hurtbox_area_entered(area):
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
+
+
+func _on_tree_exited():
+	SoundManager.stop_sound("BossMusic")

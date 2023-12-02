@@ -7,12 +7,15 @@ func _ready():
 		enemy.set_physics_process(false)
 		enemy.get_node("Hurtbox").get_node("CollisionPolygon2D2").set_deferred("disabled",true)
 	for supporter in $MarsSupporters.get_children(): 
+		supporter.get_node("Hurtbox").get_child(0).set_deferred("disabled",true)
+		supporter.set_block_signals(true)
 		supporter.set_physics_process(false)
 		supporter.cam.enabled = false
 		supporter.gun.BulletScene = preload("res://Utility/smaller_player_bullet.tscn")
 		supporter.pname.text = "Mar"
 		supporter.should_look=false
 	for supporter in $KeplerSupporters.get_children(): 
+		supporter.get_node("Hurtbox").get_child(0).set_deferred("disabled",true)
 		supporter.set_physics_process(false)
 		supporter.cam.enabled = false
 		supporter.gun.BulletScene  =  preload("res://Utility/smaller_red_bullet.tscn")

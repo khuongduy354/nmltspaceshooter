@@ -191,11 +191,12 @@ scale = Vector2(3.91295, 3.91295)
 
 [node name="StandardAudio" parent="." instance=ExtResource("10_vtxy6")]
 stream = ExtResource("11_guvxo")
-volume_db = 24.0
+volume_db = -10.0
 
 [node name="HurtSound" parent="." instance=ExtResource("10_vtxy6")]
 stream = ExtResource("12_gfgce")
 volume_db = 12.0
 
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
