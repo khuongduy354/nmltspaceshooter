@@ -16,4 +16,12 @@ func set_mos_kills(val):
 	mobs_kills.text = str(val)
 
 func set_survival_time(val): 
-	boss_kills.text = str(val) + "s"
+	survival_time.text = str(val) + " secs"
+
+
+func _on_exit_pressed():
+	get_tree().quit()
+
+
+func _on_main_menu_pressed():
+	get_tree().change_scene_to_file("res://UI/main_menu.tscn")

@@ -11,7 +11,7 @@ func _ready():
 	
 func remove_health_from_spawners(): 
 	for spawner in spawners.get_children(): 
-		spawner.get_node("Hurtbox").get_node("CollisionShape2D").set_deferred("disabled",true)
+		spawner.get_node("Hurtbox").set_collision_mask_value(4,false)
 		spawner.get_node("GeneralHealthBar").queue_free()
 		
 func setup_boss_spawners(): 

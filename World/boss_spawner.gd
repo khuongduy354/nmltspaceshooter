@@ -22,6 +22,9 @@ func spawn_boss():
 	boss.spawned_mob.connect(func(): Global.mobs_count += 1)
 	boss.destroyed.connect(func(): Global.destroyed_bosses += 1)
 	
+	if Global.player: 
+		boss._initialize_(Global.player)
+		
 	$Bosses.add_child(boss)
 	
 	boss._initialize_(Global.player)

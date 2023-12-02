@@ -7,6 +7,7 @@ func _ready():
 
 func set_time(val): 
 	p_info.set_time(val)
+	Global.survival_time = floor(val) 
 	
 func set_max_health(val): 
 	healthbar.max_value = val
