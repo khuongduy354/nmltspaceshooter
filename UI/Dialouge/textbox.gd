@@ -50,7 +50,7 @@ func load_premade_scripts():
 		Scripts.KeplerWithAliens:
 			result = "Và rồi mãi đến tận đầu thế kỉ 24, con người đã chuẩn bị sẵn sàng cho đợt phản công đòi lại Trái đất. Bạn là một trong những phi công điều khiển chiến hạm, nhiệm vụ của bạn là tiêu diệt tàu mẹ của Kepler! Tuy nhiên đồng đội của bạn đều đã hi sinh, nhưng bằng mọi giá…Hãy hoàn thành nhiệm vụ!!"
 		Scripts.WorldOnePregame:
-			result = "Hãy phá huỷ 4 cổng dịch chuyển! Lưu ý: Bạn chỉ có thể gây sát thuơng khi cổng đang mở, và việc bạn bắn cổng sẽ làm lộ vị trí và báo động toàn bộ tàu trên bản đồ tấn công bạn!
+			result = "Hãy phá huỷ 4 cổng dịch chuyển! Lưu ý: Bạn chỉ có thể gây sát thuơng khi cổng đang mở, và việc bạn bắn cổng sẽ làm lộ vị trí và báo động toàn bộ tàu trên bản đồ tấn công bạn! B
 Hãy cẩn thận!"
 	return result
 	
