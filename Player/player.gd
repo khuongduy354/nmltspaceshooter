@@ -77,7 +77,7 @@ func _physics_process(delta):
 func pick_up_item(_item): 
 	match _item.item_type: 
 		"HEALTH":
-			current_health += 20
+			current_health += 40
 			_item.queue_free()	
 			
 # helpers

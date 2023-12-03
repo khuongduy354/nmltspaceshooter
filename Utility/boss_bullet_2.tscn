@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cfxavqtalag7x" path="res://Utility/standard_audio.tscn" id="2_xbpyf"]
 
 [node name="BossBullet2" instance=ExtResource("1_ptiin")]
+BULLET_SPEED = 2000
 
 [node name="Icon" parent="." index="3"]
 scale = Vector2(10, 10)

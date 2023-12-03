@@ -9,7 +9,7 @@ signal hp_changed
 @export var orbiting_speed = 15000
 @export var gun_counts = 12
 @export var orbiting_distance = 1500
-@export var max_hp = 2000
+@export var max_hp = 6000
 
 @onready var guns = $Guns
 @onready var sdur = $shoot_duration

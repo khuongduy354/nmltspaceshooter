@@ -7,7 +7,7 @@ var prob_table = {
 	"NONE":5, 
 	"STRAIGHT":25, 
 	"LASER":20,
-	"SPAWN":10,
+	"SPAWN":40,
 	"TRIPLE":20, # pick 3 guns, 45 degrees spread
 }
 

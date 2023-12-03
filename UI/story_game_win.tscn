@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlmaormwmt0e3"]
+
+[ext_resource type="PackedScene" uid="uid://beb7514v2abnj" path="res://UI/game_over.tscn" id="1_xxvb3"]
+
+[node name="GameOver" instance=ExtResource("1_xxvb3")]
+
+[node name="GameOverText" parent="GameOverPack/VBoxContainer2" index="0"]
+text = "Victory!"
+
+[node name="ScoreText" parent="GameOverPack/VBoxContainer2/VBoxContainer/HBoxContainer3" index="0"]
+text = "Play time			       : "

@@ -9,12 +9,15 @@ class_name BossStateManager
 @export var spawn_duration = 3
 @export var spawn_count = 1
 
+
+
+
 enum shoot_patterns {LASER, CIRCLE, STRAIGHT, NONE, SPAWN, TRIPLE}
 
 var b: BossI = null
 var sdur: Timer = null
 var laser = null 
-var shoot_pattern = shoot_patterns.NONE : set = set_shoot_state
+var shoot_pattern = shoot_patterns.SPAWN : set = set_shoot_state
 
 # setters
 func set_shoot_state(val):
@@ -69,6 +72,8 @@ func state_enter(s):
 		shoot_patterns.SPAWN: 
 			get_tree().create_timer(spawn_duration).timeout.connect(change_attack_pattern)
 		shoot_patterns.LASER: 
+			if !laser: 
+				return 
 			get_tree().create_timer(laser_duration).timeout.connect(laser.turn_off)
 			laser.turned_off.connect(change_attack_pattern)
 			b.should_look = false 

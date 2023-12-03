@@ -11,7 +11,8 @@
 script = ExtResource("1_f1t4o")
 
 [node name="Spawner8" parent="Spawners" index="0" instance=ExtResource("6_cn7wn")]
-position = Vector2(9621, 2936)
+position = Vector2(9096, 4546)
+max_mob_counts = 3
 
 [node name="StandardLight2" parent="Spawners/Spawner8" index="7" instance=ExtResource("4_tt34h")]
 position = Vector2(14, 35.9999)
@@ -19,6 +20,7 @@ scale = Vector2(3.89844, 2.96094)
 
 [node name="Spawner5" parent="Spawners" index="1" instance=ExtResource("6_cn7wn")]
 position = Vector2(3364, 5338)
+max_mob_counts = 3
 
 [node name="StandardLight" parent="Spawners/Spawner5" index="7" instance=ExtResource("4_tt34h")]
 position = Vector2(0, -18.9999)
@@ -26,15 +28,11 @@ scale = Vector2(3.77344, 3.24219)
 energy = 1.0
 
 [node name="Spawner6" parent="Spawners" index="2" instance=ExtResource("6_cn7wn")]
-position = Vector2(7429, 5255)
+position = Vector2(7717, 1678)
 max_mob_counts = 2
 
 [node name="Spawner2" parent="Spawners" index="3" instance=ExtResource("6_cn7wn")]
 position = Vector2(1204, 2730)
-max_mob_counts = 2
-
-[node name="Spawner3" parent="Spawners" index="4" instance=ExtResource("6_cn7wn")]
-position = Vector2(7488, 1531)
 max_mob_counts = 2
 
 [node name="GameFlowManager" parent="." index="2"]

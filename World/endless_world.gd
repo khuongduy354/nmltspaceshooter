@@ -9,6 +9,9 @@ func _ready():
 	setup_special_spawners()
 	remove_health_from_spawners()
 	
+func nerf_enem_health_on_spawners(): 
+	for spawner in spawners.get_children(): 
+		spawner.spawned_mob.connect(func(mob): mob.max_hp = 50)
 func remove_health_from_spawners(): 
 	for spawner in spawners.get_children(): 
 		spawner.get_node("Hurtbox").set_collision_mask_value(4,false)

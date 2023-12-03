@@ -8,11 +8,11 @@
 [node name="StoryModeWorld" instance=ExtResource("1_qbttx")]
 script = ExtResource("1_27uxq")
 
-[node name="Spawner" parent="Spawners" index="0" instance=ExtResource("6_xoamc")]
-position = Vector2(9564, 1206)
-
-[node name="Spawner2" parent="Spawners" index="1" instance=ExtResource("6_xoamc")]
+[node name="Spawner2" parent="Spawners" index="0" instance=ExtResource("6_xoamc")]
 position = Vector2(947, 1107)
+
+[node name="Spawner" parent="Spawners" index="1" instance=ExtResource("6_xoamc")]
+position = Vector2(9564, 1206)
 
 [node name="Spawner3" parent="Spawners" index="2" instance=ExtResource("6_xoamc")]
 position = Vector2(1393, 4558)
