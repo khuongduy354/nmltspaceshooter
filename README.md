@@ -57,7 +57,7 @@ of 30 degrees)
 # Spawners Design
 
 - spawn mobs every X interval
-
+- mob spawn position is pick randomly within a radius
 - max_mobs_count limit mobs on map that spawner can have at a time
 
 # cutscenes design
