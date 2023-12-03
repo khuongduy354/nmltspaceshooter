@@ -106,21 +106,25 @@ position = Vector2(-182, -14)
 position = Vector2(-42, 437)
 rotation = -0.656538
 scale = Vector2(0.334723, 0.334723)
+is_invin = false
 
 [node name="Player2" parent="MarsSupporters" instance=ExtResource("2_njud3")]
 position = Vector2(335, 562)
 rotation = -0.656538
 scale = Vector2(0.334609, 0.334609)
+is_invin = false
 
 [node name="Player3" parent="MarsSupporters" instance=ExtResource("2_njud3")]
 position = Vector2(153, 356)
 rotation = -0.656538
 scale = Vector2(0.297899, 0.297899)
+is_invin = false
 
 [node name="Player4" parent="MarsSupporters" instance=ExtResource("2_njud3")]
 position = Vector2(66, 553)
 rotation = -0.656538
 scale = Vector2(0.317841, 0.317841)
+is_invin = false
 
 [node name="KeplerSupporters" type="Node2D" parent="."]
 position = Vector2(1145, 389)
@@ -130,21 +134,25 @@ rotation = 3.0356
 position = Vector2(-11.2779, 209.985)
 rotation = 6.27064
 scale = Vector2(0.37005, 0.37005)
+is_invin = false
 
 [node name="Player2" parent="KeplerSupporters" instance=ExtResource("2_njud3")]
 position = Vector2(94.9746, 24.1832)
 rotation = 6.34698
 scale = Vector2(0.37005, 0.37005)
+is_invin = false
 
 [node name="Player3" parent="KeplerSupporters" instance=ExtResource("2_njud3")]
 position = Vector2(-117.105, -33.5771)
 rotation = 6.27064
 scale = Vector2(0.37005, 0.37005)
+is_invin = false
 
 [node name="Player4" parent="KeplerSupporters" instance=ExtResource("2_njud3")]
 position = Vector2(-10.8522, -219.379)
 rotation = 6.34698
 scale = Vector2(0.37005, 0.37005)
+is_invin = false
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(519, 248)

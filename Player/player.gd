@@ -20,6 +20,7 @@ signal health_changed
 
 var current_health = max_health: set = set_health 
 var should_look = true 
+@export var is_invin = true 
 # setters
 func set_health(val): 
 	current_health = val 
@@ -33,9 +34,11 @@ func _ready():
 	$Gun/Camera2D.limit_right = Global.GAME_WIDTH
 	$Gun/Camera2D.limit_bottom = Global.GAME_HEIGHT
 	pname.text = Global.player_name
-	$Hurtbox/CollisionPolygon2D2.set_deferred("disabled",true)
-	await  get_tree().create_timer(3).timeout
-	$Hurtbox/CollisionPolygon2D2.set_deferred("disabled",false)
+	
+	if is_invin: 
+		$Hurtbox/CollisionPolygon2D2.set_deferred("disabled",true)
+		await  get_tree().create_timer(3).timeout
+		$Hurtbox/CollisionPolygon2D2.set_deferred("disabled",false)
 	
 
 @export var wasd_control = true
